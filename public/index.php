@@ -29,10 +29,10 @@ $di = new \Phalcon\DI\FactoryDefault();
 $d = new Phalcon\Mvc\Dispatcher();
 $d->setDI($di);
 $d->setControllerName($router->getControllerName());
-$d->setActionName($router->getParams()["action"]);
+$d->setActionName($router->getActionName());
 $d->setParams($router->getParams());
 
-echo $router->getControllerName();
-echo $router->getActionName();
+foreach ($router->getParams() as $value)
+    echo $value;
 
 $controller = $d->dispatch();
