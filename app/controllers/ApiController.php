@@ -3,10 +3,10 @@
 class ApiController extends \Phalcon\Mvc\Controller
 {
 
-    public function apiHandler()
+    public function handlerAction()
     {
         //Pull in parameters
-        echo "<h1>API Handler Entered</h1>"
+        echo "<h1>API Handler Entered</h1>";
 
         $api = "test";
 
