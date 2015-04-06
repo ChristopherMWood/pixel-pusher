@@ -7,7 +7,7 @@ class ApiRoutes extends Phalcon\Mvc\Router\Group
 
         //Basic api route for pixelpusher
         $this->add(
-            "/api/:action/:model/:params",
+            "/addhawk/api/:action/:model/:params",
             array(
                 "controller" => "api",
                 "action" => 1,
