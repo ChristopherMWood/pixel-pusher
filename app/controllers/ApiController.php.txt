@@ -2,9 +2,28 @@
 
 class ApiController extends \Phalcon\Mvc\Controller
 {
-    
-    public function indexAction()
+
+    public function apiHandler()
     {
-        echo "<h1>Hello</h1>"
+        //Pull in parameters
+        echo "<h1>API Handler Entered</h1>"
+
+        $api = "test";
+
+        //Choose correct api based off of api param
+        if( $api == "grid" ) {
+
+        }
+        else if ( $api == "admin" ) {
+
+        }
+        else {
+          //No valid api must have been found for request
+        }
+
+        //Return result from api call
+
+        return true;
     }
+
 }
