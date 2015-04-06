@@ -3,10 +3,3 @@
     RewriteRule  ^$ public/    [L]
     RewriteRule  (.*) public/$1 [L]
 </IfModule>
-asdfasd
-fa
-ds
-fa
-sdf
-asd
-fasdfasdfjlkahds;fja;sdkjf
