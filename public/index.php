@@ -32,7 +32,7 @@ $d->setControllerName($router->getControllerName());
 $d->setActionName($router->getActionName());
 $d->setParams($router->getParams());
 
-foreach ($router->getParams() as $value)
-    echo $value;
+foreach ($params as $term)
+    echo $term;
 
 $controller = $d->dispatch();

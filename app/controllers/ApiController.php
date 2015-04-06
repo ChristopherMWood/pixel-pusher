@@ -8,16 +8,18 @@ class ApiController extends \Phalcon\Mvc\Controller
         //Pull in parameters
         echo "<h1>API Handler Entered</h1>";
 
-        $api = $this->dispatcher->getParam("model");
-        $params = $this->dispatcher->getParam("params");
+        $parameters = $this->dispatcher->getParams();
 
-        echo "Test".$api."Test";
+        foreach ($parameters as $term)
+            echo $term;
+
+        $model = "";
 
         //Choose correct api based off of api param
-        if( $api == "grid" ) {
+        if( $model == "grid" ) {
             echo 'grid';
         }
-        else if ( $api == "admin" ) {
+        else if ( $model == "admin" ) {
             echo 'admin';
         }
         else {
