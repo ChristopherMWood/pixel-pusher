@@ -34,5 +34,3 @@ $d->setParams($router->getParams());
 
 $controller = $d->dispatch();
 
-//call_user_func_array(array($controller, $router->getActionName() . "Action"), $params);
-
