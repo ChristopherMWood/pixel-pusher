@@ -16,6 +16,7 @@ $router->get('/api/{model}/{method}/{parameters}', function($model, $method, $pa
 
 	$api_obj; //Pre define for if-else if block
 
+	//Call corresponding API below if possible
 	if($model == "admin") {
 		include "../app/models/admin_api.php";
 		$api_obj = new AdminApi($request, $response);

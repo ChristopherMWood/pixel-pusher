@@ -29,7 +29,6 @@ class AdminApi extends BaseApi
         }
         else {
         	$this->response->setStatusCode(405, "Method Not Found");
-			$this->response->setContent("<html><body>Hello</body></html>");
 			return $this->response;
         }
     }
@@ -38,7 +37,11 @@ class AdminApi extends BaseApi
     * Test method for the api layout
     */
     private function setGrid() {
-    	echo "In Set Grid";
+
+    	$this->data['title'] = "First JSON Response";
+    	$this->data['milk'] = "Milking a cow";
+
+    	$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
     	return $this->response;
     }
 }
