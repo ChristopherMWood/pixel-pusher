@@ -7,23 +7,27 @@ $di = new \Phalcon\DI\FactoryDefault();
 
 $router = new \Phalcon\Mvc\Micro($di);
 
-//Api base url for testing
-$router->get('/api', function(){
-	echo "BASE API PAGE";
-});
-
-$router->get('/api/{model}', function($model){
-	echo "Model: ".$model;
-});
 
 $router->get('/api/{model}/{function}', function($model, $function){
 	
+	//Prepare response for each request
+	$request = "Placeholder";
+	$response = new Phalcon\Http\Response();
+	$api_obj;
+
 	if($model == "admin") {
-		echo "Calling Admin Model";
+		include "../app/models/admin_api.php";
+		$api_obj = new AdminApi($request);
+		$api_obj->executeRequest();
 	}
 	else {
-		echo "Error: No valid API found";
+		
+		$response->setStatusCode(200, "OK");
+		$response->setContent("<html><body>Hello</body></html>");
+		$response->send();
 	}
+
+
 
 });
 
