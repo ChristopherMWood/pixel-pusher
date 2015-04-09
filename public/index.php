@@ -1,36 +1,33 @@
 <?php
 
-// Use Loader() to autoload our model
+//Use Loader() to autoload our model
 $loader = new \Phalcon\Loader();
-
 $di = new \Phalcon\DI\FactoryDefault();
-
 $router = new \Phalcon\Mvc\Micro($di);
 
-
-$router->get('/api/{model}/{function}', function($model, $function){
+$router->get('/api/{model}/{method}/{parameters}', function($model, $method, $parameters){
 	
-	//Prepare response for each request
-	$request = "Placeholder";
+	//Build request obj
+	include "../app/models/request.php";
+	$request = new Request($model, $method, $parameters);
+
+	//Prepare response obj
 	$response = new Phalcon\Http\Response();
-	$api_obj;
+
+	$api_obj; //Pre define for if-else if block
 
 	if($model == "admin") {
 		include "../app/models/admin_api.php";
-		$api_obj = new AdminApi($request);
-		$api_obj->executeRequest();
+		$api_obj = new AdminApi($request, $response);
+		$response = $api_obj->executeRequest();
 	}
 	else {
-		
-		$response->setStatusCode(200, "OK");
-		$response->setContent("<html><body>Hello</body></html>");
-		$response->send();
+		$response->setStatusCode(405, "Model Not Found");
 	}
 
-
-
+	//Send response from api
+	$response->send();
 });
 
 $router->handle();
-
 
