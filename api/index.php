@@ -1,5 +1,12 @@
 <?php
 
+//Create new Micro application and router
+$app = new Phalcon\Mvc\Micro();
+$di = new \Phalcon\DI\FactoryDefault();
+
+//Setup router
+$router = new \Phalcon\Mvc\Micro($di);
+
 /*
   This route group catches and processes all API calls on the system
   Any new api matching url rules should be added below.
@@ -16,7 +23,7 @@
 $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', function($model, $method, $parameters){
 
 	//Build request obj
-	include "../app/models/request.php";
+	include "models/request.php";
 	$request = new Request($model, $method, $parameters);
 
 	//Prepare response obj
@@ -26,12 +33,12 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 
 	//Call corresponding API below if possible
   if($model == "user") {
-		include "../app/models/user_api.php";
+		include "models/user_api.php";
 		$api_obj = new UserApi($request, $response);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
-		include "../app/models/admin_api.php";
+		include "models/admin_api.php";
 		$api_obj = new AdminApi($request, $response);
 		$response = $api_obj->executeRequest();
 	}
@@ -48,19 +55,16 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
   The routes below catch all invalid api calls
   HTTP Methods: { GET, POST }
 */
-$router->map('/api/{model}/{method}', function($model, $method){
+$router->map('/{model}/{method}', function($model, $method){
   echo "PixelPusher API</br>";
   echo "Model: ".$model."</br>";
   echo "Method: ".$method;
 });
 
 //Incomplete api call catch
-$router->map('/api/{model}', function($model){
+$router->map('/{model}', function($model){
   echo "PixelPusher API"."</br>";
   echo "Model: ".$model;
 });
 
-//Incomplete api call catch
-$router->map('/api', function(){
-  echo "PixelPusher API"."</br>";
-});
+$router->handle();
