@@ -1,5 +1,9 @@
 <?php
 use \Phalcon\Mvc\Dispatcher;
+
+$debug = new \Phalcon\Debug();
+$debug->listen();
+
 try {
     //Register an autoloader
     $loader = new \Phalcon\Loader();
@@ -53,13 +57,13 @@ try {
 );
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
-    // $contentDis = $application->handle()->getContent();
-    $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
+    $contentDis = $application->handle()->getContent();
+    // $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
     // $logger->error($contentDis);
-    echo "Error Logged";
+    echo $contentDis;
 
 } catch(\Phalcon\Exception $e) {
      echo "PhalconException: ", $e->getMessage();
-     $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
+    //  $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
      $logger->error($e->getMessage());
 }
