@@ -2,9 +2,9 @@
 
 echo "TEST TEST DEST";
 
-// use \Phalcon\Mvc\Dispatcher;
-//
-// try {
+use \Phalcon\Mvc\Dispatcher;
+
+try {
 //
 //     //Register an autoloader
 //     $loader = new \Phalcon\Loader();
@@ -71,7 +71,7 @@ echo "TEST TEST DEST";
 //     $application = new \Phalcon\Mvc\Application($di);
 //
 //     echo $application->handle()->getContent();
-//
-// } catch(\Phalcon\Exception $e) {
-//      echo "PhalconException: ", $e->getMessage();
-// }
+
+} catch(\Phalcon\Exception $e) {
+     echo "PhalconException: ", $e->getMessage();
+}
