@@ -66,10 +66,10 @@ try {
         $url->setBaseUri('/');
         return $url;
     });
-//
-//     //Handle the request
-//     $application = new \Phalcon\Mvc\Application($di);
-//
+
+    //Handle the request
+    $application = new \Phalcon\Mvc\Application($di);
+
 //     echo $application->handle()->getContent();
 
 } catch(\Phalcon\Exception $e) {
