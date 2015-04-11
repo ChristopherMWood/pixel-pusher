@@ -2,7 +2,7 @@
 class BaseApi
 {
 	protected $request;
-    protected $response;
+  protected $response;
 	protected $model;
 	protected $method;
 	protected $params;
