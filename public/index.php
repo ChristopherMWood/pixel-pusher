@@ -58,17 +58,18 @@ try {
     true
 );
 
-    $di->set('url', function(){
-        $url = new \Phalcon\Mvc\Url();
-        // $url->setBaseUri('');
-        return $url;
-    });
-
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
-    echo ($application->handle()->getContent())."DAMMIT";
+    $contentDis = $application->handle()->getContent();
+
+    $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
+    $logger->error($contentDis);
+
+    echo $contentDis;
 
 } catch(\Phalcon\Exception $e) {
      echo "PhalconException: ", $e->getMessage();
+     $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
+     $logger->error($e->getMessage());
 }
