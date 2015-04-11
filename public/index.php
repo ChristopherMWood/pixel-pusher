@@ -23,14 +23,14 @@ try {
 
     $host = gethostname();
     //Setup the database service
-    $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => $host,
-            "username" => "addhawk",
-            "password" => "addhawk4784",
-            "dbname" => "addhawk"
-        ));
-    });
+    // $di->set('db', function(){
+    //     return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+    //         "host" => $host,
+    //         "username" => "addhawk",
+    //         "password" => "addhawk4784",
+    //         "dbname" => "addhawk"
+    //     ));
+    // });
 
     $di->set(
     'dispatcher',
