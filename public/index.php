@@ -5,23 +5,23 @@ echo "TEST TEST DEST";
 use \Phalcon\Mvc\Dispatcher;
 
 try {
-//
-//     //Register an autoloader
-//     $loader = new \Phalcon\Loader();
-//     $loader->registerDirs(array(
-//         '../app/controllers/',
-//         '../app/models/'
-//     ))->register();
-//
-//     //Create a DI
-//     $di = new Phalcon\DI\FactoryDefault();
-//
-//     //Setup the view component
-//     $di->set('view', function(){
-//         $view = new \Phalcon\Mvc\View();
-//         $view->setViewsDir('../app/views/');
-//         return $view;
-//     });
+
+    //Register an autoloader
+    $loader = new \Phalcon\Loader();
+    $loader->registerDirs(array(
+        '../app/controllers/',
+        '../app/models/'
+    ))->register();
+
+    //Create a DI
+    $di = new Phalcon\DI\FactoryDefault();
+
+    //Setup the view component
+    $di->set('view', function(){
+        $view = new \Phalcon\Mvc\View();
+        $view->setViewsDir('../app/views/');
+        return $view;
+    });
 //
 //     $di->set(
 //     'dispatcher',
