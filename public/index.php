@@ -21,7 +21,7 @@ try {
         return $view;
     });
 
-    $host = gethostname();
+    // $host = gethostname();
     //Setup the database service
     // $di->set('db', function(){
     //     return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
