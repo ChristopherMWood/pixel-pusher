@@ -1,7 +1,5 @@
 <?php
 
-echo "TEST TEST DEST";
-
 use \Phalcon\Mvc\Dispatcher;
 
 try {
@@ -63,7 +61,7 @@ try {
     //Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function(){
         $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('/');
+        $url->setBaseUri('http://cs4784.cs.vt.edu/addhawk/');
         return $url;
     });
 
