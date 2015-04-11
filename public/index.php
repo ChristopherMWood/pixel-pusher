@@ -8,15 +8,15 @@ try {
     //Register an autoloader
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(array(
-        '../app/controllers/',
-        '../app/models/'
+      __DIR__.'/../app/controllers/',
+        __DIR__.'/../app/models/'
     ))->register();
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
     //Setup the view component
     $di->set('view', function(){
         $view = new \Phalcon\Mvc\View();
-        $view->setViewsDir('../app/views/');
+        $view->setViewsDir(__DIR__.'/../app/views/');
         return $view;
     });
     $di->set(
@@ -56,10 +56,8 @@ try {
     true
 );
     //Handle the request
-    $application = new \Phalcon\Mvc\Application($di);
-    $contentDis = $application->handle()->getContent();
-    $logger = new \Phalcon\Logger\Adapter\File(__DIR__.'/../app/logs/runtime.log');
-    $logger->error($contentDis);
+    $app = new \Phalcon\Mvc\Application($di);
+    $contentDis = $app->handle()->getContent();
     echo $contentDis;
 
 } catch(\Phalcon\Exception $e) {
