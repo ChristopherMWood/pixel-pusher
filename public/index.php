@@ -60,7 +60,7 @@ try {
 
     $di->set('url', function(){
         $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('/addhawk/');
+        // $url->setBaseUri('');
         return $url;
     });
 
