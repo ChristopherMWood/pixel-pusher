@@ -57,8 +57,7 @@ try {
 );
     //Handle the request
     $app = new \Phalcon\Mvc\Application($di);
-    $contentDis = $app->handle()->getContent();
-    echo "Test";
+    echo $app->handle()->getContent();
 
 } catch(\Phalcon\Exception $e) {
      echo "PhalconException: ", $e->getMessage();
