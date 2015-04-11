@@ -54,12 +54,12 @@ try {
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
     // $contentDis = $application->handle()->getContent();
-    $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
+    $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
     // $logger->error($contentDis);
     echo "Error Logged";
 
 } catch(\Phalcon\Exception $e) {
      echo "PhalconException: ", $e->getMessage();
-     $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
+     $logger = new \Phalcon\Logger\Adapter\File('app/logs/runtime.log');
      $logger->error($e->getMessage());
 }
