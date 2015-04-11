@@ -70,7 +70,7 @@ try {
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
-//     echo $application->handle()->getContent();
+    echo $application->handle()->getContent();
 
 } catch(\Phalcon\Exception $e) {
      echo "PhalconException: ", $e->getMessage();
