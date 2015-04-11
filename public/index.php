@@ -55,7 +55,7 @@ try {
     $application = new \Phalcon\Mvc\Application($di);
     $contentDis = $application->handle()->getContent();
     $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
-    $logger->error($contentDis);
+    // $logger->error($contentDis);
     echo "Error Logged";
 
 } catch(\Phalcon\Exception $e) {
