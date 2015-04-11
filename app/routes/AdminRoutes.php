@@ -1,18 +1,11 @@
 <?php
 
-class AdminRoutes extends Phalcon\Mvc\Router\Group
-{
-    public function initialize()
-    {
+/*
+  This route group catches and processes all ADMIN routes
+  Any admin pages and views will be found through here.
+*/
 
-        //Basic api route for pixelpusher
-        $this->add(
-            "/admin/:page",
-            array(
-                "controller" => "admin",
-                "action" => 1,
-            )
-        );
 
-    }
-}
+$router->get('/admin', function(){
+  echo "<h1>Admin</h1>";
+});

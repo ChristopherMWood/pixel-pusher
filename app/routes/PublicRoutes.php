@@ -1,18 +1,18 @@
 <?php
 
-class PublicRoutes extends Phalcon\Mvc\Router\Group
-{
-    public function initialize()
-    {
+$router->get('/public', function(){
+  echo "<h1>Public</h1>";
+});
 
-        //Basic api route for public views
-        $this->add(
-            "/:page",
-            array(
-                "controller" => "public",
-                "action" => 1,
-            )
-        );
-
-    }
-}
+// $router->get('/publasdfdasic', function() {
+//  $view = new Phalcon\Mvc\View();
+//  $view->setViewsDir('app/views/');
+//
+//  $view->start();
+//  //Shows recent posts view (app/views/posts/recent.phtml)
+//  $view->render('public', "home");
+//  $view->finish();
+//
+//  //Printing views output
+//  echo $view->getContent();
+// });
