@@ -53,7 +53,7 @@ try {
 );
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
-    $contentDis = $application->handle()->getContent();
+    // $contentDis = $application->handle()->getContent();
     $logger = new \Phalcon\Logger\Adapter\File('../app/logs/runtime.log');
     // $logger->error($contentDis);
     echo "Error Logged";
