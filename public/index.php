@@ -1,8 +1,10 @@
 <?php
 use \Phalcon\Mvc\Dispatcher;
 
-$debug = new \Phalcon\Debug();
-$debug->listen();
+if(function_exists('xdebug_disable')) { xdebug_disable(); }
+
+// $debug = new \Phalcon\Debug();
+// $debug->listen();
 
 try {
     //Register an autoloader
