@@ -5,46 +5,68 @@
 <body id="bg" name="bg">
 	<div id="ppDiv" name="ppDiv" style="text-align:center;">
 		<input type="image" src="public/img/main_icon.png" alt="PP" name="ppIcon" id="ppIcon" onclick="displayPPInfo();">
+		<input type="image" src="public/img/pixelpusher_logo_font.png" alt="font_logo" name="ppFontLogo" id="ppFontLogo">
 	</div>
-	<div id="animateDiv" name="animateDiv" style="display:none">
+	<div id="lowerButtonsDiv" name="lowerButtonsDiv" style="display:none">
 		<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
 			<input type="image" src="public/img/settings_icon.png" name="settingsButton" id="settingsButton" alt="Settings">
 		</div>
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
 			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info">
-			<p id="appInfo" name="appInfo" style="display:none">PixelPusher is a collaborative crowd-based media display tool developed
-			in Spring, 2015 by the AddHawk development team. The AddHawk team is Michael Peter, Christopher Wood,
-			Dillon Gresham, and Connor Hoene.</p>
+			<p id="appInfo" name="appInfo" style="display:none">Your current seat is: {Section, Row, Seat No.}</p>
 		</div>
 	</div>
-	<div id="settingsDropDownDiv" name="settingsDropDownDiv">
-		
+	
+	<div id="settingsDropDownDiv" name="settingsDropDownDiv">	
+		<div id="settingsTitleDiv" name="settingsTitleDiv" style="display:none;">
+			<h1 name="settingsTitle" id="settingsTitle"> Select Your Seat </h1> 
+		</div>
 		<div id="innerSectionDiv" name="innerSectionDiv">
-			<div id="settingsTitleDiv" name="settingsTitleDiv">
-				<h1 name="settingsTitle" id="settingsTitle"> Select Your Seat </h1> 
-			</div>
 			<div id="sectionDiv" name="sectionDiv" style="display:none;" class="innerDDDiv">
 				<select id="sectionDD" name="sectionDD">
 					<option value="A">Section A</option>
 					<option value="B">Section B</option>
 					<option value="C">Section C</option>
+					<option value="D">Section D</option>
+					<option value="E">Section E</option>
+					<option value="F">Section F</option>
+					<option value="G">Section G</option>
+					<option value="H">Section H</option>
+					<option value="I">Section I</option>
+					<option value="J">Section J</option>
 				</select>
 			</div>
 			<div id="rowDiv" name="rowDiv" style="display:none;" class="innerDDDiv">
 				<select id="rowDD" name="rowDD">
-					<option value="1">Row 1</option>
-					<option value="2">Row 2</option>
-					<option value="3">Row 3</option>
+					<option value=0>Row 1</option>
+					<option value=1>Row 2</option>
+					<option value=2>Row 3</option>
+					<option value=3>Row 4</option>
+					<option value=4>Row 5</option>
+					<option value=5>Row 6</option>
+					<option value=6>Row 7</option>
+					<option value=7>Row 8</option>
+					<option value=8>Row 9</option>
+					<option value=9>Row 10</option>
 				</select>
 			</div>
 			<div id="seatDiv" name="seatDiv" style="display:none;" class="innerDDDiv">
 				<select id="seatDD" name="seatDD">
-					<option value="1">Seat 1</option>
-					<option value="2">Seat 2</option>
-					<option value="3">Seat 3</option>
+					<option value=0>Seat 1</option>
+					<option value=1>Seat 2</option>
+					<option value=2>Seat 3</option>
+					<option value=3>Seat 4</option>
+					<option value=4>Seat 5</option>
+					<option value=5>Seat 6</option>
+					<option value=6>Seat 7</option>
+					<option value=7>Seat 8</option>
+					<option value=8>Seat 9</option>
+					<option value=9>Seat 10</option>
 				</select>
 			</div>
+			<div id="undoSelectionDiv" name="undoSelectionDiv" class="innderDDDiv"></div>
 		</div>
+		<div id="tableGridDiv" name="tableGridDiv" style="display:none"></div> 
 	</div>
 </body>
 

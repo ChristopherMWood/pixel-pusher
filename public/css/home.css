@@ -4,11 +4,11 @@ body {
 
 .settingsBody {
     background-color: red;
-    /*background: -webkit-linear-gradient(black, gray);
+    background: -webkit-linear-gradient(black, gray);
     background: -o-linear-gradient(black, gray);
     background: -moz-linear-gradient(black, gray);
     background: linear-gradient(black, gray);
-    background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
 }
 
 .infoBody {
@@ -22,6 +22,7 @@ body {
 
 #ppDiv, #infoDiv, #settingsDiv {
 	margin-bottom:20px;
+	
 }
 
 .bgBlueTransition {
@@ -51,11 +52,13 @@ body {
     transition: background-color 7500ms linear;
 }
 
-#ppIcon {
-
+#ppIcon{
+}
+#ppFontLogo {
+	width:0px;
 }
 
-#animateDiv {
+#lowerButtonsDiv {
 	text-align:center;
 	width:100%;
 
@@ -63,13 +66,16 @@ body {
 
 #appInfo {
 	color:white;
+	font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
 /* Centers the drop down boxes for seat selection */
 #innerSectionDiv {
 	display:none;
-    width: 100%;
+    width: 40%;
+    margin-left: 15px;
     text-align: center;
+    vertical-align: top;
 }
 
 #settingsDropDownDiv {
@@ -99,4 +105,24 @@ body {
     font-size: 72px;
     font-family: monaco,Consolas,Lucida Console,monospace;
     text-align: center;
+}
+
+#tableGridDiv {
+    width: 50%;
+}
+
+table {
+    background-color: white;
+    width: 100%;    
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+    height: 35px;
+}
+
+th {
+    border: 1px solid black;
+    width: 25px;
 }
