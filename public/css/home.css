@@ -4,20 +4,36 @@ body {
 
 .settingsBody {
     background-color: red;
+<<<<<<< HEAD
     /*background: -webkit-linear-gradient(black, gray);
     background: -o-linear-gradient(black, gray);
     background: -moz-linear-gradient(black, gray);
     background: linear-gradient(black, gray);
     background-repeat: no-repeat;*/
+=======
+	/*background: -webkit-linear-gradient(black, gray);
+	background: -o-linear-gradient(black, gray);
+	background: -moz-linear-gradient(black, gray);
+	background: linear-gradient(black, gray);
+	background-repeat: no-repeat;*/
+>>>>>>> 46838132686798ce8fd5ffe5dc53663ee7b56908
 }
 
 .infoBody {
     background-color: red;
+<<<<<<< HEAD
     /*background: -webkit-linear-gradient(black, gray);
     background: -o-linear-gradient(black, gray);
     background: -moz-linear-gradient(black, gray);
     background: linear-gradient(black, gray);
     background-repeat: no-repeat;*/
+=======
+	/*background: -webkit-linear-gradient(black, gray);
+	background: -o-linear-gradient(black, gray);
+	background: -moz-linear-gradient(black, gray);
+	background: linear-gradient(black, gray);
+	background-repeat: no-repeat;*/
+>>>>>>> 46838132686798ce8fd5ffe5dc53663ee7b56908
 }
 
 .bgBlueTransition {

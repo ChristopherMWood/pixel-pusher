@@ -1,9 +1,6 @@
 <?php
 use \Phalcon\Mvc\Dispatcher;
 
-$debug = new \Phalcon\Debug();
-$debug->listen();
-
 // try {
     //Register an autoloader
     $loader = new \Phalcon\Loader();

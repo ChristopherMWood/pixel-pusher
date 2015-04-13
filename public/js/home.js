@@ -35,26 +35,25 @@ function displayPPInfo() {
 }
 
 function infoClicked() {
+	document.getElementById("settingsDropDownDiv").style.display = "block";
 	document.getElementById("bg").className = "infoBody";
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 	
+	document.getElementById("settingsDropDownDiv").style.display = "block";
 	var sectionDD = document.getElementById("sectionDD");
-	sectionDD.style.display = "block";
 	var rowDD = document.getElementById("rowDD");
 	var seatDD = document.getElementById("seatDD");
 
-	$(window).unbind("onload");
-
-	$("#sectionDD").change(function () {
+	sectionDD.change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDD.style.display == "none") {
 			rowDD.style.display = "block";
 		}
 	});
-
 	$("#rowDD").change(function () {
+	rowDD.change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (seatDD.style.display == "none") {
 			seatDD.style.display = "block";
