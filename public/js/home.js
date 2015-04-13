@@ -86,15 +86,21 @@ function infoClicked() {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
 			rowDiv.style.display = "block";
-			setSectionText($("#sectionDD").val());
+			setDDText($("#sectionDD").val(), 0);
 		}
 	});
 
 	$("#rowDD").change(function () {
-		// when a choice is selected, display the drop down box for rows if needed
+		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
 			seatDiv.style.display = "block";
+			setDDText($("#rowDD").val(), 1);
 		}
+	});
+
+	$("#seatDD").change(function () {
+		// when a choice is selected, change to a text field
+		setDDText($("#seatDD").val(), 2);
 	});
 }
 
@@ -105,9 +111,28 @@ function settingsClicked() {
 	document.getElementById("settingsDiv").style.display = "none";
 }
 
-function setSectionText(sectString) {
-	var sectionDiv = document.getElementById("sectionDiv");
-	// clear the sectionDiv and then create a text field
-	sectionDiv.innerHTML = "";
-	sectionDiv.innerHTML = "<input type='text' name='sectionText' id='sectionText' value='" + sectString + "' readonly>";
+function setDDText(ddString, dropDownNum) {
+	// 0 is sectionDD, 1 is rowDD, 2 is seatDD
+	var ddDiv;
+	var resultString = "";
+	var ddName = "";
+
+	if (dropDownNum == 0) {
+		ddDiv = document.getElementById("sectionDiv");
+		resultString = "Section: " + ddString;
+		ddName = "section";
+	}
+	else if (dropDownNum == 1) {
+		ddDiv = document.getElementById("rowDiv");
+		resultString = "Row: " + ddString;
+		ddName = "row";
+	}
+	else {
+		ddDiv = document.getElementById("seatDiv");
+		resultString = "Seat: " + ddString;
+		ddName = "seat";
+	}
+	// clear the dropdown's Div and then create a text field
+	ddDiv.innerHTML = "";
+	ddDiv.innerHTML = "<h name='" + ddName + "Text' id='" + ddName + "Text'>" + resultString + "</h>";
 }
