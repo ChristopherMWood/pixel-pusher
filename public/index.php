@@ -9,6 +9,10 @@ use \Phalcon\Mvc\Dispatcher;
         __DIR__.'/../app/models/'
     ))->register();
 
+    $di->set('modelsManager', function() {
+          return new Phalcon\Mvc\Model\Manager();
+     });
+
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
     //Setup the view component
