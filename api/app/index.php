@@ -4,7 +4,7 @@
 $loader = new \Phalcon\Loader();
 
 $loader->registerDirs(array(
-    __DIR__ . '/models/'
+          '/models/'
 ))->register();
 
 $di = new \Phalcon\DI\FactoryDefault();
@@ -32,7 +32,7 @@ $router = new Phalcon\Mvc\Micro($di);
 $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', function($model, $method, $parameters) use ($router){
 
 	//Build request obj
-	include "models/request.php";
+	include "lib/request.php";
 	$request = new Request($model, $method, $parameters);
 
 	//Prepare response obj
@@ -42,12 +42,12 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 
 	//Call corresponding API below if possible
   if($model == "user") {
-		include "../models/user_api.php";
+		include "/lib/user_api.php";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
-		include "../models/admin_api.php";
+		include "/lib/admin_api.php";
 		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}

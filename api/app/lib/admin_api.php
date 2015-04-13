@@ -1,6 +1,6 @@
 <?php
 
-include "models/base_api.php";
+include "base_api.php";
 
 /*
 This class is the base model for all api requests.
