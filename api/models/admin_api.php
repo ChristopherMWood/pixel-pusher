@@ -39,8 +39,8 @@ class AdminApi extends BaseApi
     private function getRange() {
 			try {
 
-				$phql = "SELECT * FROM admin";
-				$admin = $this->app->modelsManager->executeQuery($phql);
+				// $phql = "SELECT * FROM admin";
+				// $admin = $this->app->modelsManager->executeQuery($phql);
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
