@@ -39,6 +39,9 @@ function infoClicked() {
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
+	
+	document.getElementById("settingsDropDownDiv").style.display = "block";
+	
 }
 
 function settingsClicked() {
