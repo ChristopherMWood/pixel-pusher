@@ -12,7 +12,7 @@ $di = new \Phalcon\DI\FactoryDefault();
 //Set up the database service
 $di->set('db', function(){
 	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-			"host" => "localhost",
+			"host" => "cs4784.cs.vt.edu",
 			"username" => "addhawk",
 			"password" => "addhawk4784",
 			"dbname" => "addhawk"
@@ -21,12 +21,6 @@ $di->set('db', function(){
 
 //Create new Micro application and router
 $app = new Phalcon\Mvc\Micro($di);
-
-/*
-  This route group catches and processes all API calls on the system
-  Any new api matching url rules should be added below.
-*/
-
 
 /*
   This route MATCHES ALL VALID API REQUESTS to a model
