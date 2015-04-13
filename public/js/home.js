@@ -2,11 +2,10 @@ document.onload = function() {
   transitionBg(true);
 };
 
+
 function transitionBg(isTransitionOn) {
 	if (isTransitionOn) {
-		document.getElementById("bg").className = "bgYellowTransition";
-		setTimeout(secondTransition, 7500);
-		setTimeout(thirdTransition, 15000);
+
 		var myVar = setInterval( function() {
 			document.getElementById("bg").className = "bgYellowTransition";
 			setTimeout(secondTransition, 7500);
@@ -45,6 +44,7 @@ function infoClicked() {
 	//$(window).unbind('load', transitionBg);
 	//transitionBg(false);
 	
+
 	document.getElementById("bg").className = "infoBody";
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";

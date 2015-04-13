@@ -13,9 +13,9 @@ class AdminApi extends BaseApi
 	/*
 	* This sets up the BaseModel class with data
 	*/
-	function __construct($request_obj, $response_obj) {
-       parent::__construct($request_obj, $response_obj);
-    }
+	function __construct($request_obj, $response_obj, $app) {
+       parent::__construct($request_obj, $response_obj, $app);
+  }
 
     /*
 	* This executes the request sent in to the
@@ -24,8 +24,8 @@ class AdminApi extends BaseApi
 	* PRE-CONDITION: Request object must be set in parent class
 	*/
     public function executeRequest() {
-        if($this->method == "set_grid") {
-        	return $this->setGrid();
+        if($this->method == "get_range") {
+        	return $this->getRange();
         }
         else {
         	$this->response->setStatusCode(405, "Method Not Found");
@@ -36,10 +36,13 @@ class AdminApi extends BaseApi
     /*
     * Test method for the api layout
     */
-    private function setGrid() {
+    private function getRange() {
 			try {
 
-				$this->data['title'] = "Set Grid METHOD";
+				$phql = "SELECT * FROM admin";
+				$admin = $this->app->modelsManager->executeQuery($phql);
+
+				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
 			} catch (Exception $e) {
@@ -49,4 +52,5 @@ class AdminApi extends BaseApi
 
     	return $this->response; //Supply response
     }
+
 }

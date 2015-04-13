@@ -20,7 +20,7 @@ $router = new \Phalcon\Mvc\Micro($di);
   PRE: $model and $method can only contain letter, numbers, '-', and '_' symbols
   POST: Valid JSON Response is returned
 */
-$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', function($model, $method, $parameters){
+$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($app){
 
 	//Build request obj
 	include "models/request.php";
@@ -34,12 +34,12 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 	//Call corresponding API below if possible
   if($model == "user") {
 		include "models/user_api.php";
-		$api_obj = new UserApi($request, $response);
+		$api_obj = new UserApi($request, $response, $app);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
 		include "models/admin_api.php";
-		$api_obj = new AdminApi($request, $response);
+		$api_obj = new AdminApi($request, $response, $app);
 		$response = $api_obj->executeRequest();
 	}
 	else {

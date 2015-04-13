@@ -8,6 +8,11 @@ use \Phalcon\Mvc\Dispatcher;
       __DIR__.'/../app/controllers/',
         __DIR__.'/../app/models/'
     ))->register();
+
+    $di->set('modelsManager', function() {
+          return new Phalcon\Mvc\Model\Manager();
+     });
+
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
     //Setup the view component
@@ -16,6 +21,17 @@ use \Phalcon\Mvc\Dispatcher;
         $view->setViewsDir(__DIR__.'/../app/views/');
         return $view;
     });
+
+    //Setup the database service
+    $di->set('db', function(){
+        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "addhawk",
+            "password" => "addhawk4784",
+            "dbname" => "addhawk"
+        ));
+    });
+
     $di->set(
     'dispatcher',
     function() use ($di) {

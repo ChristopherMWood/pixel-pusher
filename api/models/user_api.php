@@ -16,7 +16,7 @@ class UserApi extends BaseApi
 	/*
 	* This sets up the BaseModel class with data
 	*/
-	function __construct($request_obj, $response_obj) {
+	function __construct($request_obj, $response_obj, $app) {
        parent::__construct($request_obj, $response_obj);
     }
 
