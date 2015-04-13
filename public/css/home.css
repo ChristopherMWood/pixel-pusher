@@ -55,6 +55,12 @@ body {
 
 }
 
+#animateDiv {
+	text-align:center;
+	width:100%;
+
+}
+
 /* Centers the drop down boxes for seat selection */
 #innerSectionDiv {
 	display:none;

@@ -19,21 +19,20 @@ function transitionBg(isTransitionOn) {
 }
 
 function buttonDropAnimation(element) {
-	
-	var topMargin = 0;
+	var topMargin = -20;
 	var transparency = 0;
-	
 	var v = setInterval( function () {
-		
+	
 		topMargin++;
 		transparency = transparency + 0.1;
-		element.style.top = topMargin + "px";
+		element.style.marginTop = topMargin + "px";
 		element.style.opacity = transparency;
 		
-		if (topMargin == 500 && transparency == 1) {
+		if (topMargin == 10) {
 			clearInterval(v);
 		}
 	}, 10);
+
 }
 
 function secondTransition() {
@@ -45,21 +44,24 @@ function thirdTransition() {
 }
 
 function displayPPInfo() {
-	var info = document.getElementById("infoButton");
-	var settings = document.getElementById("settingsButton");
+	var info = document.getElementById("infoDiv");
+	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("animateDiv");
 	
 	if (bothButtons.style.display == "none") {
-		//info.style.display = "inline-block";
-		//settings.style.display = "inline-block";
+		info.style.display = "block";
+		settings.style.display = "block";
+		settings.style.textAlign = "center";
+		info.style.textAlign = "center";
+		
 		bothButtons.style.opacity = 0;
 		bothButtons.style.display = "inline-block";
+		bothButtons.style.textAlign = "center";
+		//animate the buttons to fade in and drop down from the logo
 		buttonDropAnimation(bothButtons);
 
 	}
 	else if (bothButtons.style.display == "inline-block") {
-		//info.style.display = "none";
-		//settings.style.display = "none";
 		bothButtons.style.display = "none";
 	}
 }
