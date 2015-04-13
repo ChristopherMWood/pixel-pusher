@@ -18,6 +18,24 @@ function transitionBg(isTransitionOn) {
 
 }
 
+function buttonDropAnimation(element) {
+	
+	var topMargin = 0;
+	var transparency = 0;
+	
+	var v = setInterval( function () {
+		
+		topMargin++;
+		transparency = transparency + 0.1;
+		element.style.top = topMargin + "px";
+		element.style.opacity = transparency;
+		
+		if (topMargin == 500 && transparency == 1) {
+			clearInterval(v);
+		}
+	}, 10);
+}
+
 function secondTransition() {
 	document.getElementById("bg").className = "bgBlueTransition";
 }
@@ -29,13 +47,20 @@ function thirdTransition() {
 function displayPPInfo() {
 	var info = document.getElementById("infoButton");
 	var settings = document.getElementById("settingsButton");
-	if (info.style.display == "none") {
-		info.style.display = "inline-block";
-		settings.style.display = "inline-block";
+	var bothButtons = document.getElementById("animateDiv");
+	
+	if (bothButtons.style.display == "none") {
+		//info.style.display = "inline-block";
+		//settings.style.display = "inline-block";
+		bothButtons.style.opacity = 0;
+		bothButtons.style.display = "inline-block";
+		buttonDropAnimation(bothButtons);
+
 	}
-	else if (info.style.display == "inline-block") {
-		info.style.display = "none";
-		settings.style.display = "none";
+	else if (bothButtons.style.display == "inline-block") {
+		//info.style.display = "none";
+		//settings.style.display = "none";
+		bothButtons.style.display = "none";
 	}
 }
 

@@ -20,6 +20,10 @@ body {
     background-repeat: no-repeat;
 }
 
+#ppDiv, #infoDiv, #settingsDiv {
+	margin-bottom:20px;
+}
+
 .bgBlueTransition {
     background-color: blue;
     -webkit-transition: background-color 7500ms linear;
