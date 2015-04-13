@@ -1,1 +1,23 @@
+<header>
+  <link rel="stylesheet" href="../../css/dropzone.css">
+</header>
+
 <h1>Admin Dashboard</h1>
+
+<form action="/file-upload"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
+
+
+<script src="../../js/dropzone.js"></script>
+<script>
+
+Dropzone.options.myAwesomeDropzone = {
+  paramName: "file", // The name that will be used to transfer the file
+  maxFilesize: 4, // MB
+  accept: function(file, done) {
+    done();
+  }
+};
+
+</script>
