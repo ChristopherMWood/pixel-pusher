@@ -52,7 +52,7 @@ function infoClicked() {
 			rowDD.style.display = "block";
 		}
 	});
-	$("#rowDD").change(function () {
+	
 	rowDD.change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (seatDD.style.display == "none") {
