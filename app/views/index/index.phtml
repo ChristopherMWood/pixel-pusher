@@ -1,8 +1,19 @@
-<h1>Welcome To PixelPusher</h1>
-<button onclick="registerSeat();">Register Seat</button>
+<header>
+<link rel="stylesheet" href="public/css/home.css">
+</header>
 
+<body id="bg" name="bg">
+	<div id="ppDiv" name="ppDiv" style="text-align:center;">
+		<button type="button" name="ppIcon" id="ppIcon" onclick="displayPPInfo();"> PP </button>
+	</div>
+	<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
+		<button type="button" name="infoButton" id="infoButton" style="display:none"> Info </button>
+	</div>
+	<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
+		<button type="button" name="settingsButton" id="settingsButton" style="display:none"> Settings </button>
+	</div>
+</body>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="/addhawk/public/js/application.js"></script>
-<script src="/addhawk/public/js/index.js"></script>
+<footer>
+	<script src="public/js/home.js"></script>
+</footer>
