@@ -49,10 +49,11 @@ class AdminApi extends BaseApi
 			 //Reconnect
 			 $connection->connect();
 
-			 $resultset = $connection->query("SELECT * FROM admin");
+			 $phql = "SELECT * FROM admin";
+			 $resultset = $connection->executeQuery($phql);
 
 				$this->data['title'] = "Get Range";
-				$this->data['Fuck-it'] = JSON.parse($resultset);
+				$this->data['Fuck-it'] = print_r($resultset);
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
 			} catch (Exception $e) {
