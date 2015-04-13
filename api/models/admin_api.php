@@ -50,7 +50,7 @@ class AdminApi extends BaseApi
 			 $connection->connect();
 
 			 $phql = "SELECT * FROM admin";
-			 $resultset = $connection->executeQuery($phql);
+			 $resultset = $connection->execute($phql);
 
 				$this->data['title'] = "Get Range";
 				$this->data['Fuck-it'] = print_r($resultset);
