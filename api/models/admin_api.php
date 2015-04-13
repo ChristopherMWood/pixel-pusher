@@ -40,7 +40,7 @@ class AdminApi extends BaseApi
 			try {
 
 				$phql = "SELECT * FROM admin";
-				$admin = $this->app->modelsManager->executeQuery($phql);
+				$admin = $this->app->db->executeQuery($phql);
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
