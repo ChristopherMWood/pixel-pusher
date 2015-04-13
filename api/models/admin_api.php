@@ -54,7 +54,7 @@ class AdminApi extends BaseApi
 			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
 
 			  $this->data['admin'];
-				$admin = $result->fetchArray()
+				$admin = $result->fetchArray();
 
 				$this->data['x_range'] = $admin[1];
 				$this->data['y_range'] = $admin[2];
