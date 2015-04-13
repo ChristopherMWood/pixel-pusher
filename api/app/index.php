@@ -42,12 +42,12 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', fu
 
 	//Call corresponding API below if possible
   if($model == "user") {
-		include "models/user_api.php";
+		include "../models/user_api.php";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
-		include "models/admin_api.php";
+		include "../models/admin_api.php";
 		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
