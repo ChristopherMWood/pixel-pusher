@@ -39,8 +39,18 @@ class AdminApi extends BaseApi
     private function getRange() {
 			try {
 
-				$phql = "SELECT * FROM Admin";
-				$admin = $this->app->modelsManager->executeQuery($phql);
+				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+						"host" => "localhost",
+						"username" => "addhawk",
+						"password" => "addhawk4784",
+						"dbname" => "addhawk"
+				));
+
+			 //Reconnect
+			 $connection->connect();
+
+			$statement = $connection->prepare('SELECT * FROM admin');
+$pdoResult = $connection->executePrepared($statement);
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
