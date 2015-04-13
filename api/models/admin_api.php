@@ -50,7 +50,7 @@ class AdminApi extends BaseApi
 			 $connection->connect();
 
 			$statement = $connection->prepare('SELECT * FROM admin');
-			$pdoResult = $connection->executePrepared($statement, array('x_range' => \Phalcon\Db\Column::TYPE_INTEGER));
+			$pdoResult = $connection->executePrepared($statement, "x_range", "what");
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
