@@ -2,15 +2,21 @@ window.onload = function() {
   transitionBg();
 };
 
+var intervalVar;
+
 function transitionBg() {
 	document.getElementById("bg").className = "bgYellowTransition";
 	setTimeout(secondTransition, 7500);
 	setTimeout(thirdTransition, 15000);
-	var myVar = setInterval( function() {
+	intervalVar = setInterval( function() {
 		document.getElementById("bg").className = "bgYellowTransition";
+		console.log("1");
 		setTimeout(secondTransition, 7500);
+		console.log("2");
 		setTimeout(thirdTransition, 15000);
+		console.log("3");
 	}, 22500);
+	console.log("4");
 }
 
 function secondTransition() {
@@ -35,6 +41,12 @@ function displayPPInfo() {
 }
 
 function infoClicked() {
+	// remove the onload so the screen will stop changing colors
+	console.log("before unbind");
+	$(window).unbind("load", transitionBg);
+	clearInterval(intervalVar);
+	console.log("after clear");
+
 	document.getElementById("bg").className = "infoBody";
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
