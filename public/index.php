@@ -2,7 +2,12 @@
 
 try {
 
-
+    //Register an autoloader
+    $loader = new \Phalcon\Loader();
+    $loader->registerDirs(array(
+        '../app/controllers/',
+        '../app/models/'
+    ))->register();
 
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
