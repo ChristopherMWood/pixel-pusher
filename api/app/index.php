@@ -10,7 +10,7 @@ $loader->registerDirs(array(
 $di = new \Phalcon\DI\FactoryDefault();
 
 //Set up the database service
-$di->set('db', function(){
+$di->set('modelsManager', function(){
 	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 			"host" => "localhost",
 			"username" => "addhawk",
