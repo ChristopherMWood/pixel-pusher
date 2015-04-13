@@ -1,6 +1,9 @@
 <?php
-namespace Ratchet\Server;
-use Ratchet\MessageComponentInterface;
+
+
+include __DIR__.'/../../vendor/cboden/ratchet/src/Ratchet/ConnectionInterface.php';
+
+use MessageComponentInterface;
 use React\EventLoop\LoopInterface;
 use React\Socket\ServerInterface;
 use React\EventLoop\Factory as LoopFactory;
