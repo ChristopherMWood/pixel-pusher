@@ -52,22 +52,23 @@ function infoClicked() {
 
 	
 	document.getElementById("innerSectionDiv").style.display = "block";
-	var sectionDD = document.getElementById("sectionDD");
-	sectionDD.style.display = "block";
-	var rowDD = document.getElementById("rowDD");
-	var seatDD = document.getElementById("seatDD");
+	var sectionDiv = document.getElementById("sectionDiv");
+	var rowDiv = document.getElementById("rowDiv");
+	var seatDiv = document.getElementById("seatDiv");
+	sectionDiv.style.display = "block";
 
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
-		if (rowDD.style.display == "none") {
-			rowDD.style.display = "block";
+		if (rowDiv.style.display == "none") {
+			rowDiv.style.display = "block";
+			setSectionText($("#sectionDD").val());
 		}
 	});
 
 	$("#rowDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
-		if (seatDD.style.display == "none") {
-			seatDD.style.display = "block";
+		if (seatDiv.style.display == "none") {
+			seatDiv.style.display = "block";
 		}
 	});
 }
@@ -77,4 +78,11 @@ function settingsClicked() {
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
+}
+
+function setSectionText(sectString) {
+	var sectionDiv = document.getElementById("sectionDiv");
+	// clear the sectionDiv and then create a text field
+	sectionDiv.innerHTML = "";
+	sectionDiv.innerHTML = "<input type='text' name='sectionText' id='sectionText' value='" + sectString + "' readonly>";
 }
