@@ -1,4 +1,4 @@
-function registerSeat() {
+function getRanges() {
   var parameters = {};
     parameters['api_name'] = 'user';
     parameters['api_method'] = 'register_position';
@@ -6,8 +6,10 @@ function registerSeat() {
 
     api_request(parameters, function(response){
         if(response['success'] == true) {
-            //Setup websocket connection here
+          var x = response['data']['x_range'];
+          var y = response['data']['x_range'];
 
+          alert(x + " " + y);
         }
         else {
             alert('api called failed');

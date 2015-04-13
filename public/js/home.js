@@ -1,5 +1,7 @@
 document.onload = function() {
   transitionBg(true);
+
+  getRanges();
 };
 
 
@@ -43,14 +45,14 @@ function infoClicked() {
 	//Doesn't work
 	//$(window).unbind('load', transitionBg);
 	//transitionBg(false);
-	
+
 
 	document.getElementById("bg").className = "infoBody";
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 
-	
+
 	document.getElementById("innerSectionDiv").style.display = "block";
 	var sectionDiv = document.getElementById("sectionDiv");
 	var rowDiv = document.getElementById("rowDiv");

@@ -18,15 +18,6 @@ use \Phalcon\Mvc\Dispatcher;
         return $view;
     });
 
-    //Setup the database service
-    $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "addhawk",
-            "password" => "addhawk4784",
-            "dbname" => "addhawk"
-        ));
-    });
 
     $di->set(
     'dispatcher',
