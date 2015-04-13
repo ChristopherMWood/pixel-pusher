@@ -52,7 +52,7 @@ class AdminApi extends BaseApi
 			 $resultset = $connection->query("SELECT * FROM admin");
 
 				$this->data['title'] = "Get Range";
-				$this->data['Fuck-it'] = print_r($resultset);
+				$this->data['Fuck-it'] = JSON.parse($resultset);
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
 			} catch (Exception $e) {
