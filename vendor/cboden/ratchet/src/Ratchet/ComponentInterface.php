@@ -1,5 +1,4 @@
 <?php
-namespace Ratchet;
 
 /**
  * This is the interface to build a Ratchet application with.

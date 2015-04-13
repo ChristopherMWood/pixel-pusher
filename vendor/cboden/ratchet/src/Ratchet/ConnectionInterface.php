@@ -1,5 +1,4 @@
 <?php
-namespace Ratchet;
 
 /**
  * The version of Ratchet being used
