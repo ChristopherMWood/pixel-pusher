@@ -9,15 +9,15 @@ $loader->registerDirs(array(
 
 $di = new \Phalcon\DI\FactoryDefault();
 
-// //Set up the database service
-// $di->set('db', function(){
-// 	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-// 			"host" => "cs4784.cs.vt.edu",
-// 			"username" => "addhawk",
-// 			"password" => "addhawk4784",
-// 			"dbname" => "addhawk"
-// 	));
-// });
+//Set up the database service
+$di->set('db', function(){
+	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+			"host" => "cs4784.cs.vt.edu",
+			"username" => "addhawk",
+			"password" => "addhawk4784",
+			"dbname" => "addhawk"
+	));
+});
 
 //Create new Micro application and router
 $router = new Phalcon\Mvc\Micro($di);
