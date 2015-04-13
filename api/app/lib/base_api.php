@@ -1,4 +1,5 @@
 <?php
+
 class BaseApi
 {
 	protected $request;

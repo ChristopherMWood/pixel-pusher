@@ -3,3 +3,5 @@
     RewriteRule  ^$ public/    [L]
     RewriteRule  (.*) public/$1 [L]
 </IfModule>
+
+ErrorDocument 404 "<h2>Pixel Pusher Page Not Found 404</h2>"

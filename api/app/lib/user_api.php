@@ -1,9 +1,6 @@
 <?php
-use Ratchet\Server\IoServer;
 
-include __DIR__.'/../../vendor/cboden/ratchet/src/Ratchet/Server/IoServer.php';
-include __DIR__.'/SpeedDisplay.php';
-include "models/base_api.php";
+include "base_api.php";
 
 /*
 This class is the base model for all api requests.
@@ -41,15 +38,6 @@ class UserApi extends BaseApi
     */
     private function registerPosition() {
 			try {
-
-
-		    $server = IoServer::factory(
-		        new SpeedDisplay(),
-		        8080
-		    );
-		    $server->run();
-
-
 
 				$this->data['title'] = "Registered Position";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
