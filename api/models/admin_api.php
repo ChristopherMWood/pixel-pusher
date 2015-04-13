@@ -53,12 +53,13 @@ class AdminApi extends BaseApi
 			 $result = $connection->query($phql);
 			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
 
-			while ($admin = $result->fetchArray()) {
-				print_r($admin);
-			}
+			  $this->data['admin'];
+				$admin = $result->fetchArray()
+
+				$this->data['admin']['x_range'] = $admin[1];
+				$this->data['admin']['y_range'] = $admin[2];
 
 				$this->data['title'] = "Get Range";
-				$this->data['Fuck-it'] = print_r($resultset);
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
 			} catch (Exception $e) {
