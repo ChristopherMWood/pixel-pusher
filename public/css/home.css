@@ -3,19 +3,21 @@ body {
 }
 
 .settingsBody {
-	background: -webkit-linear-gradient(black, gray);
+    background-color: red;
+	/*background: -webkit-linear-gradient(black, gray);
 	background: -o-linear-gradient(black, gray);
 	background: -moz-linear-gradient(black, gray);
 	background: linear-gradient(black, gray);
-	background-repeat: no-repeat;
+	background-repeat: no-repeat;*/
 }
 
 .infoBody {
-	background: -webkit-linear-gradient(black, gray);
+    background-color: red;
+	/*background: -webkit-linear-gradient(black, gray);
 	background: -o-linear-gradient(black, gray);
 	background: -moz-linear-gradient(black, gray);
 	background: linear-gradient(black, gray);
-	background-repeat: no-repeat;
+	background-repeat: no-repeat;*/
 }
 
 .bgBlueTransition {
