@@ -16,6 +16,17 @@ use \Phalcon\Mvc\Dispatcher;
         $view->setViewsDir(__DIR__.'/../app/views/');
         return $view;
     });
+
+    //Setup the database service
+    $di->set('db', function(){
+        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "addhawk",
+            "password" => "addhawk4784",
+            "dbname" => "addhawk"
+        ));
+    });
+
     $di->set(
     'dispatcher',
     function() use ($di) {
