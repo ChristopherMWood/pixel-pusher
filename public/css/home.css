@@ -54,21 +54,35 @@ body {
 /* Centers the drop down boxes for seat selection */
 #innerSectionDiv {
 	display:none;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    text-align: center;
 }
 
 #settingsDropDownDiv {
-	height:100%;
-
+	height: 100%;
+    width: 100%;
 }
 	
-#sectionText {
-    color: red;
-    background: transparent;
+#sectionText, #rowText, #seatText {
+    color: white;
     display: block;
-    border: none;
-    width: 260px;
-    height: 29px;
-    font-size: 14px;
+    width: 100%;
+    font-size: 36px;
+    font-family: monaco,Consolas,Lucida Console,monospace;
+    text-align: center;
+}
+
+.innerDDDiv {
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#settingsTitle {
+    color: white;
+    display: block;
+    width: 100%;
+    font-size: 72px;
+    font-family: monaco,Consolas,Lucida Console,monospace;
+    text-align: center;
 }
