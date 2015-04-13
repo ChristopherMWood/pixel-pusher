@@ -1,8 +1,26 @@
 <?php
 
-//Create new Micro application and router
-$app = new Phalcon\Mvc\Micro();
+// Use Loader() to autoload our model
+$loader = new \Phalcon\Loader();
+
+$loader->registerDirs(array(
+    __DIR__ . '/models/'
+))->register();
+
 $di = new \Phalcon\DI\FactoryDefault();
+
+//Set up the database service
+$di->set('db', function(){
+	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+			"host" => "localhost",
+			"username" => "addhawk",
+			"password" => "addhawk4784",
+			"dbname" => "addhawk"
+	));
+});
+
+//Create new Micro application and router
+$app = new Phalcon\Mvc\Micro($di);
 
 //Setup router
 $router = new \Phalcon\Mvc\Micro($di);
