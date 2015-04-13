@@ -9,18 +9,18 @@ $loader->registerDirs(array(
 
 $di = new \Phalcon\DI\FactoryDefault();
 
-//Set up the database service
-$di->set('db', function(){
-	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-			"host" => "cs4784.cs.vt.edu",
-			"username" => "addhawk",
-			"password" => "addhawk4784",
-			"dbname" => "addhawk"
-	));
-});
+// //Set up the database service
+// $di->set('db', function(){
+// 	return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+// 			"host" => "cs4784.cs.vt.edu",
+// 			"username" => "addhawk",
+// 			"password" => "addhawk4784",
+// 			"dbname" => "addhawk"
+// 	));
+// });
 
 //Create new Micro application and router
-$app = new Phalcon\Mvc\Micro($di);
+$router = new Phalcon\Mvc\Micro($di);
 
 /*
   This route MATCHES ALL VALID API REQUESTS to a model
@@ -29,7 +29,7 @@ $app = new Phalcon\Mvc\Micro($di);
   PRE: $model and $method can only contain letter, numbers, '-', and '_' symbols
   POST: Valid JSON Response is returned
 */
-$app->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($app){
+$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($router){
 
 	//Build request obj
 	include "models/request.php";
@@ -43,12 +43,12 @@ $app->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', funct
 	//Call corresponding API below if possible
   if($model == "user") {
 		include "models/user_api.php";
-		$api_obj = new UserApi($request, $response, $app);
+		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
 		include "models/admin_api.php";
-		$api_obj = new AdminApi($request, $response, $app);
+		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else {
@@ -64,16 +64,16 @@ $app->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', funct
   The routes below catch all invalid api calls
   HTTP Methods: { GET, POST }
 */
-$app->map('/{model}/{method}', function($model, $method){
+$router->map('/{model}/{method}', function($model, $method){
   echo "PixelPusher API</br>";
   echo "Model: ".$model."</br>";
   echo "Method: ".$method;
 });
 
 //Incomplete api call catch
-$app->map('/{model}', function($model){
+$router->map('/{model}', function($model){
   echo "PixelPusher API"."</br>";
   echo "Model: ".$model;
 });
 
-$app->handle();
+$router->handle();
