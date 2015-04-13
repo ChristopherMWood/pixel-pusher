@@ -56,8 +56,8 @@ class AdminApi extends BaseApi
 			  $this->data['admin'];
 				$admin = $result->fetchArray()
 
-				$this->data['admin']['x_range'] = $admin[1];
-				$this->data['admin']['y_range'] = $admin[2];
+				$this->data['x_range'] = $admin[1];
+				$this->data['y_range'] = $admin[2];
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
