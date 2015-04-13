@@ -22,9 +22,6 @@ $di->set('db', function(){
 //Create new Micro application and router
 $app = new Phalcon\Mvc\Micro($di);
 
-//Setup router
-$router = new \Phalcon\Mvc\Micro($di);
-
 /*
   This route group catches and processes all API calls on the system
   Any new api matching url rules should be added below.
@@ -38,7 +35,7 @@ $router = new \Phalcon\Mvc\Micro($di);
   PRE: $model and $method can only contain letter, numbers, '-', and '_' symbols
   POST: Valid JSON Response is returned
 */
-$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($app){
+$app->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($app){
 
 	//Build request obj
 	include "models/request.php";
@@ -73,16 +70,16 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', fu
   The routes below catch all invalid api calls
   HTTP Methods: { GET, POST }
 */
-$router->map('/{model}/{method}', function($model, $method){
+$app->map('/{model}/{method}', function($model, $method){
   echo "PixelPusher API</br>";
   echo "Model: ".$model."</br>";
   echo "Method: ".$method;
 });
 
 //Incomplete api call catch
-$router->map('/{model}', function($model){
+$app->map('/{model}', function($model){
   echo "PixelPusher API"."</br>";
   echo "Model: ".$model;
 });
 
-$router->handle();
+$app->handle();
