@@ -5,7 +5,7 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Validator\InclusionIn,
     Phalcon\Mvc\Model\Validator\Uniqueness;
 
-class admin extends Model
+class Admin extends Model
 {
 
 }
