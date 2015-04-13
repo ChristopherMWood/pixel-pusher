@@ -1,0 +1,50 @@
+body {
+    background-color: red;
+}
+
+.settingsBody {
+	background: -webkit-linear-gradient(black, gray);
+	background: -o-linear-gradient(black, gray);
+	background: -moz-linear-gradient(black, gray);
+	background: linear-gradient(black, gray);
+	background-repeat: no-repeat;
+}
+
+.infoBody {
+	background: -webkit-linear-gradient(black, gray);
+	background: -o-linear-gradient(black, gray);
+	background: -moz-linear-gradient(black, gray);
+	background: linear-gradient(black, gray);
+	background-repeat: no-repeat;
+}
+
+.bgBlueTransition {
+    background-color: blue;
+    -webkit-transition: background-color 7500ms linear;
+    -moz-transition: background-color 7500ms linear;
+    -o-transition: background-color 7500ms linear;
+    -ms-transition: background-color 7500ms linear;
+    transition: background-color 7500ms linear;
+}
+
+.bgRedTransition {
+    background-color: red;
+    -webkit-transition: background-color 7500ms linear;
+    -moz-transition: background-color 7500ms linear;
+    -o-transition: background-color 7500ms linear;
+    -ms-transition: background-color 7500ms linear;
+    transition: background-color 7500ms linear;
+}
+
+.bgYellowTransition {
+    background-color: yellow;
+    -webkit-transition: background-color 7500ms linear;
+    -moz-transition: background-color 7500ms linear;
+    -o-transition: background-color 7500ms linear;
+    -ms-transition: background-color 7500ms linear;
+    transition: background-color 7500ms linear;
+}
+
+#ppIcon {
+
+}
