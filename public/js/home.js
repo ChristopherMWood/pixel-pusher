@@ -42,6 +42,7 @@ function infoClicked() {
 	
 	document.getElementById("settingsDropDownDiv").style.display = "block";
 	var sectionDD = document.getElementById("sectionDD");
+	sectionDD.style.display = "block";
 	var rowDD = document.getElementById("rowDD");
 	var seatDD = document.getElementById("seatDD");
 
