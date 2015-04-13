@@ -19,13 +19,6 @@ try {
         return $view;
     });
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
-        $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('/tutorial/');
-        return $url;
-    });
-
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
