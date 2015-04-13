@@ -41,7 +41,24 @@ function infoClicked() {
 	document.getElementById("settingsDiv").style.display = "none";
 	
 	document.getElementById("settingsDropDownDiv").style.display = "block";
-	
+	var sectionDD = document.getElementById("sectionDD");
+	sectionDD.style.display = "block";
+	var rowDD = document.getElementById("rowDD");
+	var seatDD = document.getElementById("seatDD");
+
+	$("#sectionDD").change(function () {
+		// when a choice is selected, display the drop down box for rows if needed
+		if (rowDD.style.display == "none") {
+			rowDD.style.display = "block";
+		}
+	});
+
+	$("#rowDD").change(function () {
+		// when a choice is selected, display the drop down box for rows if needed
+		if (seatDD.style.display == "none") {
+			seatDD.style.display = "block";
+		}
+	});
 }
 
 function settingsClicked() {
