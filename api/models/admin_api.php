@@ -50,7 +50,12 @@ class AdminApi extends BaseApi
 			 $connection->connect();
 
 			 $phql = "SELECT * FROM admin";
-			 $resultset = $connection->execute($phql);
+			 $result = $connection->query($phql);
+			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+
+			while ($admin = $result->fetchArray()) {
+				print_r($admin);
+			}
 
 				$this->data['title'] = "Get Range";
 				$this->data['Fuck-it'] = print_r($resultset);
