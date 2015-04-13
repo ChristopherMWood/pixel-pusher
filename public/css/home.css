@@ -62,33 +62,13 @@ body {
 	height:100%;
 
 }
-
-
-.styled-select {
-   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-   height: 29px;
-   width: 240px;
-}
-
-.styled-select select {
-   background: transparent;
-   border: none;
-   font-size: 14px;
-   height: 29px;
-   padding: 5px; /* If you add too much padding here, the options won't show in IE */
-   width: 240px;
-}
-
-/* -------------------- Rounded Corners */
-.rounded {
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
-}
-
-/* -------------------- Colors: Background */
-.black   { background-color: #000; }
-
-/* -------------------- Colors: Text */
-.black select   { color: #fff; }
 	
+#sectionText {
+    color: red;
+    background: transparent;
+    display: block;
+    border: none;
+    width: 260px;
+    height: 29px;
+    font-size: 14px;
+}
