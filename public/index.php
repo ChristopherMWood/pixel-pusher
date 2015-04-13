@@ -5,9 +5,10 @@ use \Phalcon\Mvc\Dispatcher;
     //Register an autoloader
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(array(
-      __DIR__.'/../app/controllers/',
-        __DIR__.'/../app/models/'
+      'app/controllers/',
+      'app/models/'
     ))->register();
+
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
     //Setup the view component
