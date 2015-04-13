@@ -50,7 +50,7 @@ class AdminApi extends BaseApi
 			 $connection->connect();
 
 			$statement = $connection->prepare('SELECT * FROM admin');
-$pdoResult = $connection->executePrepared($statement);
+$pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 				$this->data['title'] = "Get Range";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
