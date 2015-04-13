@@ -29,7 +29,7 @@ $router = new Phalcon\Mvc\Micro($di);
   PRE: $model and $method can only contain letter, numbers, '-', and '_' symbols
   POST: Valid JSON Response is returned
 */
-$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/*{parameters}', function($model, $method, $parameters) use ($router){
+$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', function($model, $method, $parameters) use ($router){
 
 	//Build request obj
 	include "models/request.php";
@@ -74,6 +74,11 @@ $router->map('/{model}/{method}', function($model, $method){
 $router->map('/{model}', function($model){
   echo "PixelPusher API"."</br>";
   echo "Model: ".$model;
+});
+
+$router->notFound(function () use ($router) {
+    $router->response->setStatusCode(404, "Not Found")->sendHeaders();
+    echo 'This is crazy, but this page was not found! API 404';
 });
 
 $router->handle();
