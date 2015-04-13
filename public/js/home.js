@@ -66,10 +66,28 @@ function displayPPInfo() {
 	}
 }
 
+/*
+	This method displays info. about the PixelPusher app. underneath the info. logo.
+*/
 function infoClicked() {
 
 	//MIGHT BE PROBLEMS HERE WHEN MERGING WITH DILLON BECAUSE THIS METHOD USED TO
 	//HANDLE THE SETTINGS BUTTON BEING CLICKED.
+	var topMargin = 0;
+	var transparency = 0;
+	var appInfo = document.getElementById("appInfo");
+	
+	var v = setInterval( function () {
+	
+		topMargin++;
+		transparency = transparency + 0.1;
+		appInfo.style.marginTop = topMargin + "px";
+		appInfo.style.opacity = transparency;
+		
+		if (topMargin == 500) {
+			clearInterval(v);
+		}
+	}, 10);
 
 }
 
