@@ -13,11 +13,11 @@ body {
 
 .infoBody {
     background-color: red;
-    /*background: -webkit-linear-gradient(black, gray);
+    background: -webkit-linear-gradient(black, gray);
     background: -o-linear-gradient(black, gray);
     background: -moz-linear-gradient(black, gray);
     background: linear-gradient(black, gray);
-    background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
 }
 
 .bgBlueTransition {
@@ -50,3 +50,42 @@ body {
 #ppIcon {
 
 }
+
+/* Centers the drop down boxes for seat selection */
+#settingsDropDownDiv {
+	display:none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+/* -------------------- Colors: Background */
+.black   { background-color: #000; }
+
+/* -------------------- Colors: Text */
+.black select   { color: #fff; }
+	
