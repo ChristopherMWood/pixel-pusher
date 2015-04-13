@@ -1,16 +1,22 @@
-window.onload = function() {
-  transitionBg();
+document.onload = function() {
+  transitionBg(true);
 };
 
-function transitionBg() {
-	document.getElementById("bg").className = "bgYellowTransition";
-	setTimeout(secondTransition, 7500);
-	setTimeout(thirdTransition, 15000);
-	var myVar = setInterval( function() {
+function transitionBg(isTransitionOn) {
+	if (isTransitionOn) {
 		document.getElementById("bg").className = "bgYellowTransition";
 		setTimeout(secondTransition, 7500);
 		setTimeout(thirdTransition, 15000);
-	}, 22500);
+		var myVar = setInterval( function() {
+			document.getElementById("bg").className = "bgYellowTransition";
+			setTimeout(secondTransition, 7500);
+			setTimeout(thirdTransition, 15000);
+		}, 22500);
+	}
+	else {
+		document.getElementById("bg").className = "infoBody";
+	}
+
 }
 
 function secondTransition() {
@@ -35,10 +41,15 @@ function displayPPInfo() {
 }
 
 function infoClicked() {
+	//Doesn't work
+	//$(window).unbind('load', transitionBg);
+	//transitionBg(false);
+	
 	document.getElementById("bg").className = "infoBody";
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
+
 	
 	document.getElementById("settingsDropDownDiv").style.display = "block";
 	var sectionDD = document.getElementById("sectionDD");
