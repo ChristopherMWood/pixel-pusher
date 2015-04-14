@@ -154,6 +154,8 @@ function infoClicked() {
 }
 
 function settingsClicked() {
+	getRanges();
+
 	// change the screen to display the correct elements
 	document.getElementById("bg").className = "settingsBody";
 	document.getElementById("ppDiv").style.display = "none";
@@ -260,6 +262,8 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
+var gridWidth = 0;
+var gridHeight = 0;
 /*
 *This gets the ranges from the database
 */
@@ -272,7 +276,7 @@ function getRanges() {
     api_request(parameters, function(response){
         if(response['success'] == true) {
           var x = response['data']['x_range'];
-          var y = response['data']['x_range'];
+          var y = response['data']['y_range'];
 
           alert(x + " " + y);
         }
