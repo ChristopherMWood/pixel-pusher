@@ -11,12 +11,12 @@ document.getElementById("ppIcon").onmouseover = function() {
 	var fontLogo = document.getElementById("ppFontLogo");
 	fontLogo.style.display = "inline";
 	var v = setInterval( function () {
-	
+
 		width++;
 		transparency = transparency + 0.1;
 		fontLogo.style.width = width + "px";
 		fontLogo.style.opacity = transparency;
-		
+
 		if (width == 400) {
 			clearInterval(v);
 		}
@@ -29,12 +29,12 @@ document.getElementById("ppIcon").onmouseout = function() {
 	var fontLogo = document.getElementById("ppFontLogo");
 	//fontLogo.style.display = "none";
 	var v = setInterval( function () {
-	
+
 		width--;
 		transparency = transparency - 0.1;
 		fontLogo.style.width = width + "px";
 		fontLogo.style.opacity = transparency;
-		
+
 		if (width == 0) {
 			clearInterval(v);
 		}
@@ -59,6 +59,7 @@ function transitionBg(isTransitionOn) {
 	}
 
 }
+
 
 function buttonDropAnimation(element, isShown) {
 	//If the dropdown buttons are not currently visible, then show them
@@ -94,7 +95,6 @@ function buttonDropAnimation(element, isShown) {
 		}, 15);
 	}
 
-
 }
 
 function secondTransition() {
@@ -109,13 +109,13 @@ function displayPPInfo() {
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
-	
+
 	if (bothButtons.style.display == "none") {
 		info.style.display = "block";
 		settings.style.display = "block";
 		settings.style.textAlign = "center";
 		info.style.textAlign = "center";
-		
+
 		bothButtons.style.opacity = 0;
 		bothButtons.style.display = "inline-block";
 		bothButtons.style.textAlign = "center";
@@ -141,14 +141,14 @@ function infoClicked() {
 		var topMargin = -10;
 		var transparency = 0;
 		appInfo.style.display = "block";
-		
+
 		var v = setInterval( function () {
-		
+
 			topMargin++;
 			transparency = transparency + 0.1;
 			appInfo.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
-			
+
 			if (topMargin == 10) {
 				clearInterval(v);
 			}
@@ -157,24 +157,26 @@ function infoClicked() {
 	else {
 		var topMargin = 10;
 		var transparency = 1;
-		
+
 		var v = setInterval( function () {
-		
+
 			topMargin--;
 			transparency = transparency - 0.1;
 			appInfo.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
-			
+
 			if (topMargin == 0) {
 				clearInterval(v);
 				appInfo.style.display = "none";
 			}
-		}, 10);		
+		}, 10);
 	}
 
 }
 
 function settingsClicked() {
+	getRanges();
+
 	// change the screen to display the correct elements
 	document.getElementById("bg").className = "settingsBody";
 	document.getElementById("ppDiv").style.display = "none";
@@ -281,3 +283,106 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
+var gridWidth = 0;
+var gridHeight = 0;
+/*
+*This gets the ranges from the database
+*/
+function getRanges() {
+  var parameters = {};
+    parameters['api_name'] = 'admin';
+    parameters['api_method'] = 'get_range';
+    parameters['type'] = 'current';
+
+    api_request(parameters, function(response){
+        if(response['success'] == true) {
+          var x = response['data']['x_range'];
+          var y = response['data']['y_range'];
+
+          alert(x + " " + y);
+        }
+        else {
+            alert('api called failed');
+        }
+    });
+}
+
+/**
+ * Makes a call to the apis
+ * @param parameters All parameters being sent to the request
+ * @param callback The callback function
+ */
+function api_request(pars, callback) {
+
+    //Every request starts valid till proven wrong
+    var api_response = null;
+    var validRequest = true;
+    var requestType = 'POST'
+
+    //Check for the request type of POST or GET
+    //This infers that the request type is a POST request
+    //if not specified otherwise
+    if (typeof(pars['request_type'])!='string'){
+        requestType = 'POST'
+    }
+    else {
+        requestType = pars['request_type']
+    }
+
+    //Validate request before proceeding
+    if (!typeof(pars['version']==='string')) { validRequest = false; }
+    if (!typeof(pars['api_name']==='string')) { validRequest = false; }
+    if (!typeof(pars['api_method']==='string')) { validRequest = false; }
+
+    if (validRequest) {
+
+        //Build request url
+        var request_url = window.location.origin + '/pixelpusher/api/' + pars['api_name'] + '/' +
+            pars['api_method'] + '/param';
+
+        //Turn each key into valid send value
+        for (var key in pars)
+        {
+            var obj = pars[key];
+            if (typeof(pars[key])==='undefined')
+            {
+                pars[key]=obj;
+            }
+        }
+
+        //Create Ajax Request
+        var request = $.ajax({
+            url: request_url,
+            beforeSend: function() {
+
+            },
+            data: pars,
+            dataType: 'json',
+            processData: true,
+            type: requestType
+
+        });
+        request.done(function(data){
+            api_response = data;
+            if (typeof(callback)==='function')
+            {
+                callback(data);
+            }
+        });
+        request.fail(function(data){
+
+        });
+        request.always(function(data){
+
+        });
+        request.then(function(){
+
+        });
+
+        return JSON.parse(api_response);
+    }
+    else {
+        return false;
+    }
+
+}
