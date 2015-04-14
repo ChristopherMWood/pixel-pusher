@@ -39,6 +39,7 @@ class UserApi extends BaseApi
     private function registerPosition() {
 			try {
 
+
 				$this->data['title'] = "Registered Position";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
