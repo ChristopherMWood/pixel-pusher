@@ -21,7 +21,7 @@ body {
 }
 
 #ppDiv, #infoDiv, #settingsDiv {
-	margin-bottom:50px;
+	margin-bottom:10px;
 	
 }
 
@@ -56,7 +56,10 @@ body {
 }
 #ppFontLogo {
 	display:none;
-	width:100%;
+	
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .home-screen-labels {

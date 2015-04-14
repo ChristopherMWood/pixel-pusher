@@ -1,61 +1,26 @@
 document.onload = function() {
-  transitionBg(true);
+	transitionBg(true);
+	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
+	console.log("ok");
 
-  getRanges();
+	getRanges();
 };
-
-/*
-document.getElementById("ppIcon").onmouseover = function() {
-	var width = 0;
-	var transparency = 0;
-	var fontLogo = document.getElementById("ppFontLogo");
-	fontLogo.style.display = "inline";
-	var v = setInterval( function () {
-
-		width++;
-		transparency = transparency + 0.1;
-		fontLogo.style.width = width + "px";
-		fontLogo.style.opacity = transparency;
-
-		if (width == 400) {
-			clearInterval(v);
-		}
-	}, 5);
-}
-
-document.getElementById("ppIcon").onmouseout = function() {
-	var width = 100;
-	var transparency = 1;
-	var fontLogo = document.getElementById("ppFontLogo");
-	//fontLogo.style.display = "none";
-	var v = setInterval( function () {
-
-		width--;
-		transparency = transparency - 0.1;
-		fontLogo.style.width = width + "px";
-		fontLogo.style.opacity = transparency;
-
-		if (width == 0) {
-			clearInterval(v);
-		}
-	}, 5);
-
-}
-*/
-
 
 
 function transitionBg(isTransitionOn) {
-	if (isTransitionOn) {
 
+	if (isTransitionOn) {
+		
+		console.log("oh");
 		var myVar = setInterval( function() {
+			console.log("oh yeah");
 			document.getElementById("bg").className = "bgYellowTransition";
 			setTimeout(secondTransition, 7500);
 			setTimeout(thirdTransition, 15000);
 		}, 22500);
 	}
 	else {
-		document.getElementById("bg").className = "infoBody";
+		document.getElementById("bg").className = "settingsBody";
 	}
 
 }
@@ -114,6 +79,10 @@ function thirdTransition() {
 }
 
 function displayPPInfo() {
+	
+
+	
+	
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
@@ -129,11 +98,22 @@ function displayPPInfo() {
 		bothButtons.style.textAlign = "center";
 		//animate the buttons to fade in and drop down from the logo
 		buttonDropAnimation(bothButtons, false);
-
+		
+		// var value = 0
+		// $("#ppIcon").rotate({ 
+		   // bind: 
+			 // { 
+				// click: function(){
+					// value +=90;
+					// $(this).rotate({ animateTo:value})
+				// }
+			 // } 
+		   
+		// });
 	}
 	else if (bothButtons.style.display == "inline-block") {
 		buttonDropAnimation(bothButtons, true);
-		//bothButtons.style.display = "none";
+		
 	}
 }
 
