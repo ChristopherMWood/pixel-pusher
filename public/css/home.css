@@ -21,7 +21,7 @@ body {
 }
 
 #ppDiv, #infoDiv, #settingsDiv {
-	margin-bottom:20px;
+	margin-bottom:100px;
 	
 }
 
@@ -59,7 +59,6 @@ body {
 }
 
 .home-screen-labels {
-	display:inline;
 }
 
 #lowerButtonsDiv {
