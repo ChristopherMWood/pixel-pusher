@@ -55,7 +55,11 @@ body {
 #ppIcon{
 }
 #ppFontLogo {
-	width:0px;
+	display:none;
+}
+
+.home-screen-labels {
+	display:inline;
 }
 
 #lowerButtonsDiv {

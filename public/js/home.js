@@ -60,20 +60,40 @@ function transitionBg(isTransitionOn) {
 
 }
 
-function buttonDropAnimation(element) {
-	var topMargin = -20;
-	var transparency = 0;
-	var v = setInterval( function () {
-	
-		topMargin++;
-		transparency = transparency + 0.1;
-		element.style.marginTop = topMargin + "px";
-		element.style.opacity = transparency;
+function buttonDropAnimation(element, isShown) {
+	//If the dropdown buttons are not currently visible, then show them
+	if (!isShown) {
+		var topMargin = -20;
+		var transparency = 0;
+		var v = setInterval( function () {
 		
-		if (topMargin == 10) {
-			clearInterval(v);
-		}
-	}, 15);
+			topMargin++;
+			transparency = transparency + 0.1;
+			element.style.marginTop = topMargin + "px";
+			element.style.opacity = transparency;
+			
+			if (topMargin == 10) {
+				clearInterval(v);
+			}
+		}, 15);
+	}
+	else {
+		var topMargin = 10;
+		var transparency = 1;
+		var v = setInterval( function () {
+		
+			topMargin--;
+			transparency = transparency - 0.1;
+			element.style.marginTop = topMargin + "px";
+			element.style.opacity = transparency;
+			
+			if (topMargin == -10) {
+				clearInterval(v);
+				document.getElementById("lowerButtonsDiv").style.display = "none";
+			}
+		}, 15);
+	}
+
 
 }
 
@@ -100,11 +120,12 @@ function displayPPInfo() {
 		bothButtons.style.display = "inline-block";
 		bothButtons.style.textAlign = "center";
 		//animate the buttons to fade in and drop down from the logo
-		buttonDropAnimation(bothButtons);
+		buttonDropAnimation(bothButtons, false);
 
 	}
 	else if (bothButtons.style.display == "inline-block") {
-		bothButtons.style.display = "none";
+		buttonDropAnimation(bothButtons, true);
+		//bothButtons.style.display = "none";
 	}
 }
 
@@ -136,7 +157,6 @@ function infoClicked() {
 	else {
 		var topMargin = 10;
 		var transparency = 1;
-		appInfo.style.display = "none";
 		
 		var v = setInterval( function () {
 		
@@ -147,6 +167,7 @@ function infoClicked() {
 			
 			if (topMargin == 0) {
 				clearInterval(v);
+				appInfo.style.display = "none";
 			}
 		}, 10);		
 	}
