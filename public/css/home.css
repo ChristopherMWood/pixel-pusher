@@ -154,4 +154,7 @@ th {
 select {
     width: 200px;
     height: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-family: monaco,Consolas,Lucida Console,monospace;
 }
