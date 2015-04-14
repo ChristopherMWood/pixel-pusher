@@ -170,7 +170,7 @@ function settingsClicked() {
 	document.getElementById("ppDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
-	document.getElementById("settingsTitleDiv").style.display = "block";
+	document.getElementById("settingsTitleDiv").style.display = "inline";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
 
@@ -372,5 +372,9 @@ function api_request(pars, callback) {
     else {
         return false;
     }
+
+}
+
+function backClicked() {
 
 }
