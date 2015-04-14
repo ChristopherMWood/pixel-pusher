@@ -11,12 +11,12 @@ document.getElementById("ppIcon").onmouseover = function() {
 	var fontLogo = document.getElementById("ppFontLogo");
 	fontLogo.style.display = "inline";
 	var v = setInterval( function () {
-	
+
 		width++;
 		transparency = transparency + 0.1;
 		fontLogo.style.width = width + "px";
 		fontLogo.style.opacity = transparency;
-		
+
 		if (width == 400) {
 			clearInterval(v);
 		}
@@ -29,12 +29,12 @@ document.getElementById("ppIcon").onmouseout = function() {
 	var fontLogo = document.getElementById("ppFontLogo");
 	//fontLogo.style.display = "none";
 	var v = setInterval( function () {
-	
+
 		width--;
 		transparency = transparency - 0.1;
 		fontLogo.style.width = width + "px";
 		fontLogo.style.opacity = transparency;
-		
+
 		if (width == 0) {
 			clearInterval(v);
 		}
@@ -64,12 +64,12 @@ function buttonDropAnimation(element) {
 	var topMargin = -20;
 	var transparency = 0;
 	var v = setInterval( function () {
-	
+
 		topMargin++;
 		transparency = transparency + 0.1;
 		element.style.marginTop = topMargin + "px";
 		element.style.opacity = transparency;
-		
+
 		if (topMargin == 10) {
 			clearInterval(v);
 		}
@@ -89,13 +89,13 @@ function displayPPInfo() {
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
-	
+
 	if (bothButtons.style.display == "none") {
 		info.style.display = "block";
 		settings.style.display = "block";
 		settings.style.textAlign = "center";
 		info.style.textAlign = "center";
-		
+
 		bothButtons.style.opacity = 0;
 		bothButtons.style.display = "inline-block";
 		bothButtons.style.textAlign = "center";
@@ -120,14 +120,14 @@ function infoClicked() {
 		var topMargin = -10;
 		var transparency = 0;
 		appInfo.style.display = "block";
-		
+
 		var v = setInterval( function () {
-		
+
 			topMargin++;
 			transparency = transparency + 0.1;
 			appInfo.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
-			
+
 			if (topMargin == 10) {
 				clearInterval(v);
 			}
@@ -137,18 +137,18 @@ function infoClicked() {
 		var topMargin = 10;
 		var transparency = 1;
 		appInfo.style.display = "none";
-		
+
 		var v = setInterval( function () {
-		
+
 			topMargin--;
 			transparency = transparency - 0.1;
 			appInfo.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
-			
+
 			if (topMargin == 0) {
 				clearInterval(v);
 			}
-		}, 10);		
+		}, 10);
 	}
 
 }
@@ -260,3 +260,24 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
+/*
+*This gets the ranges from the database
+*/
+function getRanges() {
+  var parameters = {};
+    parameters['api_name'] = 'admin';
+    parameters['api_method'] = 'get_range';
+    parameters['type'] = 'current';
+
+    api_request(parameters, function(response){
+        if(response['success'] == true) {
+          var x = response['data']['x_range'];
+          var y = response['data']['x_range'];
+
+          alert(x + " " + y);
+        }
+        else {
+            alert('api called failed');
+        }
+    });
+}

@@ -42,11 +42,16 @@ class UserApi extends BaseApi
 				$this->data['title'] = "Registered Position";
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
+				return $this->response; //Supply response
+				
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
 				$this->response->setJsonContent(array('success' => false, 'data' => $this->data));
 			}
 
-    	return $this->response; //Supply response
     }
+
+		private function unregisterPosition() {
+
+		}
 }
