@@ -39,8 +39,19 @@ class UserApi extends BaseApi
     private function registerPosition() {
 			try {
 
+				$number_of_parameter = ($this->request->parameters);
+
+				if($number_of_parameters != 3) {
+
+					$this->data['title'] = "Position Not Registered";
+					$this->response->setJsonContent(array('success' => false, 'data' => $this->data));
+					return $this->response; //Supply response
+				}
 
 				$this->data['title'] = "Registered Position";
+				$this->data['section'] = $this->request->parameters[0];
+				$this->data['row'] = $this->request->parameters[1];
+				$this->data['column'] = $this->request->parameters[2];
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 
 				return $this->response; //Supply response

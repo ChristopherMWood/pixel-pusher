@@ -9,21 +9,22 @@
 	</div>
 	<div id="lowerButtonsDiv" name="lowerButtonsDiv" style="display:none">
 		<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
-			<input type="image" src="public/img/settings_icon.png" name="settingsButton" id="settingsButton" alt="Settings" />
-			<p class="home-screen-labels">Select Your Seat</p>
+			<input type="image" src="public/img/settings_icon.png" name="settingsButton" id="settingsButton" alt="Settings">
+			<h1 class="home-screen-labels">Select Your Seat</h1>
 		</div>
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
-			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info" />
-			<p class="home-screen-labels">Information</p>
-			<p id="appInfo" name="appInfo" style="display:none">Your current seat is:</br>Section:</br>Row:</br>Seat Number:</p>
+			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info">
+			<h1 class="home-screen-labels">Information</h1>
+			<p id="appInfo" name="appInfo" style="display:none">Your current seat is: {Section, Row, Seat No.}</p>
 		</div>
 	</div>
 
 	<div id="settingsDropDownDiv" name="settingsDropDownDiv">
-		<div id="settingsTitleDiv" name="settingsTitleDiv" style="display:none;">
-			<h1 name="settingsTitle" id="settingsTitle"> Select Your Seat </h1>
-		</div>
+
 		<div id="innerSectionDiv" name="innerSectionDiv">
+			<div id="settingsTitleDiv" name="settingsTitleDiv">
+				<h1 name="settingsTitle" id="settingsTitle"> Select Your Seat </h1>
+			</div>
 			<div id="sectionDiv" name="sectionDiv" style="display:none;" class="innerDDDiv">
 				<div class="styleSelect">
 					<select id="sectionDD" name="sectionDD">

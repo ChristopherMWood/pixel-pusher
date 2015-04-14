@@ -80,7 +80,7 @@ body {
 #innerSectionDiv {
 	display:none;
     width: 40%;
-    margin-left: 15px;
+    margin-left: 100px;
     text-align: center;
     vertical-align: top;
 }
@@ -88,6 +88,7 @@ body {
 #settingsDropDownDiv {
 	height: 100%;
     width: 100%;
+    text-align: center;
 }
 	
 #sectionText, #rowText, #seatText {
@@ -101,8 +102,10 @@ body {
 
 .innerDDDiv {
     height: 34px;
+    width: 280px;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #settingsTitle {
@@ -136,7 +139,7 @@ th {
 
 .styleSelect select {
   background: transparent;
-  width: 168px;
+  width: 280px;
   padding: 5px;
   font-size: 16px;
   line-height: 1;
@@ -148,14 +151,15 @@ th {
 }
 
 .styleSelect {
-  width: 140px;
+  width: 260px;
   height: 34px;
   overflow: hidden;
   border: 2px solid #000;
+  background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat 240px;
 }
 
 select {
-    width: 200px;
+    width: 280px;
     height: 30px;
     text-align: center;
     font-size: 24px;
