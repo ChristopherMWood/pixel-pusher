@@ -79,7 +79,7 @@ body {
 /* Centers the drop down boxes for seat selection */
 #innerSectionDiv {
 	display:none;
-    width: 40%;
+    width: 30%;
     margin-left: 100px;
     text-align: center;
     vertical-align: top;
@@ -103,15 +103,14 @@ body {
 .innerDDDiv {
     height: 34px;
     width: 280px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
 #settingsTitle {
     color: white;
     display: block;
-    width: 100%;
     font-size: 72px;
     font-family: monaco,Consolas,Lucida Console,monospace;
     text-align: center;
@@ -164,4 +163,8 @@ select {
     text-align: center;
     font-size: 24px;
     font-family: monaco,Consolas,Lucida Console,monospace;
+}
+
+#backIcon {
+
 }
