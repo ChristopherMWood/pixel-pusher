@@ -21,7 +21,7 @@ body {
 }
 
 #ppDiv, #infoDiv, #settingsDiv {
-	margin-bottom:100px;
+	margin-bottom:50px;
 	
 }
 
@@ -56,9 +56,13 @@ body {
 }
 #ppFontLogo {
 	display:none;
+	
 }
 
 .home-screen-labels {
+	color:white;
+    font-size: 25px;
+    font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
 #lowerButtonsDiv {

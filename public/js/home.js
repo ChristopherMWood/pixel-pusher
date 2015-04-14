@@ -62,6 +62,10 @@ function transitionBg(isTransitionOn) {
 
 
 function buttonDropAnimation(element, isShown) {
+	var fontLogo = document.getElementById("ppFontLogo");
+	fontLogo.style.display = "block"
+	fontLogo.style.opacity = 0;
+	
 	//If the dropdown buttons are not currently visible, then show them
 	if (!isShown) {
 		var topMargin = -20;
@@ -71,7 +75,9 @@ function buttonDropAnimation(element, isShown) {
 			topMargin++;
 			transparency = transparency + 0.1;
 			element.style.marginTop = topMargin + "px";
+			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
+			fontLogo.style.opacity = transparency;
 			
 			if (topMargin == 10) {
 				clearInterval(v);
@@ -86,7 +92,9 @@ function buttonDropAnimation(element, isShown) {
 			topMargin--;
 			transparency = transparency - 0.1;
 			element.style.marginTop = topMargin + "px";
+			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
+			fontLogo.style.opacity = transparency;
 			
 			if (topMargin == -10) {
 				clearInterval(v);
