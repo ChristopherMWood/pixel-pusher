@@ -6,8 +6,8 @@ function getRanges() {
 
     api_request(parameters, function(response){
         if(response['success'] == true) {
-          var x = response['data']['x_range'];
-          var y = response['data']['x_range'];
+          var x = parseInt(response['data']['x_range']);
+          var y = parseInt(response['data']['x_range']);
 
           alert(x + " " + y);
         }
