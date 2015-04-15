@@ -10,7 +10,7 @@ document.onload = function() {
 function transitionBg(isTransitionOn) {
 
 	if (isTransitionOn) {
-		
+
 		console.log("oh");
 		var myVar = setInterval( function() {
 			console.log("oh yeah");
@@ -30,20 +30,20 @@ function buttonDropAnimation(element, isShown) {
 	var fontLogo = document.getElementById("ppFontLogo");
 	fontLogo.style.display = "block"
 	fontLogo.style.opacity = 0;
-	
+
 	//If the dropdown buttons are not currently visible, then show them
 	if (!isShown) {
 		var topMargin = -20;
 		var transparency = 0;
 		var v = setInterval( function () {
-		
+
 			topMargin++;
 			transparency = transparency + 0.1;
 			element.style.marginTop = topMargin + "px";
 			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
 			fontLogo.style.opacity = transparency;
-			
+
 			if (topMargin == 10) {
 				clearInterval(v);
 			}
@@ -53,14 +53,14 @@ function buttonDropAnimation(element, isShown) {
 		var topMargin = 10;
 		var transparency = 1;
 		var v = setInterval( function () {
-		
+
 			topMargin--;
 			transparency = transparency - 0.1;
 			element.style.marginTop = topMargin + "px";
 			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
 			fontLogo.style.opacity = transparency;
-			
+
 			if (topMargin == -10) {
 				clearInterval(v);
 				document.getElementById("lowerButtonsDiv").style.display = "none";
@@ -79,10 +79,10 @@ function thirdTransition() {
 }
 
 function displayPPInfo() {
-	
 
-	
-	
+
+
+
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
@@ -98,22 +98,22 @@ function displayPPInfo() {
 		bothButtons.style.textAlign = "center";
 		//animate the buttons to fade in and drop down from the logo
 		buttonDropAnimation(bothButtons, false);
-		
+
 		// var value = 0
-		// $("#ppIcon").rotate({ 
-		   // bind: 
-			 // { 
+		// $("#ppIcon").rotate({
+		   // bind:
+			 // {
 				// click: function(){
 					// value +=90;
 					// $(this).rotate({ animateTo:value})
 				// }
-			 // } 
-		   
+			 // }
+
 		// });
 	}
 	else if (bothButtons.style.display == "inline-block") {
 		buttonDropAnimation(bothButtons, true);
-		
+
 	}
 }
 
@@ -280,6 +280,16 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
+		$("#gridHeight").val(5);
+		$("#gridWidth").val(6);
+
+		var x = 5;
+		var rowDDHtml = "";
+		for(var i = 0; i < x; i++) {
+			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' + ">Seat 1</option>";
+		}
+		$("#rowDD").html(rowDDHtml);
+
     api_request(parameters, function(response){
     	var x;
     	var y;
@@ -287,8 +297,8 @@ function getRanges() {
           x = 5;//response['data']['x_range'];
           y = 8;//response['data']['y_range'];
 
-          document.getElementById("gridHeight").value = y;
-          document.getElementById("gridWidth").value = x;
+          // document.getElementById("gridHeight").value = y;
+          // document.getElementById("gridWidth").value = x;
 
           alert(x + " " + y);
         }
@@ -296,12 +306,6 @@ function getRanges() {
             //alert('api called failed');
           x = 5;//response['data']['x_range'];
           y = 8;//response['data']['y_range'];
-
-          console.log(x);
-          console.log(y);
-
-          document.getElementById("gridHeight").value = y;
-          document.getElementById("gridWidth").value = x;
 
           alert(x + " " + y);
         }
