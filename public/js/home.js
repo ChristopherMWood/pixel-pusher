@@ -238,11 +238,12 @@ function setDDText(ddString, dropDownNum) {
 
 function createSettingsTable(width, height) {
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
+	var cellHeight = 300 / height;
 
 	for (var i = 1; i <= width; i++) {
 
 		// id is row_ and then the row number
-		tableString += "<tr id='row_" + i + "' name='row_" + i + "'>";
+		tableString += "<tr style='height:" + cellHeight + "px' id='row_" + i + "' name='row_" + i + "'>";
 		for (var j = 1; j <= height; j++) {
 
 			// id is seat_ and then the row number, another _, and then the seat number
@@ -279,8 +280,10 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
+	
 		var x = 10;
 		var rowDDHtml = "";
+		rowDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Row " + (i + 1) + "</option>";
@@ -289,6 +292,7 @@ function getRanges() {
 
 		var y = 20;
 		var seatDDHtml = "";
+		seatDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";

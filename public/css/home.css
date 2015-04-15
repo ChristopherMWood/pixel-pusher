@@ -9,6 +9,7 @@ body {
     background: -moz-linear-gradient(black, gray);
     background: linear-gradient(black, gray);
     background-repeat: no-repeat;
+    height: 100%;
 }
 
 .infoBody {
@@ -142,16 +143,15 @@ table {
     background-color: white;
     width: 100%;
     border: 1px solid black;
+    height: 300px;
 }
 
 td {
     border: 1px solid black;
-    height: 10px;
 }
 
 th {
     border: 1px solid black;
-    width: 10px;
 }
 
 .styleSelect select {
