@@ -57,16 +57,16 @@ body {
 }
 
 .icon-clicked {
-
-	-webkit-animation:spin .25s linear;
-    -moz-animation:spin .25s linear;
-    animation:spin .25s linear;
+	
+	-webkit-animation:spin .5s linear;
+    -moz-animation:spin .5s linear;
+    animation:spin .5s linear;
 
 }
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(90deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(90deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(90deg); transform:rotate(90deg); } }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
 #ppFontLogo {

@@ -78,21 +78,17 @@ function thirdTransition() {
 	document.getElementById("bg").className = "bgRedTransition";
 }
 
+
 function displayPPInfo() {
 
 
 	var icon = document.getElementById("ppIcon");
-	//Rotate the icon clockwise 45 degrees if it hasn't been clicked before
-	//The icon rotates this way when the buttons underneath the icon are being displayed
+	//Rotate the icon 360 degrees when clicking the PixelPusher icon
+	//to display the buttons underneath it.
 	if (icon.className == "icon-unclicked") {
-
 		icon.className = "icon-clicked";
-		//$(#ppIcon).rotate(90);
 	}
-	//Rotate the icon back to its normal position
-	//The icon rotates this way when the buttons under the icon are hidden
 	else {
-
 		icon.className = "icon-unclicked";
 	}
 
