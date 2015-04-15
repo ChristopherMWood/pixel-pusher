@@ -286,9 +286,18 @@ function getRanges() {
 		var x = 5;
 		var rowDDHtml = "";
 		for(var i = 0; i < x; i++) {
-			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' + ">Seat 1</option>";
+			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
+			">Seat " + (i + 1) + "</option>";
 		}
 		$("#rowDD").html(rowDDHtml);
+
+		var y = 10;
+		var seatDDHtml = "";
+		for(var i = 0; i < x; i++) {
+			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
+			">Seat " + (i + 1) + "</option>";
+		}
+		$("#seatDD").html(seatDDHtml);
 
     api_request(parameters, function(response){
     	var x;
