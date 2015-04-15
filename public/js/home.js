@@ -10,7 +10,7 @@ document.onload = function() {
 function transitionBg(isTransitionOn) {
 
 	if (isTransitionOn) {
-		
+
 		console.log("oh");
 		var myVar = setInterval( function() {
 			console.log("oh yeah");
@@ -30,20 +30,20 @@ function buttonDropAnimation(element, isShown) {
 	var fontLogo = document.getElementById("ppFontLogo");
 	fontLogo.style.display = "block"
 	fontLogo.style.opacity = 0;
-	
+
 	//If the dropdown buttons are not currently visible, then show them
 	if (!isShown) {
 		var topMargin = -20;
 		var transparency = 0;
 		var v = setInterval( function () {
-		
+
 			topMargin++;
 			transparency = transparency + 0.1;
 			element.style.marginTop = topMargin + "px";
 			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
 			fontLogo.style.opacity = transparency;
-			
+
 			if (topMargin == 10) {
 				clearInterval(v);
 			}
@@ -53,14 +53,14 @@ function buttonDropAnimation(element, isShown) {
 		var topMargin = 10;
 		var transparency = 1;
 		var v = setInterval( function () {
-		
+
 			topMargin--;
 			transparency = transparency - 0.1;
 			element.style.marginTop = topMargin + "px";
 			fontLogo.style.marginTop = topMargin + "px";
 			element.style.opacity = transparency;
 			fontLogo.style.opacity = transparency;
-			
+
 			if (topMargin == -10) {
 				clearInterval(v);
 				document.getElementById("lowerButtonsDiv").style.display = "none";
@@ -79,6 +79,7 @@ function thirdTransition() {
 }
 
 function displayPPInfo() {
+
 	
 	var icon = document.getElementById("ppIcon");
 	//Rotate the icon clockwise 45 degrees if it hasn't been clicked before
@@ -111,11 +112,11 @@ function displayPPInfo() {
 		bothButtons.style.textAlign = "center";
 		//animate the buttons to fade in and drop down from the logo
 		buttonDropAnimation(bothButtons, false);
-		
+
 	}
 	else if (bothButtons.style.display == "inline-block") {
 		buttonDropAnimation(bothButtons, true);
-		
+
 	}
 }
 
@@ -208,7 +209,7 @@ function settingsClicked() {
 	});
 
 	// fill the table div with the correct HTML based on table size
-	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(10, 10);
+	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
 }
 
 
@@ -273,8 +274,6 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
-var gridWidth = 0;
-var gridHeight = 0;
 /*
 *This gets the ranges from the database
 */
@@ -284,15 +283,34 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
+		$("#gridHeight").val(5);
+		$("#gridWidth").val(6);
+
+		var x = 5;
+		var rowDDHtml = "";
+		for(var i = 0; i < x; i++) {
+			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' + ">Seat 1</option>";
+		}
+		$("#rowDD").html(rowDDHtml);
+
     api_request(parameters, function(response){
+    	var x;
+    	var y;
         if(response['success'] == true) {
-          var x = response['data']['x_range'];
-          var y = response['data']['y_range'];
+          x = 5;//response['data']['x_range'];
+          y = 8;//response['data']['y_range'];
+
+          // document.getElementById("gridHeight").value = y;
+          // document.getElementById("gridWidth").value = x;
 
           alert(x + " " + y);
         }
         else {
-            alert('api called failed');
+            //alert('api called failed');
+          x = 5;//response['data']['x_range'];
+          y = 8;//response['data']['y_range'];
+
+          alert(x + " " + y);
         }
     });
 }

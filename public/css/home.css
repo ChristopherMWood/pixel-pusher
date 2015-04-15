@@ -22,7 +22,7 @@ body {
 
 #ppDiv, #infoDiv, #settingsDiv {
 	margin-bottom:10px;
-	
+
 }
 
 .bgBlueTransition {
@@ -71,7 +71,7 @@ body {
 
 #ppFontLogo {
 	display:none;
-	
+
 	width:50%;
 	margin-left:auto;
 	margin-right:auto;
@@ -108,7 +108,7 @@ body {
     width: 100%;
     text-align: center;
 }
-	
+
 #sectionText, #rowText, #seatText {
     color: white;
     display: block;
@@ -140,7 +140,7 @@ body {
 
 table {
     background-color: white;
-    width: 100%;    
+    width: 100%;
     border: 1px solid black;
 }
 
@@ -190,4 +190,3 @@ select {
 
 #backIcon {
 }
-
