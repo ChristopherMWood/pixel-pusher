@@ -376,5 +376,12 @@ function api_request(pars, callback) {
 }
 
 function backClicked() {
-
+	document.getElementById("bg").className = "";
+	document.getElementById("ppDiv").style.display = "block";
+	document.getElementById("ppFontLogo").style.display = "none";
+	document.getElementById("infoDiv").style.display = "none";
+	document.getElementById("settingsDiv").style.display = "none";
+	document.getElementById("settingsTitleDiv").style.display = "none";
+	document.getElementById("innerSectionDiv").style.display = "none";
+	document.getElementById("tableGridDiv").style.display = "none";
 }
