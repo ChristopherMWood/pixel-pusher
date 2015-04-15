@@ -279,8 +279,10 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
+	
 		var x = 10;
 		var rowDDHtml = "";
+		rowDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Row " + (i + 1) + "</option>";
@@ -289,6 +291,7 @@ function getRanges() {
 
 		var y = 20;
 		var seatDDHtml = "";
+		seatDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";
