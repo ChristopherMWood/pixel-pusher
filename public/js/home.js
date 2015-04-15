@@ -238,11 +238,12 @@ function setDDText(ddString, dropDownNum) {
 
 function createSettingsTable(width, height) {
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
+	var cellHeight = 300 / height;
 
 	for (var i = 1; i <= width; i++) {
 
 		// id is row_ and then the row number
-		tableString += "<tr id='row_" + i + "' name='row_" + i + "'>";
+		tableString += "<tr style='height:" + cellHeight + "px' id='row_" + i + "' name='row_" + i + "'>";
 		for (var j = 1; j <= height; j++) {
 
 			// id is seat_ and then the row number, another _, and then the seat number
