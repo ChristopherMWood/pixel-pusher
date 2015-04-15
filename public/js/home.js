@@ -80,9 +80,23 @@ function thirdTransition() {
 
 function displayPPInfo() {
 
-
-
-
+	
+	var icon = document.getElementById("ppIcon");
+	//Rotate the icon clockwise 45 degrees if it hasn't been clicked before
+	//The icon rotates this way when the buttons underneath the icon are being displayed
+	if (icon.className == "icon-unclicked") {
+		
+		icon.className = "icon-clicked";
+		//$(#ppIcon).rotate(90);
+	}
+	//Rotate the icon back to its normal position
+	//The icon rotates this way when the buttons under the icon are hidden
+	else {
+		
+		icon.className = "icon-unclicked";
+	}
+	
+	
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
@@ -99,17 +113,6 @@ function displayPPInfo() {
 		//animate the buttons to fade in and drop down from the logo
 		buttonDropAnimation(bothButtons, false);
 
-		// var value = 0
-		// $("#ppIcon").rotate({
-		   // bind:
-			 // {
-				// click: function(){
-					// value +=90;
-					// $(this).rotate({ animateTo:value})
-				// }
-			 // }
-
-		// });
 	}
 	else if (bothButtons.style.display == "inline-block") {
 		buttonDropAnimation(bothButtons, true);

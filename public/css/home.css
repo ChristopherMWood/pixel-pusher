@@ -52,8 +52,23 @@ body {
     transition: background-color 7500ms linear;
 }
 
-#ppIcon{
+.icon-unclicked {
+
 }
+
+.icon-clicked {
+
+	-webkit-animation:spin .25s linear;
+    -moz-animation:spin .25s linear;
+    animation:spin .25s linear;
+
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(90deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(90deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(90deg); transform:rotate(90deg); } }
+
+
 #ppFontLogo {
 	display:none;
 
