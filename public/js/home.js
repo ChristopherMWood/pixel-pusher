@@ -87,7 +87,7 @@ function displayPPInfo() {
 	if (icon.className == "icon-unclicked") {
 		
 		icon.className = "icon-clicked";
-		$(#ppIcon).rotate(90);
+		//$(#ppIcon).rotate(90);
 	}
 	//Rotate the icon back to its normal position
 	//The icon rotates this way when the buttons under the icon are hidden
