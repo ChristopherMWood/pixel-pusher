@@ -156,7 +156,7 @@ th {
   width: 260px;
   height: 34px;
   overflow: hidden;
-  border: 2px solid #000;
+  border: 2px solid #FFF;
   background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat 240px;
 }
 
@@ -168,6 +168,11 @@ select {
     font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
-#backIcon {
-
+#sectionDD, #rowDD, #seatDD, option {
+	color:white;
+	background-color:black;
 }
+
+#backIcon {
+}
+
