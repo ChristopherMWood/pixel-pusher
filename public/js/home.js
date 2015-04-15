@@ -206,7 +206,7 @@ function settingsClicked() {
 	});
 
 	// fill the table div with the correct HTML based on table size
-	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(10, 10);
+	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
 }
 
 
@@ -271,8 +271,6 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
-var gridWidth = 0;
-var gridHeight = 0;
 /*
 *This gets the ranges from the database
 */
@@ -283,14 +281,29 @@ function getRanges() {
     parameters['type'] = 'current';
 
     api_request(parameters, function(response){
+    	var x;
+    	var y;
         if(response['success'] == true) {
-          var x = response['data']['x_range'];
-          var y = response['data']['y_range'];
+          x = 5;//response['data']['x_range'];
+          y = 8;//response['data']['y_range'];
+
+          document.getElementById("gridHeight").value = y;
+          document.getElementById("gridWidth").value = x;
 
           alert(x + " " + y);
         }
         else {
-            alert('api called failed');
+            //alert('api called failed');
+          x = 5;//response['data']['x_range'];
+          y = 8;//response['data']['y_range'];
+
+          console.log(x);
+          console.log(y);
+
+          document.getElementById("gridHeight").value = y;
+          document.getElementById("gridWidth").value = x;
+
+          alert(x + " " + y);
         }
     });
 }
