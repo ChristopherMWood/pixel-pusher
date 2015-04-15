@@ -283,7 +283,7 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
-		var x = 5;
+		var x = 10;
 		var rowDDHtml = "";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
@@ -291,7 +291,7 @@ function getRanges() {
 		}
 		$("#rowDD").html(rowDDHtml);
 
-		var y = 10;
+		var y = 20;
 		var seatDDHtml = "";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +

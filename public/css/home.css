@@ -146,12 +146,12 @@ table {
 
 td {
     border: 1px solid black;
-    height: 35px;
+    height: 10px;
 }
 
 th {
     border: 1px solid black;
-    width: 25px;
+    width: 10px;
 }
 
 .styleSelect select {
