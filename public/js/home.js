@@ -80,23 +80,23 @@ function thirdTransition() {
 
 function displayPPInfo() {
 
-	
+
 	var icon = document.getElementById("ppIcon");
 	//Rotate the icon clockwise 45 degrees if it hasn't been clicked before
 	//The icon rotates this way when the buttons underneath the icon are being displayed
 	if (icon.className == "icon-unclicked") {
-		
+
 		icon.className = "icon-clicked";
 		//$(#ppIcon).rotate(90);
 	}
 	//Rotate the icon back to its normal position
 	//The icon rotates this way when the buttons under the icon are hidden
 	else {
-		
+
 		icon.className = "icon-unclicked";
 	}
-	
-	
+
+
 	var info = document.getElementById("infoDiv");
 	var settings = document.getElementById("settingsDiv");
 	var bothButtons = document.getElementById("lowerButtonsDiv");
@@ -243,11 +243,11 @@ function setDDText(ddString, dropDownNum) {
 function createSettingsTable(width, height) {
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
 
-	for (var i = 0; i < width; i++) {
+	for (var i = 1; i <= width; i++) {
 
 		// id is row_ and then the row number
 		tableString += "<tr id='row_" + i + "' name='row_" + i + "'>";
-		for (var j = 0; j < height; j++) {
+		for (var j = 1; j <= height; j++) {
 
 			// id is seat_ and then the row number, another _, and then the seat number
 			tableString += "<td id='seat_" + i + "_" + j + "' name='seat_" + i + "_" + j + "'></td>";
@@ -283,24 +283,26 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
-		$("#gridHeight").val(5);
-		$("#gridWidth").val(6);
-
 		var x = 5;
 		var rowDDHtml = "";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
-			">Seat " + (i + 1) + "</option>";
+			">Row " + (i + 1) + "</option>";
 		}
 		$("#rowDD").html(rowDDHtml);
 
 		var y = 10;
 		var seatDDHtml = "";
-		for(var i = 0; i < x; i++) {
+		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";
 		}
 		$("#seatDD").html(seatDDHtml);
+
+		$("#gridWidth").val(x);
+		$("#gridHeight").val(y);
+
+		createSettingsTable(x, y);
 
     api_request(parameters, function(response){
     	var x;
