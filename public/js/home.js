@@ -88,6 +88,9 @@ function displayPPInfo() {
 	if (icon.className == "icon-unclicked") {
 		icon.className = "icon-clicked";
 	}
+	else if (icon.className == "icon-init") {
+		icon.className = "icon-clicked";
+	}
 	else {
 		icon.className = "icon-unclicked";
 	}
@@ -428,7 +431,7 @@ function api_request(pars, callback) {
 */
 function backClicked() {
 	document.getElementById("bg").className = "";
-	document.getElementById("ppIcon").className = "icon-unclicked";
+	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
 	document.getElementById("ppFontLogo").style.display = "none";
 	document.getElementById("lowerButtonsDiv").style.display = "none";
