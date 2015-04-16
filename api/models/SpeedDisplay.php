@@ -5,7 +5,7 @@ namespace addhawk;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-class Chat implements MessageComponentInterface {
+class SpeedDisplay implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
     }
 
