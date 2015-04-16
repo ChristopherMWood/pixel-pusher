@@ -121,7 +121,15 @@ function displayPPInfo() {
 */
 function infoClicked() {
 
-	var appInfo = document.getElementById("appInfo");
+	var appInfo = document.getElementById("appInfo");			
+	var sectionValue = document.getElementById("user-section").value;
+	var rowValue = document.getElementById("user-row").value;
+	var seatValue = document.getElementById("user-seat").value;
+	
+	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+		appInfo.innerHTML = "<p id='appInfo' name='appInfo'>Your current seat is:</br>Section:" + sectionValue + "</br>Row:" + rowValue + "</br>Seat Number:" + seatValue + "</p>";
+	}
+	
 
 	if (appInfo.style.display == "none") {
 
@@ -218,16 +226,21 @@ function setDDText(ddString, dropDownNum) {
 	if (dropDownNum == 0) {
 		ddDiv = document.getElementById("sectionDiv");
 		resultString = "Section: " + ddString;
+		//used for the info icon so that the user can view current seat assignment
+		//from the home page.
+		document.getElementById("user-section").value = ddString;
 		ddName = "section";
 	}
 	else if (dropDownNum == 1) {
 		ddDiv = document.getElementById("rowDiv");
 		resultString = "Row: " + ddString;
+		document.getElementById("user-row").value = ddString;
 		ddName = "row";
 	}
 	else {
 		ddDiv = document.getElementById("seatDiv");
 		resultString = "Seat: " + ddString;
+		document.getElementById("user-seat").value = ddString;
 		ddName = "seat";
 	}
 	// clear the dropdown's Div and then create a text field
