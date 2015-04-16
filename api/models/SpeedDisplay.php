@@ -1,7 +1,8 @@
 <?php
+namespace addhawk;
+
 require __DIR__ . '/vendor/autoload.php';
 
-namespace addhawk;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
