@@ -96,6 +96,13 @@ body {
 #appInfo {
 	color:white;
 	font-family: monaco,Consolas,Lucida Console,monospace;
+	border-radius: 25px;
+    border: 2px solid #FFFFFF;
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #appCredits {

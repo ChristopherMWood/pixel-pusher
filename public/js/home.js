@@ -135,12 +135,14 @@ function infoClicked() {
 						+ "app created</br>in Spring, 2015 by the AddHawk development team."
 						+ "</br></br>Developers:</br>Michael Peter</br>Christopher Wood</br>"
 						+ "Dillon Gresham</br>Connor Hoene";
-	appCredits.innerHTML = "<div id='appCredits'>" + appCreditsString + "</div>";
+	appCredits.innerHTML = "<div id='appCredits'></br>" + appCreditsString + "</div>";
 	
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+		//NOTE:
+		//putting the div tags in the inner html gives the double border look, which i like.
 		appInfo.innerHTML = "<div id='appInfo' name='appInfo'>Your current seat is:</br>Section: "
 							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
-							+ seatValue + "</br></br></br></div>";
+							+ seatValue + "</div>";
 	}
 	
 
@@ -467,6 +469,8 @@ function backClicked() {
 	document.getElementById("ppFontLogo").style.display = "none";
 	document.getElementById("lowerButtonsDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
+	document.getElementById("appInfo").style.display = "none";
+	document.getElementById("appCredits").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 	document.getElementById("settingsTitleDiv").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "none";
