@@ -3,10 +3,21 @@
 </header>
 
 <body id="bg" name="bg">
+	<!-- The hidden values below are used for storing user information
+			gridWidth and gridHeight are used for storing the dimensions
+			of the section that the user chooses for their seat assignment.
+			user-section, row, and seat values are used for storing the
+			3 components of the user's seat assignment.
+			A user's seat assignment is able to be viewed by clicking
+			the info icon.-->
 	<input type="hidden" id="gridHeight" name="gridHeight" value=0>
 	<input type="hidden" id="gridWidth" name="gridWidth" value=0>
+	<input type="hidden" id="user-section" name="user-section" value=0>
+	<input type="hidden" id="user-row" name="user-row" value=0>
+	<input type="hidden" id="user-seat" name="user-seat" value=0>
+	
 	<div id="ppDiv" name="ppDiv" style="text-align: center">
-			<input type="image" src="public/img/main_icon.png" alt="PP" name="ppIcon" class="icon-unclicked" id="ppIcon" onclick="displayPPInfo();">
+			<input type="image" src="public/img/main_icon.png" alt="PP" name="ppIcon" class="icon-init" id="ppIcon" onclick="displayPPInfo();">
 			<input type="image" src="public/img/pixelpusher_logo_font.png" alt="font_logo" name="ppFontLogo" id="ppFontLogo">
 	</div>
 	<div id="lowerButtonsDiv" name="lowerButtonsDiv" style="display:none">

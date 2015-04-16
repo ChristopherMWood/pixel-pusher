@@ -88,6 +88,9 @@ function displayPPInfo() {
 	if (icon.className == "icon-unclicked") {
 		icon.className = "icon-clicked";
 	}
+	else if (icon.className == "icon-init") {
+		icon.className = "icon-clicked";
+	}
 	else {
 		icon.className = "icon-unclicked";
 	}
@@ -121,7 +124,15 @@ function displayPPInfo() {
 */
 function infoClicked() {
 
-	var appInfo = document.getElementById("appInfo");
+	var appInfo = document.getElementById("appInfo");			
+	var sectionValue = document.getElementById("user-section").value;
+	var rowValue = document.getElementById("user-row").value;
+	var seatValue = document.getElementById("user-seat").value;
+	
+	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+		appInfo.innerHTML = "<p id='appInfo' name='appInfo'>Your current seat is:</br>Section: " + sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: " + seatValue + "</p>";
+	}
+	
 
 	if (appInfo.style.display == "none") {
 
@@ -218,16 +229,21 @@ function setDDText(ddString, dropDownNum) {
 	if (dropDownNum == 0) {
 		ddDiv = document.getElementById("sectionDiv");
 		resultString = "Section: " + ddString;
+		//used for the info icon so that the user can view current seat assignment
+		//from the home page.
+		document.getElementById("user-section").value = ddString;
 		ddName = "section";
 	}
 	else if (dropDownNum == 1) {
 		ddDiv = document.getElementById("rowDiv");
 		resultString = "Row: " + ddString;
+		document.getElementById("user-row").value = ddString;
 		ddName = "row";
 	}
 	else {
 		ddDiv = document.getElementById("seatDiv");
 		resultString = "Seat: " + ddString;
+		document.getElementById("user-seat").value = ddString;
 		ddName = "seat";
 	}
 	// clear the dropdown's Div and then create a text field
@@ -406,10 +422,19 @@ function api_request(pars, callback) {
 
 }
 
+/*
+	In response to clicking the 'back' button from the seat selection
+	screen. The home page is shown with only the pixelpusher icon 
+	displayed. If the user input their seat correctly, the background
+	should be the pixel of the media corresponding to their seat selection.
+	(assuming that the media has begun being displayed in the first place)
+*/
 function backClicked() {
 	document.getElementById("bg").className = "";
+	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
 	document.getElementById("ppFontLogo").style.display = "none";
+	document.getElementById("lowerButtonsDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 	document.getElementById("settingsTitleDiv").style.display = "none";
