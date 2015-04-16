@@ -6,8 +6,12 @@ use addhawk\SpeedDisplay;
     require 'SpeedDisplay.php';
 
     $server = IoServer::factory(
-        new SpeedDisplay(),
-        8080
+      new HttpServer(
+        new WsServer(
+          new SpeedDisplay()
+        )
+      ),
+      8080
     );
 
     $server->run();
