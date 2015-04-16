@@ -9,7 +9,6 @@ class SpeedDisplay implements MessageComponentInterface {
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
-        echo "New Connection Made";
     }
 
     public function onOpen(ConnectionInterface $conn) {
