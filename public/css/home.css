@@ -98,6 +98,12 @@ body {
 	font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
+#appCredits {
+	color:white;
+	font-family: monaco,Consolas,Lucida Console,monospace;
+	font-size:small;
+}
+
 /* Centers the drop down boxes for seat selection */
 #innerSectionDiv {
 	display:none;
