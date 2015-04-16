@@ -1,4 +1,5 @@
 <?php
+namespace addhawk;
 
 class Request
 {
