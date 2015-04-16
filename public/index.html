@@ -24,11 +24,13 @@
 		<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
 			<input type="image" src="public/img/chair_icon.png" name="settingsButton" id="settingsButton" alt="Settings" />
 			<p class="home-screen-labels">Select Your Seat</p>
+			<button type="button" id="reset-seat-button" style="display:none;">Reset Seat Assignment (Placeholder Button)</button>
 		</div>
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
 			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info" />
 			<p class="home-screen-labels">Information</p>
-			<p id="appInfo" name="appInfo" style="display:none">Your current seat is:</br>Section:</br>Row:</br>Seat Number:</p>
+			<div id="appInfo" name="appInfo" style="display:none">Your current seat is:</br>Section:</br>Row:</br>Seat Number:</div>
+			<div id="appCredits" style="display:none;"></div>
 		</div>
 	</div>
 

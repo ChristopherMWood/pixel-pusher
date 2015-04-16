@@ -128,9 +128,18 @@ function infoClicked() {
 	var sectionValue = document.getElementById("user-section").value;
 	var rowValue = document.getElementById("user-row").value;
 	var seatValue = document.getElementById("user-seat").value;
+	var appCredits = document.getElementById("appCredits");
+
+	var appCreditsString = "PixelPusher is a crowd-sourced media display "
+						+ "app created</br>in Spring, 2015 by the AddHawk development team."
+						+ "</br></br>Developers:</br>Michael Peter</br>Christopher Wood</br>"
+						+ "Dillon Gresham</br>Connor Hoene";
+	appCredits.innerHTML = "<div id='appCredits'>" + appCreditsString + "</div>";
 	
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
-		appInfo.innerHTML = "<p id='appInfo' name='appInfo'>Your current seat is:</br>Section: " + sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: " + seatValue + "</p>";
+		appInfo.innerHTML = "<div id='appInfo' name='appInfo'>Your current seat is:</br>Section: "
+							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
+							+ seatValue + "</br></br></br></div>";
 	}
 	
 
@@ -139,6 +148,8 @@ function infoClicked() {
 		var topMargin = -10;
 		var transparency = 0;
 		appInfo.style.display = "block";
+		appCredits.style.display = "block";
+
 
 		var v = setInterval( function () {
 
@@ -166,6 +177,7 @@ function infoClicked() {
 			if (topMargin == 0) {
 				clearInterval(v);
 				appInfo.style.display = "none";
+				appCredits.style.display = "none";
 			}
 		}, 10);
 	}
@@ -183,6 +195,8 @@ function settingsClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "inline";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
+	
+	//document.getElementById("seat-reset-button").style.display = "inline-block";
 
 
 	var sectionDiv = document.getElementById("sectionDiv");
