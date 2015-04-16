@@ -3,6 +3,7 @@ use Ratchet\Server\IoServer;
 use addhawk\SpeedDisplay;
 
     require dirname(__DIR__) . '../../vendor/autoload.php';
+    require 'SpeedDisplay.php';
 
     $server = IoServer::factory(
         new SpeedDisplay(),
