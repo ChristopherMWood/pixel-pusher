@@ -80,7 +80,8 @@ function thirdTransition() {
 
 
 function displayPPInfo() {
-
+	
+	document.getElementById("home-arrow").style.display = "none";
 
 	var icon = document.getElementById("ppIcon");
 	//Rotate the icon 360 degrees when clicking the PixelPusher icon
@@ -211,7 +212,7 @@ function settingsClicked() {
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
 	
-	document.getElementById("reset-seat-button").style.display = "inline-block";
+	//document.getElementById("reset-seat-button").style.display = "inline-block";
 
 
 	var sectionDiv = document.getElementById("sectionDiv");
