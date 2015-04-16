@@ -1,25 +1,39 @@
 <h1>WebSocket Demo</h1></br>
-<input placeholder="type message here"/><button id="mess-button" onclick="sendMessage();">Send Message</button>
+<input id="mess-cont" placeholder="type message here"/><button id="mess-button" onclick="sendMessage();">Send Message</button>
+</br>
+<div id="message-store">
+</div>
+
+<style>
+  .messageText {
+    color: red;
+  }
+</style>
 
 <script src="../js/jQuery/jquery-2.1.3.js"></script>
 <script>
+
+var conn = new WebSocket('ws://www.pixelpush.us:8080');
+var messageStore = $('#message-store');
+
 $(function(){
-  var conn = new WebSocket('ws://www.pixelpush.us:8080');
+
   conn.onopen = function(e) {
       console.log("Connection established!");
   };
 
   conn.onmessage = function(e) {
-      console.log(e.data);
+      var message = new Date().toLocaleString() + ": <span id='messageText'>" + e.data + "</span></br>";
+      messageStore.append(message);
   };
 
-  function sendMessage(){
-    if($('#mess-button').val().length == 0) {
-      return false;
-    }
-
-    conn.send($('#mess-button').val());
-  }
-
 });
+
+function sendMessage(){
+
+    conn.send($('#mess-cont').val());
+  var message = new Date().toLocaleString() + ": <span id='messageText'>" + $('#mess-cont').val() + "</span></br>";
+  messageStore.append(message);
+  $('#mess-cont').val('');
+}
 </script>
