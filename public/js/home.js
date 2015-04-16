@@ -406,10 +406,19 @@ function api_request(pars, callback) {
 
 }
 
+/*
+	In response to clicking the 'back' button from the seat selection
+	screen. The home page is shown with only the pixelpusher icon 
+	displayed. If the user input their seat correctly, the background
+	should be the pixel of the media corresponding to their seat selection.
+	(assuming that the media has begun being displayed in the first place)
+*/
 function backClicked() {
 	document.getElementById("bg").className = "";
+	document.getElementById("ppIcon").className = "icon-unclicked";
 	document.getElementById("ppDiv").style.display = "block";
 	document.getElementById("ppFontLogo").style.display = "none";
+	document.getElementById("lowerButtonsDiv").style.display = "none";
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 	document.getElementById("settingsTitleDiv").style.display = "none";
