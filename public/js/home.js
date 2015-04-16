@@ -130,7 +130,7 @@ function infoClicked() {
 	var seatValue = document.getElementById("user-seat").value;
 	
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
-		appInfo.innerHTML = "<p id='appInfo' name='appInfo'>Your current seat is:</br>Section:" + sectionValue + "</br>Row:" + rowValue + "</br>Seat Number:" + seatValue + "</p>";
+		appInfo.innerHTML = "<p id='appInfo' name='appInfo'>Your current seat is:</br>Section: " + sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: " + seatValue + "</p>";
 	}
 	
 
