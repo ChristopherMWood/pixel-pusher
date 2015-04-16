@@ -156,7 +156,9 @@ function infoClicked() {
 			topMargin++;
 			transparency = transparency + 0.1;
 			appInfo.style.marginTop = topMargin + "px";
+			appCredits.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
+			appCredits.style.opacity = transparency;
 
 			if (topMargin == 10) {
 				clearInterval(v);
@@ -172,7 +174,9 @@ function infoClicked() {
 			topMargin--;
 			transparency = transparency - 0.1;
 			appInfo.style.marginTop = topMargin + "px";
+			appCredits.style.marginTop = topMargin + "px";
 			appInfo.style.opacity = transparency;
+			appCredits.style.opacity = transparency;
 
 			if (topMargin == 0) {
 				clearInterval(v);
@@ -187,6 +191,17 @@ function infoClicked() {
 function settingsClicked() {
 	getRanges();
 
+	//Use these values which would be set by the user to determine
+	//whether or not the settings page should prompt the user to enter
+	//a seat assignment for the first time or display their current
+	//seat assignment.
+	var sectionValue = document.getElementById("user-section").value;
+	var rowValue = document.getElementById("user-row").value;
+	var seatValue = document.getElementById("user-seat").value;
+	
+
+	
+	
 	// change the screen to display the correct elements
 	document.getElementById("bg").className = "settingsBody";
 	document.getElementById("ppDiv").style.display = "none";
@@ -196,7 +211,7 @@ function settingsClicked() {
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
 	
-	//document.getElementById("seat-reset-button").style.display = "inline-block";
+	document.getElementById("reset-seat-button").style.display = "inline-block";
 
 
 	var sectionDiv = document.getElementById("sectionDiv");
@@ -204,6 +219,7 @@ function settingsClicked() {
 	var seatDiv = document.getElementById("seatDiv");
 	var rowVal;
 	sectionDiv.style.display = "block";
+	
 
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
@@ -454,4 +470,30 @@ function backClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
+	
+	
+	//This function is currently here for testing and it works with
+	//either displaying a pixel based on rgb vals or an image url.
+	//displayMedia(0, 0, 0, "public/img/info_icon.png");
+}
+
+
+/*
+	This function displays the media associated with the seat assignment that the
+	user has put in through the settings menu in the form of a pixel.
+	No media will be displayed unless the admin is currently streaming media in the first place.
+	
+	Params: RGB value? Image object of some sort (this assumes we're displaying part of an image
+			and not only a pixel)?
+*/
+function displayMedia(r_val, b_val, g_val, img_url) {
+	
+	if (img_url == null) {
+		document.getElementById("bg").style.backgroundColor = 
+			"rgb(" + r_val + "," + b_val + "," + g_val + ")";
+	}
+	else {
+		document.getElementById("bg").style.backgroundImage =
+			"url('"+ img_url + "')";
+	}
 }
