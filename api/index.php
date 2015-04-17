@@ -31,7 +31,7 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 
   // print_r($paramList);
 
-	$request = new Request($model, $method, $paramList);
+	$request = new Request($model, $method, $parameters);
 	//Prepare response obj
 	$response = new Phalcon\Http\Response();
 	$api_obj; //Pre define for if-else if block
