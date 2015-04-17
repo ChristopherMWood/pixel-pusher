@@ -682,9 +682,10 @@ function registerSeatSocket(row, column) {
               //push from the server for a registerd user.
 
               //Parse Pixels Into display
-							alert(data.data['r_val']);
+							var array = data.data;
+							alert(data['r_val']);
 
-              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
+              console.log('New Pixel Pushed: "' + topic + '" : ' + array);
           });
       },
       function() {
