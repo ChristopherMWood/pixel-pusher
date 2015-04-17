@@ -252,8 +252,6 @@ function settingsClicked() {
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
 	document.getElementById("pixelTableDiv").style.display = "none";
-	
-	//document.getElementById("reset-seat-button").style.display = "inline-block";
 
 
 	var sectionDiv = document.getElementById("sectionDiv");
@@ -311,7 +309,7 @@ function setDDText(ddString, dropDownNum) {
 	var ddName = "";
 
 	if (dropDownNum == 0) {
-		document.getElementById("sectionDD").style.display = "none";
+		document.getElementById("sectionDiv").style.display = "none";
 		ddDiv = document.getElementById("sectionChoiceText");
 		resultString = "Section: " + ddString;
 		//used for the info icon so that the user can view current seat assignment
@@ -320,14 +318,14 @@ function setDDText(ddString, dropDownNum) {
 		ddName = "section";
 	}
 	else if (dropDownNum == 1) {
-		document.getElementById("rowDD").style.display = "none";
+		document.getElementById("rowDiv").style.display = "none";
 		ddDiv = document.getElementById("rowChoiceText");
 		resultString = "Row: " + ddString;
 		document.getElementById("user-row").value = ddString;
 		ddName = "row";
 	}
 	else {
-		document.getElementById("seatDD").style.display = "none";
+		document.getElementById("seatDiv").style.display = "none";
 		ddDiv = document.getElementById("seatChoiceText");
 		resultString = "Seat: " + ddString;
 		document.getElementById("user-seat").value = ddString;
