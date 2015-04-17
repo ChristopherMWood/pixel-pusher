@@ -32,7 +32,7 @@
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
 			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info" />
 			<p class="home-screen-labels">Information</p>
-			<div id="appInfo" name="appInfo" style="display:none">Your current seat is:</br>Section:</br>Row:</br>Seat Number:</div>
+			<div id="appInfo" name="appInfo" style="display:none"><u>Your current seat is:</u></br>Section:</br>Row:</br>Seat Number:</div>
 			<div id="appCredits" style="display:none;"></div>
 		</div>
 	</div>
@@ -60,18 +60,24 @@
 					</select>
 				</div>
 			</div>
+			<div id="sectionChoiceText" name="sectionChoiceText"></div>
+			
 			<div id="rowDiv" name="rowDiv" style="display:none;" class="innerDDDiv">
 				<div class="styleSelect">
 					<select id="rowDD" name="rowDD">
 					</select>
 				</div>
 			</div>
+			<div id="rowChoiceText" name="rowChoiceText"></div>
+			
 			<div id="seatDiv" name="seatDiv" style="display:none;" class="innerDDDiv">
 				<div class="styleSelect">
 					<select id="seatDD" name="seatDD">
 					</select>
 				</div>
 			</div>
+			<div id="seatChoiceText" name="seatChoiceText"></div>
+			
 			<div id="undoSelectionDiv" name="undoSelectionDiv" class="innderDDDiv"></div>
 		</div>
 		<div id="tableGridDiv" name="tableGridDiv" style="display:none"></div>

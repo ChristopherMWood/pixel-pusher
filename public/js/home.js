@@ -165,7 +165,7 @@ function infoClicked() {
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
 		//NOTE:
 		//putting the div tags in the inner html gives the double border look, which i like.
-		appInfo.innerHTML = "<div id='appInfo' name='appInfo'>Your current seat is:</br>Section: "
+		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
 							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
 							+ seatValue + "</div>";
 	}
@@ -309,7 +309,8 @@ function setDDText(ddString, dropDownNum) {
 	var ddName = "";
 
 	if (dropDownNum == 0) {
-		ddDiv = document.getElementById("sectionDiv");
+		document.getElementById("sectionDD").style.display = "none";
+		ddDiv = document.getElementById("sectionChoiceText");
 		resultString = "Section: " + ddString;
 		//used for the info icon so that the user can view current seat assignment
 		//from the home page.
@@ -317,20 +318,25 @@ function setDDText(ddString, dropDownNum) {
 		ddName = "section";
 	}
 	else if (dropDownNum == 1) {
-		ddDiv = document.getElementById("rowDiv");
+		document.getElementById("rowDD").style.display = "none";
+		ddDiv = document.getElementById("rowChoiceText");
 		resultString = "Row: " + ddString;
 		document.getElementById("user-row").value = ddString;
 		ddName = "row";
 	}
 	else {
-		ddDiv = document.getElementById("seatDiv");
+		document.getElementById("seatDD").style.display = "none";
+		ddDiv = document.getElementById("seatChoiceText");
 		resultString = "Seat: " + ddString;
 		document.getElementById("user-seat").value = ddString;
 		ddName = "seat";
 	}
+	
+	
 	// clear the dropdown's Div and then create a text field
 	ddDiv.innerHTML = "";
-	ddDiv.innerHTML = "<h name='" + ddName + "Text' id='" + ddName + "Text'>" + resultString + "</h>";
+	ddDiv.innerHTML += "<h name='" + ddName + "Text' id='" + ddName + "Text'>" + resultString + "</h>";
+
 }
 
 
@@ -600,21 +606,24 @@ function showResetButton() {
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
+	document.getElementById("resetDiv").style.display = "none";
+		document.getElementById("innerSectionDiv").style.display = "inline-block";
+
 	//clear html tags
-	// document.getElementById("user-section").value = 0;
-	// document.getElementById("user-row").value = 0;
-	// document.getElementById("user-seat").value = 0;
+	document.getElementById("user-section").value = 0;
+	document.getElementById("user-row").value = 0;
+	document.getElementById("user-seat").value = 0;
 	
-	// document.getElementById("sectionText").style.display = "none";
-	// document.getElementById("rowText").style.display = "none";
-	// document.getElementById("seatText").style.display = "none";
+	document.getElementById("sectionText").style.display = "none";
+	document.getElementById("rowText").style.display = "none";
+	document.getElementById("seatText").style.display = "none";
 	
 	//clear the text fields and add the dropdown menus back
-	// document.getElementById("sectionDiv").value = "";
-	// document.getElementById("rowDiv").value = "";
-	// document.getElementById("seatDiv").value = "";
+	document.getElementById("sectionDD").value = "default";
+	document.getElementById("rowDD").value = "default";
+	document.getElementById("seatDD").value = "default";
 	
-	// document.getElementById("sectionDD").style.display = "block";
+	document.getElementById("sectionDD").style.display = "block";
 	
 };
 
