@@ -261,10 +261,12 @@ function settingsClicked() {
 	//trying to make it so that the dropdown menu doesn't appear when seat
 	//is already chosen
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
-		sectionDiv.style.display = "block";
+		sectionDiv.style.display = "none";
+		//works?
 		document.getElementById("sectionChoiceText").style.display = "block";
 		document.getElementById("rowChoiceText").style.display = "block";
 		document.getElementById("seatChoiceText").style.display = "block";
+		showResetButton();
 	}
 	else {
 		sectionDiv.style.display = "block";
