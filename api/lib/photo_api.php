@@ -27,6 +27,9 @@ class PhotoApi extends BaseApi
         if($this->method == "get_pixels") {
         	return $this->getPixels();
         }
+        if($this->method == "get_seat_pixel") {
+        	return $this->getSeatPixel();
+        }
         else {
         	$this->response->setStatusCode(405, "Method Not Found");
 					return $this->response;
@@ -38,9 +41,74 @@ class PhotoApi extends BaseApi
     */
     private function getPixels() {
 			try {
+				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+						"host" => "localhost",
+						"username" => "addhawk",
+						"password" => "addhawk4784",
+						"dbname" => "addhawk"
+				));
+			 //Reconnect
+			 $connection->connect();
+		for ($x = 0; $x < 6; $x++)
+		{
+		for ($y = 0; $y < 6; $y++)
+		{
+			 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
+			 $result = $connection->query($phql);
+			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+			  $this->data['admin'];
+				$admin = $result->fetchArray();
+			 echo '<pre>' . var_dump($admin) . '</pre>';
+		}
+		}
+			 $phql = "SELECT * FROM pixel where image='1a'";
+			 $result = $connection->query($phql);
+			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+			  $this->data['admin'];
+				$admin = $result->fetchArray();
+			 var_dump($admin);
+				$this->data['x_pos'] = $admin[0];
+				$this->data['y_pos'] = $admin[1];
+				$this->data['image'] = $admin[2];
+				$this->data['r_val'] = $admin[3];
+				$this->data['g_val'] = $admin[4];
+				$this->data['b_val'] = $admin[5];
+				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
+			} catch (Exception $e) {
+				$this->data['error'] = $e->getMessage();
+				$this->response->setJsonContent(array('success' => false, 'data' => $this->data));
+			}
+    	return $this->response; //Supply response
+    }
 
-        $this->data['michael-is-a-douche'] = true;
-
+    /*
+    * Test method for the api layout
+    */
+    private function getSeatPixel() {
+			try {
+				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+						"host" => "localhost",
+						"username" => "addhawk",
+						"password" => "addhawk4784",
+						"dbname" => "addhawk"
+				));
+			 //Reconnect
+			 $connection->connect();
+				$xp = $this->parameters[0];
+				$yp = $this->parameters[1];
+				var_dump($xp);
+			 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$xp' and y_pos='$yp'";
+			 $result = $connection->query($phql);
+			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+			  $this->data['admin'];
+				$admin = $result->fetchArray();
+			 //var_dump($admin);
+				$this->data['x_pos'] = $admin[0];
+				$this->data['y_pos'] = $admin[1];
+				$this->data['image'] = $admin[2];
+				$this->data['r_val'] = $admin[3];
+				$this->data['g_val'] = $admin[4];
+				$this->data['b_val'] = $admin[5];
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
