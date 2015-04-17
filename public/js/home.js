@@ -671,7 +671,7 @@ function registerSeatSocket(row, column) {
               //Parse Pixels Into display
 
 
-              console.log('New Pixel Pushed: "' + topic + '" : ' + data.title);
+              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
       function() {
