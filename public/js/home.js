@@ -535,9 +535,13 @@ function backClicked() {
 	document.getElementById("tableGridDiv").style.display = "none";
 	
 	
-	//This function is currently here for testing and it works with
-	//either displaying a pixel based on rgb vals or an image url.
-	//displayMedia(0, 0, 0, "public/img/info_icon.png");
+	//Create a grid of table cells on the main page when the back button is
+	//pressed for displaying media to the user
+	var userRow = document.getElementById("user-row").value;
+	var userCol = document.getElementById("user-seat").value;
+	if (userRow != 0 && userCol != 0) {
+		createPixelTable(userRow, userCol);
+	}
 }
 
 
@@ -550,16 +554,34 @@ function backClicked() {
 	Params: RGB value? Image object of some sort (this assumes we're displaying part of an image
 			and not only a pixel)?
 */
-function displayMedia(r_val, b_val, g_val, img_url) {
+function createPixelTable(seat_x, seat_y) {
 	
-	if (img_url == null) {
-		document.getElementById("bg").style.backgroundColor = 
-			"rgb(" + r_val + "," + b_val + "," + g_val + ")";
+	//Function that creates a grid that will display the pixels 
+	//associates with your seat assignment.
+	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
+	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
+	var cellHeight = windowHeight / 50;
+	var cellWidth = windowWidth / 50;
+	var width = 50;
+	var height = 50;
+
+	for (var i = 0; i < width; i++) {
+		// id is row_ and then the row number
+		//id : row_4 (row 4)
+		tableString += "<tr style='height:" + cellHeight + "px; width:" + windowWidth + "px;' id='row_" + i + "' name='row_" + i + "'>";
+		for (var j = 0; j < height; j++) {
+			// id is col_ and then the row number, another _, and then the col number
+			//id : col_4_5 (row 4, col 5)
+			tableString += "<td id='col_" + i + "_" + j + "' name='col_" + i + "_" + j + "'></td>";
+		}
+		tableString += "</tr>";
 	}
-	else {
-		document.getElementById("bg").style.backgroundImage =
-			"url('"+ img_url + "')";
-	}
+	tableString += "</table>";
+	
+	document.getElementById("pixelTable").innerHTML = tableString;
+	document.getElementById("pixelTable").style.display = "block";
+	
 }
 
 

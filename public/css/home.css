@@ -246,3 +246,10 @@ select {
 		-webkit-transform: translateY(0%);
 	}			
 }
+
+
+#pixelTable {
+	border: 1px solid black;
+    border-collapse: collapse;
+	background:transparent;
+}
