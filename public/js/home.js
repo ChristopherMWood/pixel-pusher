@@ -1,7 +1,9 @@
 var X_SEATS = 6;
 var Y_SEATS = 6;
-document.onload = function() {
-	transitionBg(true);
+var myVar;
+
+window.onload = function() {
+	transitionBg();
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
 	console.log("ok");
 
@@ -14,21 +16,19 @@ document.onload = function() {
 /*
 
 */
-function transitionBg(isTransitionOn) {
+function transitionBg() {
 
-	if (isTransitionOn) {
+	console.log("oh");
+	document.getElementById("bg").className = "bgYellowTransition";
+	setTimeout(secondTransition, 7500);
+	setTimeout(thirdTransition, 15000);
 
-		console.log("oh");
-		var myVar = setInterval( function() {
-			console.log("oh yeah");
-			document.getElementById("bg").className = "bgYellowTransition";
-			setTimeout(secondTransition, 7500);
-			setTimeout(thirdTransition, 15000);
-		}, 22500);
-	}
-	else {
-		document.getElementById("bg").className = "settingsBody";
-	}
+	myVar = setInterval( function() {
+		console.log("oh yeah");
+		document.getElementById("bg").className = "bgYellowTransition";
+		setTimeout(secondTransition, 7500);
+		setTimeout(thirdTransition, 15000);
+	}, 22500);
 
 }
 
@@ -171,7 +171,16 @@ function infoClicked() {
 							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
 							+ seatValue + "</div>";
 	}
+<<<<<<< HEAD
 
+=======
+	else {
+		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
+							+ "</br>Row: " + "</br>Seat Number: "
+							+ "</div>";
+	}
+
+>>>>>>> 2dee8172f971683468a453b182d005d2fd194f07
 
 	if (appInfo.style.display == "none") {
 
@@ -403,7 +412,7 @@ function highlightSeat(rowNum, seatNum) {
 *This gets the ranges from the database
 */
 function getRanges() {
-  var parameters = {};
+	var parameters = {};
     parameters['api_name'] = 'admin';
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
