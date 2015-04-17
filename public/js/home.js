@@ -231,6 +231,7 @@ function settingsClicked() {
 	if (document.getElementById("sectionDD") != null) {
 		document.getElementById("sectionDD").value = "default";
 	}
+	
 
 	//Use these values which would be set by the user to determine
 	//whether or not the settings page should prompt the user to enter
@@ -239,8 +240,6 @@ function settingsClicked() {
 	var sectionValue = document.getElementById("user-section").value;
 	var rowValue = document.getElementById("user-row").value;
 	var seatValue = document.getElementById("user-seat").value;
-	
-
 	
 	
 	// change the screen to display the correct elements
@@ -258,7 +257,18 @@ function settingsClicked() {
 	var rowDiv = document.getElementById("rowDiv");
 	var seatDiv = document.getElementById("seatDiv");
 	var rowVal;
-	sectionDiv.style.display = "block";
+	
+	//trying to make it so that the dropdown menu doesn't appear when seat
+	//is already chosen
+	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+		sectionDiv.style.display = "block";
+		document.getElementById("sectionChoiceText").style.display = "block";
+		document.getElementById("rowChoiceText").style.display = "block";
+		document.getElementById("seatChoiceText").style.display = "block";
+	}
+	else {
+		sectionDiv.style.display = "block";
+	}
 	
 
 	$("#sectionDD").change(function () {
@@ -623,7 +633,7 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("rowDD").value = "default";
 	document.getElementById("seatDD").value = "default";
 	
-	document.getElementById("sectionDD").style.display = "block";
+	document.getElementById("sectionDiv").style.display = "block";
 	
 };
 
