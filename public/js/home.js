@@ -654,6 +654,20 @@ document.getElementById("reset-seat-button").onclick = function() {
 };
 
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
+function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
+	var pixelTable = document.getElementById("pixelTable");
+	
+	pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+}
+
+
+
+
 //This is the single websocket for each user
 
 
