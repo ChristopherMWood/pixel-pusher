@@ -560,6 +560,8 @@ function backClicked() {
 	document.getElementById("resetDiv").style.display = "none";
 	
 	
+	registerSeatSocket(6, 6);
+	
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
