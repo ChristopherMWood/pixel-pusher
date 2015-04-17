@@ -25,11 +25,11 @@
 	<div id="lowerButtonsDiv" name="lowerButtonsDiv" style="display:none">
 		<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
 			<input type="image" src="public/img/chair_icon.png" name="settingsButton" id="settingsButton" alt="Settings" />
-			<p class="home-screen-labels">Select Your Seat</p>
+			<p id="select-seat-label" class="home-screen-labels">Select Your Seat</p>
 			
-			<!-- todo: FINISH THIS RESET BUTTON 
+			<!-- todo: FINISH THIS RESET BUTTON -->
 			<button type="button" id="reset-seat-button" style="display:none;">Reset Seat Assignment (Placeholder Button)</button>
-			-->
+			
 		</div>
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
 			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info" />
@@ -48,7 +48,7 @@
 			<div id="sectionDiv" name="sectionDiv" style="display:none;" class="innerDDDiv">
 				<div class="styleSelect">
 					<select id="sectionDD" name="sectionDD">
-						<option value="" disabled selected>Select Your Section:</option>
+						<option value="default" disabled selected>Select Your Section:</option>
 						<option value="A">Section A</option>
 						<option value="B">Section B</option>
 						<option value="C">Section C</option>

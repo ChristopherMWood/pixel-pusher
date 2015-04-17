@@ -7,6 +7,11 @@ document.onload = function() {
 };
 
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function transitionBg(isTransitionOn) {
 
 	if (isTransitionOn) {
@@ -26,6 +31,10 @@ function transitionBg(isTransitionOn) {
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function buttonDropAnimation(element, isShown) {
 	var fontLogo = document.getElementById("ppFontLogo");
 	fontLogo.style.display = "block"
@@ -70,15 +79,29 @@ function buttonDropAnimation(element, isShown) {
 
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function secondTransition() {
 	document.getElementById("bg").className = "bgBlueTransition";
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function thirdTransition() {
 	document.getElementById("bg").className = "bgRedTransition";
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function displayPPInfo() {
 	
 	document.getElementById("home-arrow").style.display = "none";
@@ -120,6 +143,8 @@ function displayPPInfo() {
 	}
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 	This method displays info. about the PixelPusher app. underneath the info. logo.
 */
@@ -191,8 +216,19 @@ function infoClicked() {
 
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function settingsClicked() {
 	getRanges();
+	
+	//When the user sets their seat for the first time or is resetting
+	//the dropdown menu should not have an item selected
+	if (document.getElementById("sectionDD") != null) {
+		document.getElementById("sectionDD").value = "default";
+	}
 
 	//Use these values which would be set by the user to determine
 	//whether or not the settings page should prompt the user to enter
@@ -228,7 +264,10 @@ function settingsClicked() {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
 			rowDiv.style.display = "block";
-			setDDText($("#sectionDD").val(), 0);
+			var sectionVal = $("#sectionDD").val();
+			setDDText(sectionVal, 0);
+			//Set the hidden values in the html for the user's seat information
+			document.getElementById("user-section").value = sectionVal;
 		}
 	});
 
@@ -239,13 +278,18 @@ function settingsClicked() {
 			rowVal = $("#rowDD").val();
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
+			document.getElementById("user-row").value = rowVal;
 		}
 	});
 
 	$("#seatDD").change(function () {
 		// when a choice is selected, change to a text field
-		highlightSeat(rowVal, $("#seatDD").val());
-		setDDText($("#seatDD").val(), 2);
+		var seatVal = $("#seatDD").val();
+		highlightSeat(rowVal, seatVal);
+		setDDText(seatVal, 2);
+		document.getElementById("user-seat").value = seatVal;
+		
+		showResetButton();
 	});
 
 	// fill the table div with the correct HTML based on table size
@@ -253,6 +297,10 @@ function settingsClicked() {
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function setDDText(ddString, dropDownNum) {
 	// 0 is sectionDD, 1 is rowDD, 2 is seatDD
 	var ddDiv;
@@ -285,6 +333,10 @@ function setDDText(ddString, dropDownNum) {
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
 function createSettingsTable(width, height) {
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
 	var cellHeight = 300 / height;
@@ -320,6 +372,8 @@ function highlightSeat(rowNum, seatNum) {
 	document.getElementById(seatName).style.backgroundColor = "red";
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 *This gets the ranges from the database
 */
@@ -332,7 +386,7 @@ function getRanges() {
 	
 		var x = 10;
 		var rowDDHtml = "";
-		rowDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
+		rowDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Row " + (i + 1) + "</option>";
@@ -341,7 +395,7 @@ function getRanges() {
 
 		var y = 20;
 		var seatDDHtml = "";
-		seatDDHtml += "<option value='' disabled selected>Select Your Row:</option>";
+		seatDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";
@@ -375,6 +429,8 @@ function getRanges() {
     });
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /**
  * Makes a call to the apis
  * @param parameters All parameters being sent to the request
@@ -455,6 +511,8 @@ function api_request(pars, callback) {
 
 }
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 	In response to clicking the 'back' button from the seat selection
 	screen. The home page is shown with only the pixelpusher icon 
@@ -483,6 +541,7 @@ function backClicked() {
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 	This function displays the media associated with the seat assignment that the
 	user has put in through the settings menu in the form of a pixel.
@@ -502,3 +561,35 @@ function displayMedia(r_val, b_val, g_val, img_url) {
 			"url('"+ img_url + "')";
 	}
 }
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+	The reset seat selection button gets displayed when the user has entered all 3
+	components of their seat information (section, row, and seat #).
+*/
+function showResetButton() {
+	document.getElementById("settingsDiv").style.display = "block";
+	document.getElementById("select-seat-label").style.display = "none";
+	document.getElementById("settingsButton").style.display = "none";	
+	document.getElementById("reset-seat-button").style.display = "block";
+	
+}
+
+document.getElementById("reset-seat-button").onclick = function() {
+	//clear html tags
+	document.getElementById("user-section").value = 0;
+	document.getElementById("user-row").value = 0;
+	document.getElementById("user-seat").value = 0;
+	
+	//clear the text fields and add the dropdown menus back
+	// document.getElementById("sectionDiv").value = "";
+	// document.getElementById("rowDiv").value = "";
+	// document.getElementById("seatDiv").value = "";
+	
+	document.getElementById("sectionDD").style.display = "block";
+	
+};
+
+
