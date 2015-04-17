@@ -23,15 +23,13 @@ $router = new Phalcon\Mvc\Micro($di);
   PRE: $model and $method can only contain letter, numbers, '-', and '_' symbols
   POST: Valid JSON Response is returned
 */
-$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', function($model, $method, $parameters) use ($router){
+$router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', function($model, $method, $paramData) use ($router){
 	//Build request obj
 	include "lib/request.php";
-  echo "here";
-  $paramList = explode("-", $parameters);
-  echo "here";
+  $paramList = explode("-", $paramData);
   // print_r($paramList);
 
-	$request = new Request($model, $method, $parameters);
+	$request = new Request($model, $method, $paramList);
   echo "here";
 	//Prepare response obj
 	$response = new Phalcon\Http\Response();
