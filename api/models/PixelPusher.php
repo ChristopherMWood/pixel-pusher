@@ -31,7 +31,7 @@ class Pusher implements WampServerInterface {
           return;
       }
 
-      $topic = $this->subscribedTopics[$entryData['row-column']];
+      $topic = $this->subscribedTopics[$entryData['category']];
 
       // re-send the data to all the clients subscribed to that category
       $topic->broadcast($entryData);
