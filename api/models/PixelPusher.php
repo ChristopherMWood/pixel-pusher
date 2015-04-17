@@ -7,6 +7,14 @@ class Pusher implements WampServerInterface {
 
     protected $registeredSeats = array();
 
+    public function onBlogEntry($entry) {
+     $entryData = json_decode($entry, true);
+
+     // re-send the data to all the clients subscribed to that category
+     $topic->broadcast($entryData);
+ }
+
+
     public function onSubscribe(ConnectionInterface $conn, $seat) {
       $this->registeredSeats[$seat->getId()] = $seat;
     }
