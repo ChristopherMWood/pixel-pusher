@@ -42,7 +42,7 @@ class UserApi extends BaseApi
 				$this->data['TestData'] = "Yay It Worked!!!";
 
 				$entryData = array(
-        'category' => "kitten"
+        'category' => "kittens"
       , 'when'     => time()
     	);
 
