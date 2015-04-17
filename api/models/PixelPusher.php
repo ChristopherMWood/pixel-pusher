@@ -17,11 +17,6 @@ class Pusher implements WampServerInterface {
       public function onBlogEntry($entry) {
           $entryData = json_decode($entry, true);
 
-          // If the lookup topic object isn't set there is no one to publish to
-          if (!array_key_exists($entryData['category'], $this->subscribedTopics)) {
-              return;
-          }
-
           $topic = $this->subscribedTopics[$entryData['category']];
 
           // re-send the data to all the clients subscribed to that category

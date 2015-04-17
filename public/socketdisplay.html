@@ -8,6 +8,7 @@
         function() {
             conn.subscribe('kittens', function(topic, data) {
                 // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                alert("PIXEL PUSHED");
                 console.log("New Pixel Pushed");
             });
         },
