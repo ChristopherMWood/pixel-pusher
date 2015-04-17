@@ -564,10 +564,10 @@ function backClicked() {
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
 	document.getElementById("resetDiv").style.display = "none";
-	
-	
+
+
 	registerSeatSocket(6, 6);
-	
+
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
@@ -655,18 +655,18 @@ document.getElementById("reset-seat-button").onclick = function() {
 
 
 //This is the single websocket for each user
-var conn;
+
 
 /*
 This will register a seat the user chose with a
 socket on the backend server.
 */
 function registerSeatSocket(row, column) {
-
+	var conn;
   //Creates the connection to server for pixel pull ability
   conn = new ab.Session('ws://www.pixelpush.us:8080',
       function() {
-          conn.subscribe(row + "" + column, function(topic, data) {
+          conn.subscribe("all", function(topic, data) {
               //This is where all of the pixels are pulled into on each
               //push from the server for a registerd user.
 

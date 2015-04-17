@@ -25,13 +25,13 @@ class Pusher implements WampServerInterface {
 
       echo "BlogEntryOccured";
       //If the lookup topic object isn't set there is no one to publish to
-      if (!array_key_exists($entryData['row-column'], $this->subscribedTopics)) {
-          echo "Subscription not found: ".$entryData['row-column'];
+      if (!array_key_exists($entryData['category'], $this->subscribedTopics)) {
+          echo "Subscription not found: ".$entryData['category']."Test\n";
           print_r(array_keys($this->subscribedTopics));
           return;
       }
 
-      $topic = $this->subscribedTopics[$entryData['row-column']];
+      $topic = $this->subscribedTopics[$entryData['category']];
 
       // re-send the data to all the clients subscribed to that category
       $topic->broadcast($entryData);
