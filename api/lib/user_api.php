@@ -42,9 +42,12 @@ class UserApi extends BaseApi
 				echo "REGISTERING POSITION";
 
 				$entryData = array(
-        'category' => "kittens"
-      , 'when'     => time()
-    	);
+		        'category' => "testCategory"
+		      , 'title'    => "testTitle"
+		      , 'article'  => "testArticle"
+		      , 'when'     => time()
+		    );
+
 
 			$this->data['responseData'] = $entryData;
 
@@ -64,11 +67,14 @@ class UserApi extends BaseApi
 				// $this->data['column'] = $this->request->parameters[2];
 				// $this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 				//
-				$context = new ZMQContext();
+				// This is our new stuff
+		    $context = new ZMQContext();
 		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
-		    $socket->connect("tcp://104.131.45.86:5555");
+		    $socket->connect("tcp://localhost:5555");
 
 		    $socket->send(json_encode($entryData));
+
+
 				echo "THIS WORKED?";
 				return $this->response; //Supply response
 
