@@ -47,6 +47,11 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
 		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
+  else if($model == "photo") {
+		include __DIR__."/lib/photo_api.php";
+		$api_obj = new PhotoApi($request, $response, $router);
+		$response = $api_obj->executeRequest();
+	}
 	else {
 		$response->setStatusCode(405, "Model Not Found");
 	}
