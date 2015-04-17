@@ -682,8 +682,7 @@ function registerSeatSocket(row, column) {
               //push from the server for a registerd user.
 
               //Parse Pixels Into display
-							var json_data = String(data.data)
-							alert(json_data.r_val);
+							alert(data.data['r_val']);
 
               console.log('New Pixel Pushed: "' + topic + '" : ' + json_data);
           });
