@@ -36,7 +36,7 @@ class PhotoApi extends BaseApi
     /*
     * Test method for the api layout
     */
-    private function getRange() {
+    private function getPixels() {
 			try {
 
         $this->data['michael-is-a-douche'] = true;
