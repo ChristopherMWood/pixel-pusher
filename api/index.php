@@ -27,7 +27,7 @@ $router = new Phalcon\Mvc\Micro($di);
 */
 $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', function($model, $method, $paramData) use ($router){
 	//Build request obj
-	include "/lib/request.php";
+	include __DIR__."/lib/request.php";
   $paramList = explode("-", $paramData);
   // print_r($paramList);
 
