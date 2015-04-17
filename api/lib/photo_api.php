@@ -81,11 +81,9 @@ class PhotoApi extends BaseApi
 				echo json_encode($output, 128);
 
 				$content = array('category' => 'all', 'data' => json_encode($this->data));
-
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				$socket->connect("tcp://127.0.0.1:5555");
-
 				$socket->send(json_encode($content));
 
 
@@ -125,6 +123,12 @@ class PhotoApi extends BaseApi
 				$this->data['r_val'] = $admin[3];
 				$this->data['g_val'] = $admin[4];
 				$this->data['b_val'] = $admin[5];
+
+				// $content = array('category' => "".$xp.$yp, 'data' => json_encode($this->data['admin']));
+				// $context = new ZMQContext();
+				// $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
+				// $socket->connect("tcp://127.0.0.1:5555");
+				// $socket->send(json_encode($content));
 
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 			} catch (Exception $e) {

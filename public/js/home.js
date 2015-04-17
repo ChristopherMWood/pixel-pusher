@@ -593,13 +593,15 @@ function createPixelTable(seat_x, seat_y) {
 
 	//Function that creates a grid that will display the pixels
 	//associates with your seat assignment.
+	var ratio = 1;
+
 	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
-	var cellHeight = windowHeight / 6;
-	var cellWidth = windowWidth / 6;
-	var width = 6;
-	var height = 6;
+	var cellHeight = windowHeight / ratio;
+	var cellWidth = windowWidth / ratio;
+	var width = ratio;
+	var height = ratio;
 
 	for (var i = 0; i < width; i++) {
 		// id is row_ and then the row number
