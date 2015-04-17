@@ -74,8 +74,6 @@ class UserApi extends BaseApi
 
 		    $socket->send(json_encode($entryData));
 
-
-				echo "THIS WORKED?";
 				return $this->response; //Supply response
 
 			} catch (Exception $e) {
