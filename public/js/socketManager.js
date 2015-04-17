@@ -13,7 +13,7 @@ function registerSeatSocket(row, column) {
   //Creates the connection to server for pixel pull ability
   conn = new ab.Session('ws://www.pixelpush.us:8080',
       function() {
-          conn.subscribe('testCategory', function(topic, data) {
+          conn.subscribe('all', function(topic, data) {
               //This is where all of the pixels are pulled into on each
               //push from the server for a registerd user.
 
