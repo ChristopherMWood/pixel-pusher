@@ -566,7 +566,7 @@ function backClicked() {
 	document.getElementById("resetDiv").style.display = "none";
 
 
-	registerSeatSocket(6, 6);
+	registerSeatSocket(1, 1);
 
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
@@ -685,7 +685,10 @@ function registerSeatSocket(row, column) {
 							var array = JSON.parse(data.data);
 							alert(array['r_val']);
 
-              console.log('New Pixel Pushed: "' + topic + '" : ' + array);
+
+							// setPixelTableCellColor(row, col, r_val, g_val, b_val)
+
+              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
       function() {
