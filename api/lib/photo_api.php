@@ -74,8 +74,13 @@ class PhotoApi extends BaseApi
 				$this->data['g_val'] = $admin[4];
 				$this->data['b_val'] = $admin[5];
 
+				$output = array();
+				foreach($data as $v) {
+				    $output[key($v)] = current($v);
+				}
+				echo json_encode($output, 128);
 
-				$content = array('category' => 'all', 'data' => json_decode($this->data));
+				$content = array('category' => 'all', 'data' => json_encode($this->data));
 
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
