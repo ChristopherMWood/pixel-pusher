@@ -570,25 +570,25 @@ function displayMedia(r_val, b_val, g_val, img_url) {
 	components of their seat information (section, row, and seat #).
 */
 function showResetButton() {
-	document.getElementById("settingsDiv").style.display = "block";
-	document.getElementById("select-seat-label").style.display = "none";
-	document.getElementById("settingsButton").style.display = "none";	
-	document.getElementById("reset-seat-button").style.display = "block";
+	// document.getElementById("settingsDiv").style.display = "block";
+	// document.getElementById("select-seat-label").style.display = "none";
+	// document.getElementById("settingsButton").style.display = "none";	
+	// document.getElementById("reset-seat-button").style.display = "block";
 	
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
 	//clear html tags
-	document.getElementById("user-section").value = 0;
-	document.getElementById("user-row").value = 0;
-	document.getElementById("user-seat").value = 0;
+	// document.getElementById("user-section").value = 0;
+	// document.getElementById("user-row").value = 0;
+	// document.getElementById("user-seat").value = 0;
 	
 	//clear the text fields and add the dropdown menus back
 	// document.getElementById("sectionDiv").value = "";
 	// document.getElementById("rowDiv").value = "";
 	// document.getElementById("seatDiv").value = "";
 	
-	document.getElementById("sectionDD").style.display = "block";
+	// document.getElementById("sectionDD").style.display = "block";
 	
 };
 
