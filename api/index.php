@@ -32,15 +32,13 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
   // print_r($paramList);
 
 	$request = new Request($model, $method, $paramList);
-  echo "here";
+
 	//Prepare response obj
 	$response = new Phalcon\Http\Response();
-  echo "here";
 	$api_obj; //Pre define for if-else if block
 	//Call corresponding API below if possible
   if($model == "user") {
 		include __DIR__."/lib/user_api.php";
-    echo "here";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}

@@ -10,6 +10,7 @@ class Pusher implements WampServerInterface {
     public function onBlogEntry($entry) {
      $entryData = json_decode($entry, true);
 
+     echo "WHAT???";
      // re-send the data to all the clients subscribed to that category
      $topic->broadcast($entryData);
  }
