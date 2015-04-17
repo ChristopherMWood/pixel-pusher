@@ -669,9 +669,9 @@ function registerSeatSocket(row, column) {
               //push from the server for a registerd user.
 
               //Parse Pixels Into display
+							$json_data = json_decode($data.data);
 
-
-              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
+              console.log('New Pixel Pushed: "' + topic + '" : ' + json_data);
           });
       },
       function() {
