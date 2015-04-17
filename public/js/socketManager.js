@@ -5,7 +5,7 @@ var conn;
 This will register a seat the user chose with a
 socket on the backend server.
 */
-function registerSeatSocket() {
+function registerSeatSocket(row, column) {
 
   //Required for subscription name
   var row, column;
