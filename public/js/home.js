@@ -661,12 +661,9 @@ document.getElementById("reset-seat-button").onclick = function() {
 */
 function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
 	var pixelTable = document.getElementById("pixelTable");
-	
+
 	pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 }
-
-
-
 
 //This is the single websocket for each user
 
@@ -685,7 +682,7 @@ function registerSeatSocket(row, column) {
               //push from the server for a registerd user.
 
               //Parse Pixels Into display
-							$json_data = JSON.parse($data.data);
+							var json_data = JSON.parse(data.data);
 
               console.log('New Pixel Pushed: "' + topic + '" : ' + json_data);
           });
