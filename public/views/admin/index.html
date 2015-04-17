@@ -6,18 +6,23 @@
 
 <form action="/file-upload"
       class="dropzone"
-      id="my-awesome-dropzone"></form>
+      id="my-awesome-dropzone">
+</form>
+
+<button id="start-button">Start Media Stream</button>
+<button id="stop-button">Stop Media Stream</button>
 
 
 <script src="../../js/dropzone.js"></script>
+<script src="../../js/admin_dashboard.js"></script>
 <script>
 
-Dropzone.options.myAwesomeDropzone = {
-  paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 4, // MB
-  accept: function(file, done) {
-    done();
-  }
-};
+	Dropzone.options.myAwesomeDropzone = {
+	  paramName: "file", // The name that will be used to transfer the file
+	  maxFilesize: 4, // MB
+	  accept: function(file, done) {
+		done();
+	  }
+	};
 
 </script>

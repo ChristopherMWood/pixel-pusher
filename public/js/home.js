@@ -1,7 +1,9 @@
 var X_SEATS = 6;
 var Y_SEATS = 6;
-document.onload = function() {
-	transitionBg(true);
+var myVar;
+
+window.onload = function() {
+	transitionBg();
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
 	console.log("ok");
 
@@ -14,22 +16,20 @@ document.onload = function() {
 /*
 
 */
-function transitionBg(isTransitionOn) {
+function transitionBg() {
 
-	if (isTransitionOn) {
-
-		console.log("oh");
-		var myVar = setInterval( function() {
-			console.log("oh yeah");
-			document.getElementById("bg").className = "bgYellowTransition";
-			setTimeout(secondTransition, 7500);
-			setTimeout(thirdTransition, 15000);
-		}, 22500);
-	}
-	else {
-		document.getElementById("bg").className = "settingsBody";
-	}
-
+	console.log("oh");
+	document.getElementById("bg").className = "bgYellowTransition";
+	setTimeout(secondTransition, 7500);
+	setTimeout(thirdTransition, 15000);
+	
+	myVar = setInterval( function() {
+		console.log("oh yeah");
+		document.getElementById("bg").className = "bgYellowTransition";
+		setTimeout(secondTransition, 7500);
+		setTimeout(thirdTransition, 15000);
+	}, 22500);
+	
 }
 
 
@@ -170,6 +170,11 @@ function infoClicked() {
 		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
 							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
 							+ seatValue + "</div>";
+	}
+	else {
+		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
+							+ "</br>Row: " + "</br>Seat Number: "
+							+ "</div>";	
 	}
 	
 
@@ -397,7 +402,7 @@ function highlightSeat(rowNum, seatNum) {
 *This gets the ranges from the database
 */
 function getRanges() {
-  var parameters = {};
+	var parameters = {};
     parameters['api_name'] = 'admin';
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
@@ -602,6 +607,9 @@ function createPixelTable(seat_x, seat_y) {
 	
 	document.getElementById("pixelTableDiv").innerHTML = tableString;
 	document.getElementById("pixelTableDiv").style.display = "block";
+	
+	//Set pixels in the tables with API calls and JSON parsing.
+	//api_request();
 	
 }
 
