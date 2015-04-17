@@ -29,7 +29,7 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 
   $paramList = explode("-", $parameters);
 
-  print_r($paramList);
+  // print_r($paramList);
 
 	$request = new Request($model, $method, $paramList);
 	//Prepare response obj
@@ -38,6 +38,7 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{parameters}', fun
 	//Call corresponding API below if possible
   if($model == "user") {
 		include "lib/user_api.php";
+    echo "Called user api";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
