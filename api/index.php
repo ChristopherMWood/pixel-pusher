@@ -39,13 +39,13 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
 	$api_obj; //Pre define for if-else if block
 	//Call corresponding API below if possible
   if($model == "user") {
-		include "/lib/user_api.php";
+		include __DIR__."/lib/user_api.php";
     echo "here";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
-		include "/lib/admin_api.php";
+		include __DIR__."/lib/admin_api.php";
 		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
