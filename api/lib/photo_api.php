@@ -51,15 +51,15 @@ class PhotoApi extends BaseApi
 			 $connection->connect();
 		for ($x = 0; $x < 6; $x++)
 		{
-		for ($y = 0; $y < 6; $y++)
-		{
-			 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
-			 $result = $connection->query($phql);
-			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  $this->data['admin'];
-				$admin = $result->fetchArray();
-			 echo '<pre>' . var_dump($admin) . '</pre>';
-		}
+			for ($y = 0; $y < 6; $y++)
+			{
+				 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
+				 $result = $connection->query($phql);
+				 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+				  $this->data['admin'];
+					$admin = $result->fetchArray();
+				 echo '<pre>' . var_dump($admin) . '</pre>';
+			}
 		}
 			 $phql = "SELECT * FROM pixel where image='1a'";
 			 $result = $connection->query($phql);
@@ -73,6 +73,17 @@ class PhotoApi extends BaseApi
 				$this->data['r_val'] = $admin[3];
 				$this->data['g_val'] = $admin[4];
 				$this->data['b_val'] = $admin[5];
+
+
+				$content = array('row-column' => 'all', 'data' => $this->data);
+
+				$context = new ZMQContext();
+				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
+				$socket->connect("tcp://127.0.0.1:5555");
+
+				$socket->send(json_encode($content));
+
+
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
@@ -109,6 +120,7 @@ class PhotoApi extends BaseApi
 				$this->data['r_val'] = $admin[3];
 				$this->data['g_val'] = $admin[4];
 				$this->data['b_val'] = $admin[5];
+
 				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();

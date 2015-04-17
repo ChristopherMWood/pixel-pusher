@@ -22,14 +22,14 @@ function transitionBg() {
 	document.getElementById("bg").className = "bgYellowTransition";
 	setTimeout(secondTransition, 7500);
 	setTimeout(thirdTransition, 15000);
-	
+
 	myVar = setInterval( function() {
 		console.log("oh yeah");
 		document.getElementById("bg").className = "bgYellowTransition";
 		setTimeout(secondTransition, 7500);
 		setTimeout(thirdTransition, 15000);
 	}, 22500);
-	
+
 }
 
 
@@ -105,7 +105,7 @@ function thirdTransition() {
 
 */
 function displayPPInfo() {
-	
+
 	document.getElementById("home-arrow").style.display = "none";
 
 	var icon = document.getElementById("ppIcon");
@@ -152,7 +152,7 @@ function displayPPInfo() {
 */
 function infoClicked() {
 
-	var appInfo = document.getElementById("appInfo");			
+	var appInfo = document.getElementById("appInfo");
 	var sectionValue = document.getElementById("user-section").value;
 	var rowValue = document.getElementById("user-row").value;
 	var seatValue = document.getElementById("user-seat").value;
@@ -163,7 +163,7 @@ function infoClicked() {
 						+ "</br></br>Developers:</br>Michael Peter</br>Christopher Wood</br>"
 						+ "Dillon Gresham</br>Connor Hoene";
 	appCredits.innerHTML = "<div id='appCredits'></br>" + appCreditsString + "</div>";
-	
+
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
 		//NOTE:
 		//putting the div tags in the inner html gives the double border look, which i like.
@@ -174,9 +174,8 @@ function infoClicked() {
 	else {
 		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
 							+ "</br>Row: " + "</br>Seat Number: "
-							+ "</div>";	
+							+ "</div>";
 	}
-	
 
 	if (appInfo.style.display == "none") {
 
@@ -230,13 +229,13 @@ function infoClicked() {
 */
 function settingsClicked() {
 	getRanges();
-	
+
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
 	if (document.getElementById("sectionDD") != null) {
 		document.getElementById("sectionDD").value = "default";
 	}
-	
+
 
 	//Use these values which would be set by the user to determine
 	//whether or not the settings page should prompt the user to enter
@@ -245,8 +244,8 @@ function settingsClicked() {
 	var sectionValue = document.getElementById("user-section").value;
 	var rowValue = document.getElementById("user-row").value;
 	var seatValue = document.getElementById("user-seat").value;
-	
-	
+
+
 	// change the screen to display the correct elements
 	document.getElementById("bg").className = "settingsBody";
 	document.getElementById("ppDiv").style.display = "none";
@@ -262,7 +261,7 @@ function settingsClicked() {
 	var rowDiv = document.getElementById("rowDiv");
 	var seatDiv = document.getElementById("seatDiv");
 	var rowVal;
-	
+
 	//trying to make it so that the dropdown menu doesn't appear when seat
 	//is already chosen
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
@@ -276,7 +275,7 @@ function settingsClicked() {
 	else {
 		sectionDiv.style.display = "block";
 	}
-	
+
 
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
@@ -306,7 +305,13 @@ function settingsClicked() {
 		highlightSeat(rowVal, seatVal);
 		setDDText(seatVal, 2);
 		document.getElementById("user-seat").value = seatVal;
-		
+
+		$('#gridHeight').val();
+		$('#gridWidth').val();
+		$('#user-section').val();
+		$('#user-row').val();
+		$('#user-seat').val();
+
 		showResetButton();
 	});
 
@@ -348,8 +353,8 @@ function setDDText(ddString, dropDownNum) {
 		document.getElementById("user-seat").value = ddString;
 		ddName = "seat";
 	}
-	
-	
+
+
 	// clear the dropdown's Div and then create a text field
 	ddDiv.innerHTML = "";
 	ddDiv.innerHTML += "<h name='" + ddName + "Text' id='" + ddName + "Text'>" + resultString + "</h>";
@@ -407,7 +412,7 @@ function getRanges() {
     parameters['api_method'] = 'get_range';
     parameters['type'] = 'current';
 
-	
+
 		var x = X_SEATS;
 		var rowDDHtml = "";
 		rowDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
@@ -539,7 +544,7 @@ function api_request(pars, callback) {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 	In response to clicking the 'back' button from the seat selection
-	screen. The home page is shown with only the pixelpusher icon 
+	screen. The home page is shown with only the pixelpusher icon
 	displayed. If the user input their seat correctly, the background
 	should be the pixel of the media corresponding to their seat selection.
 	(assuming that the media has begun being displayed in the first place)
@@ -558,10 +563,15 @@ function backClicked() {
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
 	document.getElementById("resetDiv").style.display = "none";
+<<<<<<< HEAD
 	
 	
 	registerSeatSocket(6, 6);
 	
+=======
+
+
+>>>>>>> 6a190574df212dd0c8970743282c7ebc0a2ac50d
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
@@ -579,12 +589,12 @@ function backClicked() {
 	user has put in through the settings menu in the form of a pixels assigned to cells
 	in a dynamically generated table.
 	No media will be displayed unless the admin is currently streaming media in the first place.
-	
+
 	Params: the seat location of the user in an x, y (row, seat #) pairing.
 */
 function createPixelTable(seat_x, seat_y) {
-	
-	//Function that creates a grid that will display the pixels 
+
+	//Function that creates a grid that will display the pixels
 	//associates with your seat assignment.
 	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
 	var windowHeight = $(window).height();
@@ -606,13 +616,10 @@ function createPixelTable(seat_x, seat_y) {
 		tableString += "</tr>";
 	}
 	tableString += "</table>";
-	
+
 	document.getElementById("pixelTableDiv").innerHTML = tableString;
 	document.getElementById("pixelTableDiv").style.display = "block";
-	
-	//Set pixels in the tables with API calls and JSON parsing.
-	//api_request();
-	
+
 }
 
 
@@ -624,7 +631,7 @@ function createPixelTable(seat_x, seat_y) {
 */
 function showResetButton() {
 	document.getElementById("resetDiv").style.display = "block";
-	
+
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
@@ -635,18 +642,58 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("user-section").value = 0;
 	document.getElementById("user-row").value = 0;
 	document.getElementById("user-seat").value = 0;
-	
+
 	document.getElementById("sectionText").style.display = "none";
 	document.getElementById("rowText").style.display = "none";
 	document.getElementById("seatText").style.display = "none";
-	
+
 	//clear the text fields and add the dropdown menus back
 	document.getElementById("sectionDD").value = "default";
 	document.getElementById("rowDD").value = "default";
 	document.getElementById("seatDD").value = "default";
-	
+
 	document.getElementById("sectionDiv").style.display = "block";
-	
+
 };
 
 
+//This is the single websocket for each user
+var conn;
+
+/*
+This will register a seat the user chose with a
+socket on the backend server.
+*/
+function registerSeatSocket(row, column) {
+
+  //Creates the connection to server for pixel pull ability
+  conn = new ab.Session('ws://www.pixelpush.us:8080',
+      function() {
+          conn.subscribe(row + "" + column, function(topic, data) {
+              //This is where all of the pixels are pulled into on each
+              //push from the server for a registerd user.
+
+              //Parse Pixels Into display
+
+
+              console.log('New Pixel Pushed: "' + topic + '" : ' + data.title);
+          });
+      },
+      function() {
+          //Display closed message here if necessary
+          //This should be a GUI change, not console change for final version
+          console.warn('WebSocket connection closed');
+      },
+      {'skipSubprotocolCheck': true}
+  );
+}
+
+/*
+This closes the seatsocket for the user to allow for
+a new socket or closing of the browser.
+*/
+function unregisterSeatSocket() {
+  if(conn) {
+    conn.close();
+  }
+}

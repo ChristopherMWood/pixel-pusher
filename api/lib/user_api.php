@@ -42,7 +42,7 @@ class UserApi extends BaseApi
 				echo "REGISTERING POSITION";
 
 				$entryData = array(
-		        'category' => "testCategory"
+		        'row-column' => "testCategory"
 		      , 'title'    => "testTitle"
 		      , 'article'  => "testArticle"
 		      , 'when'     => time()
