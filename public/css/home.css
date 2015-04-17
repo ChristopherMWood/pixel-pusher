@@ -59,7 +59,7 @@ body {
     animation:spin-reverse .5s linear;
 }
 
-.icon-clicked {	
+.icon-clicked {
 	-webkit-animation:spin .5s linear;
     -moz-animation:spin .5s linear;
     animation:spin .5s linear;
@@ -103,8 +103,8 @@ body {
 	font-family: monaco,Consolas,Lucida Console,monospace;
 	border-radius: 25px;
     border: 2px solid #FFFFFF;
-    padding-top: 20px; 
-    padding-bottom: 20px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
 	width:50%;
 	margin-left:auto;
 	margin-right:auto;
@@ -221,7 +221,7 @@ select {
 	animation-name: floating;
 	-webkit-animation-name: floating;
 
-	animation-duration: 1.5s;	
+	animation-duration: 1.5s;
 	-webkit-animation-duration: 1.5s;
 
 	animation-iteration-count: infinite;
@@ -230,32 +230,35 @@ select {
 
 @keyframes floating {
 	0% {
-		transform: translateY(0%);	
+		transform: translateY(0%);
 	}
 	50% {
-		transform: translateY(8%);	
-	}	
+		transform: translateY(8%);
+	}
 	100% {
 		transform: translateY(0%);
-	}			
+	}
 }
 
 @-webkit-keyframes floating {
 	0% {
-		-webkit-transform: translateY(0%);	
+		-webkit-transform: translateY(0%);
 	}
 	50% {
-		-webkit-transform: translateY(8%);	
-	}	
+		-webkit-transform: translateY(8%);
+	}
 	100% {
 		-webkit-transform: translateY(0%);
-	}			
+	}
 }
 
 
 #pixelTable {
+  margin: 0;
+  padding: 0;
+  
 	border: 1px solid black;
-    border-collapse: collapse;
+  border-collapse: collapse;
 	background:transparent;
 }
 
