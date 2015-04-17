@@ -56,12 +56,12 @@ class UserApi extends BaseApi
 				// $this->data['row'] = $this->request->parameters[1];
 				// $this->data['column'] = $this->request->parameters[2];
 				// $this->response->setJsonContent(array('success' => true, 'data' => $this->data));
-
-				$context = new ZMQContext();
-		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
-		    $socket->connect("tcp://www.pixelpush.us:5555");
-
-		    $socket->send(json_encode($this->data));
+				//
+				// $context = new ZMQContext();
+		    // $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
+		    // $socket->connect("tcp://www.pixelpush.us:5555");
+				//
+		    // $socket->send(json_encode($this->data));
 
 				return $this->response; //Supply response
 
