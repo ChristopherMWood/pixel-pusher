@@ -41,12 +41,10 @@ class UserApi extends BaseApi
 
 				$this->data['TestData'] = "Yay It Worked!!!";
 
-		// 		$entryData = array(
-    //     'category' => $_POST['category']
-    //   , 'title'    => $_POST['title']
-    //   , 'article'  => $_POST['article']
-    //   , 'when'     => time()
-    // );
+				$entryData = array(
+        'category' => "kitten"
+      , 'when'     => time()
+    	);
 
 
 				// $number_of_parameter = ($this->request->parameters);
@@ -68,7 +66,7 @@ class UserApi extends BaseApi
 		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
 		    $socket->connect("tcp://www.pixelpush.us:5555");
 
-		    $socket->send(json_encode($this->data));
+		    $socket->send(json_encode($entryData));
 
 				return $this->response; //Supply response
 
