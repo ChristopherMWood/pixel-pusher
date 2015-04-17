@@ -274,6 +274,7 @@ function settingsClicked() {
 	}
 	else {
 		sectionDiv.style.display = "block";
+
 	}
 
 
@@ -571,6 +572,7 @@ function backClicked() {
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
 		createPixelTable(userRow, userCol);
@@ -650,6 +652,20 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("sectionDiv").style.display = "block";
 
 };
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
+function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
+	var pixelTable = document.getElementById("pixelTable");
+	
+	pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+}
+
+
 
 
 //This is the single websocket for each user
