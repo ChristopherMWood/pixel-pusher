@@ -41,6 +41,14 @@ class UserApi extends BaseApi
 
 				$this->data['TestData'] = "Yay It Worked!!!";
 
+		// 		$entryData = array(
+    //     'category' => $_POST['category']
+    //   , 'title'    => $_POST['title']
+    //   , 'article'  => $_POST['article']
+    //   , 'when'     => time()
+    // );
+
+
 				// $number_of_parameter = ($this->request->parameters);
 				//
 				// if($number_of_parameters != 3) {
@@ -56,11 +64,11 @@ class UserApi extends BaseApi
 				// $this->data['column'] = $this->request->parameters[2];
 				// $this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 				//
-				// $context = new ZMQContext();
-		    // $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
-		    // $socket->connect("tcp://www.pixelpush.us:5555");
-				//
-		    // $socket->send(json_encode($this->data));
+				$context = new ZMQContext();
+		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
+		    $socket->connect("tcp://www.pixelpush.us:5555");
+
+		    $socket->send(json_encode($this->data));
 
 				return $this->response; //Supply response
 
