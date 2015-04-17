@@ -1,5 +1,6 @@
 <?php
     require dirname(__DIR__) . '../../vendor/autoload.php';
+    include "PixelPusher.php";
 
     $loop   = React\EventLoop\Factory::create();
     $pusher = new addhawk\Pusher;
