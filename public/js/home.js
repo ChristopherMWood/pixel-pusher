@@ -683,10 +683,14 @@ function registerSeatSocket(row, column) {
 
               //Parse Pixels Into display
 							var array = JSON.parse(data.data);
-							alert(array['r_val']);
 
+							var xPos = parseInt(array['x_pos']);
+							var yPos = parseInt(array['y_pos']);
+							var rVal = parseInt(array['r_val']);
+							var gVal = parseInt(array['g_val']);
+							var bVal = parseInt(array['b_val']);
 
-							// setPixelTableCellColor(row, col, r_val, g_val, b_val)
+							setPixelTableCellColor(xPos, yPos, rVal, gVal, bVal);
 
               console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
