@@ -274,6 +274,7 @@ function settingsClicked() {
 	}
 	else {
 		sectionDiv.style.display = "block";
+
 	}
 
 
@@ -571,6 +572,7 @@ function backClicked() {
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
 		createPixelTable(userRow, userCol);
