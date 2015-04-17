@@ -13,7 +13,7 @@ class Pusher implements WampServerInterface {
   protected $subscribedTopics = array();
 
   public function onSubscribe(ConnectionInterface $conn, $topic) {
-      $this->subscribedTopics[$this->subID] = $topic;
+      $this->subscribedTopics[$topic['category']] = $topic;
       echo $this->subID + " Subscribed\n";
       $this->subID = $this->subID + 1;
   }
