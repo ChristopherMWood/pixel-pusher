@@ -27,8 +27,7 @@ $router = new Phalcon\Mvc\Micro($di);
 */
 $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', function($model, $method, $paramData) use ($router){
 	//Build request obj
-	include __DIR__."lib/request.php";
-  echo __DIR__."lib/request.php";
+	include __DIR__."/lib/request.php";
   $paramList = explode("-", $paramData);
   // print_r($paramList);
 
@@ -40,13 +39,13 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
 	$api_obj; //Pre define for if-else if block
 	//Call corresponding API below if possible
   if($model == "user") {
-		include "lib/user_api.php";
+		include "/lib/user_api.php";
     echo "here";
 		$api_obj = new UserApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
 	else if($model == "admin") {
-		include "lib/admin_api.php";
+		include "/lib/admin_api.php";
 		$api_obj = new AdminApi($request, $response, $router);
 		$response = $api_obj->executeRequest();
 	}
