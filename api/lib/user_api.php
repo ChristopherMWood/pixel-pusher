@@ -39,7 +39,7 @@ class UserApi extends BaseApi
     */
     private function registerPosition() {
 			try {
-
+				echo "REGISTERING POSITION";
 
 				$entryData = array(
         'category' => "kittens"
