@@ -5,10 +5,10 @@ use Ratchet\Wamp\WampServerInterface;
 
 class Pusher implements WampServerInterface {
 
-    protected $subscribedTopics = array();
+    protected $subscribedTopic;
 
       public function onSubscribe(ConnectionInterface $conn, $topic) {
-          $this->subscribedTopics[$topic->getId()] = $topic;
+          $this->subscribedTopic = $topic;
       }
 
       /**
@@ -17,7 +17,7 @@ class Pusher implements WampServerInterface {
       public function onBlogEntry($entry) {
           $entryData = json_decode($entry, true);
 
-          $topic = $this->subscribedTopics[$entryData['category']];
+          $topic = $this->subscribedTopic;
 
           // re-send the data to all the clients subscribed to that category
           $topic->broadcast($entryData);
