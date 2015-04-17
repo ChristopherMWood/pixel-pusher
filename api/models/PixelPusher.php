@@ -32,8 +32,7 @@ class Pusher implements WampServerInterface {
       $topic->broadcast($entryData);
   }
 
-    public function onSubscribe(ConnectionInterface $conn, $topic) {
-    }
+
     public function onUnSubscribe(ConnectionInterface $conn, $topic) {
     }
     public function onOpen(ConnectionInterface $conn) {
