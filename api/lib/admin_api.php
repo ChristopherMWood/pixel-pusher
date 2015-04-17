@@ -1,5 +1,4 @@
 <?php
-namespace addhawk;
 
 include "base_api.php";
 
