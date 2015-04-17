@@ -39,12 +39,13 @@ class UserApi extends BaseApi
     private function registerPosition() {
 			try {
 
-				$this->data['TestData'] = "Yay It Worked!!!";
 
 				$entryData = array(
         'category' => "kittens"
       , 'when'     => time()
     	);
+
+			$this->data['responseData'] = $entryData;
 
 
 				// $number_of_parameter = ($this->request->parameters);
@@ -63,7 +64,7 @@ class UserApi extends BaseApi
 				// $this->response->setJsonContent(array('success' => true, 'data' => $this->data));
 				//
 				$context = new ZMQContext();
-		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'New PixelPusher');
+		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 		    $socket->connect("tcp://www.pixelpush.us:5555");
 
 		    $socket->send(json_encode($entryData));
