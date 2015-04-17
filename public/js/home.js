@@ -420,7 +420,7 @@ function getRanges() {
 
 		var y = Y_SEATS;
 		var seatDDHtml = "";
-		seatDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
+		seatDDHtml += "<option value='default' disabled selected>Select Your Seat:</option>";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";
