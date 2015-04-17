@@ -1,3 +1,5 @@
+var X_SEATS = 6;
+var Y_SEATS = 6;
 document.onload = function() {
 	transitionBg(true);
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
@@ -391,7 +393,7 @@ function getRanges() {
     parameters['type'] = 'current';
 
 	
-		var x = 10;
+		var x = X_SEATS;
 		var rowDDHtml = "";
 		rowDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < x; i++) {
@@ -400,7 +402,7 @@ function getRanges() {
 		}
 		$("#rowDD").html(rowDDHtml);
 
-		var y = 20;
+		var y = Y_SEATS;
 		var seatDDHtml = "";
 		seatDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
 		for(var i = 0; i < y; i++) {
