@@ -3,13 +3,11 @@
 
 <script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
 <script>
-        var conn = new ab.Session('ws://104.131.45.86:8080',
-
+    var conn = new ab.Session('ws://localhost:8080',
         function() {
-            conn.subscribe('kittens', function(topic, data) {
+            conn.subscribe('testCategory', function(topic, data) {
                 // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
-                alert("PIXEL PUSHED");
-                console.log("New Pixel Pushed");
+                console.log('New article published to category "' + topic + '" : ' + data.title);
             });
         },
         function() {
