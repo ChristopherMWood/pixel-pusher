@@ -69,7 +69,7 @@ class UserApi extends BaseApi
 		    $socket->connect("tcp://www.pixelpush.us:5555");
 
 		    $socket->send(json_encode($entryData));
-
+				echo "THIS WORKED?";
 				return $this->response; //Supply response
 
 			} catch (Exception $e) {
