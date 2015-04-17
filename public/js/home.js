@@ -490,7 +490,7 @@ function api_request(pars, callback) {
     if (validRequest) {
 
         //Build request url
-        var request_url = window.location.origin + '/pixelpusher/api/' + pars['api_name'] + '/' +
+        var request_url = window.location.origin + '/api/' + pars['api_name'] + '/' +
             pars['api_method'] + '/param';
 
         //Turn each key into valid send value
