@@ -13,9 +13,8 @@ class Pusher implements WampServerInterface {
   protected $subscribedTopics = array();
 
   public function onSubscribe(ConnectionInterface $conn, $topic) {
-      $this->subscribedTopics[$topic['category']] = $topic;
-      echo $this->subID + " Subscribed\n";
-      $this->subID = $this->subID + 1;
+      $this->subscribedTopics[$topic->getId()] = $topic;
+      echo $topic->getId()." Subscribed\n";
   }
 
   /**
@@ -24,15 +23,15 @@ class Pusher implements WampServerInterface {
   public function onBlogEntry($entry) {
       $entryData = json_decode($entry, true);
 
-      echo "BlogEntryOccured";
+      // echo "BlogEntryOccured";
       // If the lookup topic object isn't set there is no one to publish to
-      if (!array_key_exists($entryData['category'], $this->subscribedTopics)) {
-          echo "Subscription not found: ".$entryData['category'];
-          print_r(array_keys($this->subscribedTopics));
-          return;
-      }
+      // if (!array_key_exists($entryData['category'], $this->subscribedTopics)) {
+      //     echo "Subscription not found: ".$entryData['category'];
+      //     print_r(array_keys($this->subscribedTopics));
+      //     return;
+      // }
 
-      $topic = $this->subscribedTopics[$entryData['category']];
+      $topic = $this->subscribedTopics[0];
 
       // re-send the data to all the clients subscribed to that category
       $topic->broadcast($entryData);
