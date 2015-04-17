@@ -249,6 +249,7 @@ function settingsClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "inline";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("tableGridDiv").style.display = "inline-block";
+	document.getElementById("pixelTableDiv").style.display = "none";
 	
 	//document.getElementById("reset-seat-button").style.display = "inline-block";
 
@@ -417,14 +418,14 @@ function getRanges() {
           // document.getElementById("gridHeight").value = y;
           // document.getElementById("gridWidth").value = x;
 
-          alert(x + " " + y);
+          //alert(x + " " + y);
         }
         else {
             //alert('api called failed');
           x = 5;//response['data']['x_range'];
           y = 8;//response['data']['y_range'];
 
-          alert(x + " " + y);
+          //alert(x + " " + y);
         }
     });
 }
@@ -533,12 +534,14 @@ function backClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
+	document.getElementById("resetDiv").style.display = "none";
 	
 	
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
 		createPixelTable(userRow, userCol);
 	}
@@ -548,11 +551,11 @@ function backClicked() {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 	This function displays the media associated with the seat assignment that the
-	user has put in through the settings menu in the form of a pixel.
+	user has put in through the settings menu in the form of a pixels assigned to cells
+	in a dynamically generated table.
 	No media will be displayed unless the admin is currently streaming media in the first place.
 	
-	Params: RGB value? Image object of some sort (this assumes we're displaying part of an image
-			and not only a pixel)?
+	Params: the seat location of the user in an x, y (row, seat #) pairing.
 */
 function createPixelTable(seat_x, seat_y) {
 	
@@ -561,10 +564,10 @@ function createPixelTable(seat_x, seat_y) {
 	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
-	var cellHeight = windowHeight / 50;
-	var cellWidth = windowWidth / 50;
-	var width = 50;
-	var height = 50;
+	var cellHeight = windowHeight / 6;
+	var cellWidth = windowWidth / 6;
+	var width = 6;
+	var height = 6;
 
 	for (var i = 0; i < width; i++) {
 		// id is row_ and then the row number
@@ -579,8 +582,8 @@ function createPixelTable(seat_x, seat_y) {
 	}
 	tableString += "</table>";
 	
-	document.getElementById("pixelTable").innerHTML = tableString;
-	document.getElementById("pixelTable").style.display = "block";
+	document.getElementById("pixelTableDiv").innerHTML = tableString;
+	document.getElementById("pixelTableDiv").style.display = "block";
 	
 }
 
@@ -592,10 +595,7 @@ function createPixelTable(seat_x, seat_y) {
 	components of their seat information (section, row, and seat #).
 */
 function showResetButton() {
-	// document.getElementById("settingsDiv").style.display = "block";
-	// document.getElementById("select-seat-label").style.display = "none";
-	// document.getElementById("settingsButton").style.display = "none";	
-	// document.getElementById("reset-seat-button").style.display = "block";
+	document.getElementById("resetDiv").style.display = "block";
 	
 }
 
@@ -604,6 +604,10 @@ document.getElementById("reset-seat-button").onclick = function() {
 	// document.getElementById("user-section").value = 0;
 	// document.getElementById("user-row").value = 0;
 	// document.getElementById("user-seat").value = 0;
+	
+	// document.getElementById("sectionText").style.display = "none";
+	// document.getElementById("rowText").style.display = "none";
+	// document.getElementById("seatText").style.display = "none";
 	
 	//clear the text fields and add the dropdown menus back
 	// document.getElementById("sectionDiv").value = "";

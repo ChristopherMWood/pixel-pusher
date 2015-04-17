@@ -4,7 +4,8 @@
 </header>
 
 <body id="bg" name="bg">
-	<div id="pixelTable" name="pixelTable" style="display:none;"></div>
+	<div id="pixelTableDiv" name="pixelTableDiv" style="display:none;"></div>
+	
 	<!-- The hidden values below are used for storing user information
 			gridWidth and gridHeight are used for storing the dimensions
 			of the section that the user chooses for their seat assignment.
@@ -26,11 +27,7 @@
 	<div id="lowerButtonsDiv" name="lowerButtonsDiv" style="display:none">
 		<div id="settingsDiv" name="settingsDiv" onclick="settingsClicked();" style="text-align:center;">
 			<input type="image" src="public/img/chair_icon.png" name="settingsButton" id="settingsButton" alt="Settings" />
-			<p id="select-seat-label" class="home-screen-labels">Select Your Seat</p>
-			
-			<!-- todo: FINISH THIS RESET BUTTON -->
-			<button type="button" id="reset-seat-button" style="display:none;">Reset Seat Assignment (Placeholder Button)</button>
-			
+			<p id="select-seat-label" class="home-screen-labels">Select Your Seat</p>			
 		</div>
 		<div id="infoDiv" name="infoDiv" onclick="infoClicked();" style="text-align:center;">
 			<input type="image" src="public/img/info_icon.png" name="infoButton" id="infoButton" alt="Info" />
@@ -78,6 +75,10 @@
 			<div id="undoSelectionDiv" name="undoSelectionDiv" class="innderDDDiv"></div>
 		</div>
 		<div id="tableGridDiv" name="tableGridDiv" style="display:none"></div>
+		
+		<div id="resetDiv" name="resetDiv" style="display:none;">
+			<button type="button" id="reset-seat-button">Reset Seat Assignment (Placeholder Button)</button>
+		</div>
 	</div>
 </body>
 

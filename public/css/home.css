@@ -73,6 +73,11 @@ body {
 @-webkit-keyframes spin-reverse { 100% { -webkit-transform: rotate(-360deg); } }
 @keyframes spin-reverse { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
+
+#ppIcon {
+	margin-top:10px;
+}
+
 #ppFontLogo {
 	display:none;
 
@@ -252,4 +257,11 @@ select {
 	border: 1px solid black;
     border-collapse: collapse;
 	background:transparent;
+}
+
+#resetDiv {
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:20%;
 }
