@@ -66,7 +66,7 @@ class UserApi extends BaseApi
 				//
 				$context = new ZMQContext();
 		    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
-		    $socket->connect("tcp://www.pixelpush.us:5555");
+		    $socket->connect("tcp://www.pixelpush.us:8080");
 
 		    $socket->send(json_encode($entryData));
 				echo "THIS WORKED?";
