@@ -692,7 +692,7 @@ function registerSeatSocket(row, column) {
 							var gVal = parseInt(array['g_val']);
 							var bVal = parseInt(array['b_val']);
 
-							setPixelTableCellColor(xPos, yPos, rVal, gVal, bVal);
+							// setPixelTableCellColor(xPos, yPos, rVal, gVal, bVal);
 
               console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
