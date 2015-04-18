@@ -49,48 +49,55 @@ class PhotoApi extends BaseApi
 				));
 			 //Reconnect
 			 $connection->connect();
+				$pixels = array();
 		for ($x = 0; $x < 6; $x++)
 		{
 			for ($y = 0; $y < 6; $y++)
 			{
-				 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
+				 $pixels[(string)$x."-".(string)$y] = array();
+				 $phql = "SELECT r_val, g_val, b_val FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
 				 $result = $connection->query($phql);
 				 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-				  $this->data['admin'];
-					$admin = $result->fetchArray();
-				 echo '<pre>' . var_dump($admin) . '</pre>';
+				  //$this->data['seat'];
+				 $rawPixels = $result->fetchArray();
+					//$pixels[(string)$x."-".(string)$y] = $result->fetchArray();
+				 $pixels[(string)$x."-".(string)$y]['r_val'] = $rawPixels[0];
+				 $pixels[(string)$x."-".(string)$y]['g_val'] = $rawPixels[1];
+				 $pixels[(string)$x."-".(string)$y]['b_val'] = $rawPixels[2];
+				 //echo '<pre>' . var_dump($seat) . '</pre>';
 			}
 		}
 			 $phql = "SELECT * FROM pixel where image='1a'";
 			 $result = $connection->query($phql);
 			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  $this->data['admin'];
-				$admin = $result->fetchArray();
-			  var_dump($admin);
-				$this->data['x_pos'] = $admin[0];
-				$this->data['y_pos'] = $admin[1];
-				$this->data['image'] = $admin[2];
-				$this->data['r_val'] = $admin[3];
-				$this->data['g_val'] = $admin[4];
-				$this->data['b_val'] = $admin[5];
+			  $this->data['seat'];
+				$seat = $result->fetchArray();
+			 //var_dump($seat);
+				//$this->data['x_pos'] = $seat[0];
+				//$this->data['y_pos'] = $seat[1];
+				//$this->data['image'] = $seat[2];
+				//$this->data['r_val'] = $seat[3];
+				//$this->data['g_val'] = $seat[4];
+				//$this->data['b_val'] = $seat[5];
 
 				$output = array();
-				foreach($data as $v) {
-				    $output[key($v)] = current($v);
-				}
-				echo json_encode($output, 128);
+				//foreach($pixels as $v) {
+				    //$output[key($v)] = current($v);
+				//}
+				//echo json_encode($output, 128);
 
-				$content = array('category' => 'all', 'data' => json_encode($this->data));
+				//$content = array('category' => 'all', 'data' => json_encode($this->data));
+				$content = array('category' => 'all', 'data' => json_encode($pixels));
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				$socket->connect("tcp://127.0.0.1:5555");
 				$socket->send(json_encode($content));
 
 
-				$this->response->setJsonContent(array('success' => true, 'data' => $this->data));
+				$this->response->setJsonContent(array('success' => true, 'data' => $pixels));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
-				$this->response->setJsonContent(array('success' => false, 'data' => $this->data));
+				$this->response->setJsonContent(array('success' => false, 'data' => $pixels));
 			}
     	return $this->response; //Supply response
     }
@@ -110,21 +117,21 @@ class PhotoApi extends BaseApi
 			 $connection->connect();
 				$xp = $this->parameters[0];
 				$yp = $this->parameters[1];
-				var_dump($xp);
+				//var_dump($xp);
 			 $phql = "SELECT * FROM pixel where image='1a' and x_pos='$xp' and y_pos='$yp'";
 			 $result = $connection->query($phql);
 			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  $this->data['admin'];
-				$admin = $result->fetchArray();
-			 //var_dump($admin);
-				$this->data['x_pos'] = $admin[0];
-				$this->data['y_pos'] = $admin[1];
-				$this->data['image'] = $admin[2];
-				$this->data['r_val'] = $admin[3];
-				$this->data['g_val'] = $admin[4];
-				$this->data['b_val'] = $admin[5];
+			  //$this->data['seat'];
+				$seat = $result->fetchArray();
+			 //var_dump($seat);
+				$this->data['x_pos'] = $seat[0];
+				$this->data['y_pos'] = $seat[1];
+				$this->data['image'] = $seat[2];
+				$this->data['r_val'] = $seat[3];
+				$this->data['g_val'] = $seat[4];
+				$this->data['b_val'] = $seat[5];
 
-				// $content = array('category' => "".$xp.$yp, 'data' => json_encode($this->data['admin']));
+				// $content = array('category' => "".$xp.$yp, 'data' => json_encode($this->data['seat']));
 				// $context = new ZMQContext();
 				// $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				// $socket->connect("tcp://127.0.0.1:5555");
