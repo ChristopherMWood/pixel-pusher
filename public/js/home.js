@@ -566,12 +566,14 @@ function backClicked() {
 	document.getElementById("resetDiv").style.display = "none";
 
 
-	registerSeatSocket(1, 1);
 
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+
+
+		registerSeatSocket(userRow, userCol);
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
@@ -686,11 +688,11 @@ function registerSeatSocket(row, column) {
               //Parse Pixels Into display
 							var array = JSON.parse(data.data);
 
-							var xPos = parseInt(array['x_pos']);
-							var yPos = parseInt(array['y_pos']);
 							var rVal = parseInt(array['r_val']);
 							var gVal = parseInt(array['g_val']);
 							var bVal = parseInt(array['b_val']);
+
+							alert(array[row + "-" + column]);
 
 							// setPixelTableCellColor(xPos, yPos, rVal, gVal, bVal);
 
