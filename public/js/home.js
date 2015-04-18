@@ -692,7 +692,7 @@ function registerSeatSocket(row, column) {
 							var gVal = parseInt(array['g_val']);
 							var bVal = parseInt(array['b_val']);
 
-							alert(JSON.parse(array[row + "-" + column]));
+							alert(array[row + "-" + column]);
 
 							// setPixelTableCellColor(xPos, yPos, rVal, gVal, bVal);
 
