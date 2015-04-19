@@ -3,6 +3,7 @@ document.getElementById("start-button").onclick = function() {
 	var parameters = {};
     parameters['api_name'] = 'photo';
     parameters['api_method'] = 'get_pixels';
+		parameters['params'] = "a1";
 
     api_request(parameters, function(response){
 
@@ -51,6 +52,7 @@ function pixelPushImage(image) {
 	var parameters = {};
 		parameters['api_name'] = 'photo';
 		parameters['api_method'] = 'get_pixels';
+		parameters['params'] = "a1";
 
 		api_request(parameters, function(response){
 
