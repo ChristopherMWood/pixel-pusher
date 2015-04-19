@@ -2,6 +2,7 @@ var X_SEATS = 6;
 var Y_SEATS = 6;
 var myVar;
 var clippyAgent;
+var isSeatConfirmed = false;
 
 window.onload = function() {
 	transitionBg();
@@ -28,11 +29,13 @@ document.getElementById("backButton").onclick = function() {
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
-		backClicked(true);
+		isSeatConfirmed = true;
 	}
 	else {
-		backClicked(false);
+		isSeatConfirmed = false;
 	}
+	backClicked();
+
 };
 
 
@@ -290,15 +293,33 @@ function settingsClicked() {
 
 	//trying to make it so that the dropdown menu doesn't appear when seat
 	//is already chosen
+	//when values == 0 this means the user has not set that value yet
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
 		sectionDiv.style.display = "none";
-		//works?
+		isSeatConfirmed = true;
+		
 		document.getElementById("sectionChoiceText").style.display = "block";
 		document.getElementById("rowChoiceText").style.display = "block";
 		document.getElementById("seatChoiceText").style.display = "block";
 		showConfirmAndResetButtons();
 	}
+	else if (sectionValue != 0 && rowValue == 0 && seatValue == 0) {
+		isSeatConfirmed = false;
+		sectionDiv.style.display = "none";
+		document.getElementById("sectionDD").style.display = "none";
+
+		document.getElementById("sectionChoiceText").style.display = "block";
+	}
+	else if (sectionValue != 0 && rowValue != 0 && seatValue == 0) {
+		isSeatConfirmed = false;
+		sectionDiv.style.display = "none";
+		document.getElementById("sectionDD").style.display = "none";
+
+		document.getElementById("sectionChoiceText").style.display = "block";
+		document.getElementById("rowChoiceText").style.display = "block";
+	}
 	else {
+		isSeatConfirmed = false;
 		sectionDiv.style.display = "block";
 
 	}
@@ -307,6 +328,8 @@ function settingsClicked() {
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
+			isSeatConfirmed = false;
+			
 			clippyAgent.moveTo(25, 290);
 			clippyAgent.speak("Step 2: Now choose the row that your seat is in.");
 
@@ -321,6 +344,8 @@ function settingsClicked() {
 	$("#rowDD").change(function () {
 		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
+			isSeatConfirmed = false;
+			
 			clippyAgent.moveTo(25, 320);
 			clippyAgent.speak("Step 3: Finally, choose your seat number! Then click 'Confirm'.");
 
@@ -329,10 +354,13 @@ function settingsClicked() {
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
 			document.getElementById("user-row").value = rowVal;
+			
 		}
 	});
 
 	$("#seatDD").change(function () {
+		isSeatConfirmed = true;
+		
 		// when a choice is selected, change to a text field
 		var seatVal = $("#seatDD").val();
 		highlightSeat(rowVal, seatVal);
@@ -584,11 +612,11 @@ function api_request(pars, callback) {
 	This method is used for the click response of the "Confirm" button as
 	well as the click response for the back button on the settings page.
 	
-	Param: isSeatConfirmed
+	isSeatConfirmed
 			if true, this means that the user has seat their seat assignment fully
 			if false, then the user hasn't set the seat
 */
-function backClicked(isSeatConfirmed) {
+function backClicked() {
 
 	document.getElementById("bg").className = "";
 	document.getElementById("ppIcon").className = "icon-init";
@@ -621,7 +649,7 @@ function backClicked(isSeatConfirmed) {
 		}
 	}
 
-
+	clippyAgent.hide();
 
 }
 
@@ -692,6 +720,8 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("seatText").style.display = "none";
 
 	//clear the text fields and add the dropdown menus back
+	document.getElementById("sectionDD").style.display = "block";
+	
 	document.getElementById("sectionDD").value = "default";
 	document.getElementById("rowDD").value = "default";
 	document.getElementById("seatDD").value = "default";
@@ -701,8 +731,7 @@ document.getElementById("reset-seat-button").onclick = function() {
 };
 
 document.getElementById("confirm-seat-button").onclick = function() {
-	//if seat is set, then the back clicked method takes true as a param.
-	backClicked(true);
+	backClicked();
 };
 
 
