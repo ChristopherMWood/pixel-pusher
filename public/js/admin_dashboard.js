@@ -31,10 +31,11 @@ function playSlideshow() {
 		playing = true;
 		var imageLoop = setInterval(function(){
 
+			$('#slideshow-count').text("Image: " + (intervalCount + 1));
 			pixelPushImage("a" + intervalCount);
 			intervalCount++;
 
-			if(intervalCount >= 10) {
+			if(intervalCount >= 8) {
 				clearInterval(imageLoop);
 				intervalCount = 0;
 				playing = false;
