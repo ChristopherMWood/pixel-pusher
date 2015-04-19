@@ -43,7 +43,7 @@ class PhotoApi extends BaseApi
 			try {
 
 				$imageName = $this->params[0];
-				echo "image name: ".$this->params[0]
+				echo "image name: ".$this->params[0];
 
 				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 						"host" => "localhost",
