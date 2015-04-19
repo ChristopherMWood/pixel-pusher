@@ -274,9 +274,10 @@ select {
 	background:transparent;
 }
 
-#resetDiv {
+#confirm-reset-div {
 	margin-top:20px;
 	margin-left:auto;
 	margin-right:auto;
 	width:20%;
+
 }

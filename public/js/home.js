@@ -282,7 +282,7 @@ function settingsClicked() {
 		document.getElementById("sectionChoiceText").style.display = "block";
 		document.getElementById("rowChoiceText").style.display = "block";
 		document.getElementById("seatChoiceText").style.display = "block";
-		showResetButton();
+		showConfirmAndResetButtons();
 	}
 	else {
 		sectionDiv.style.display = "block";
@@ -331,7 +331,7 @@ function settingsClicked() {
 		$('#user-row').val();
 		$('#user-seat').val();
 
-		showResetButton();
+		showConfirmAndResetButtons();
 	});
 
 	// fill the table div with the correct HTML based on table size
@@ -566,10 +566,15 @@ function api_request(pars, callback) {
 	screen. The home page is shown with only the pixelpusher icon
 	displayed. If the user input their seat correctly, the background
 	should be the pixel of the media corresponding to their seat selection.
-	(assuming that the media has begun being displayed in the first place)
-*/
-function backClicked() {
+	(assuming that the media has begun being displayed in the first place).
+	This method is used for the click response of the "Confirm" button as
+	well as the click response for the back button on the settings page.
 	
+	Param: isSeatConfirmed
+			if true, this means that the user has seat their seat assignment fully
+			if false, then the user hasn't set the seat
+*/
+function backClicked(isSeatConfirmed) {
 	document.getElementById("bg").className = "";
 	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
@@ -582,24 +587,28 @@ function backClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
-	document.getElementById("resetDiv").style.display = "none";
-
-
-
-	//Create a grid of table cells on the main page when the back button is
-	//pressed for displaying media to the user
-	var userRow = document.getElementById("user-row").value;
-	var userCol = document.getElementById("user-seat").value;
+	document.getElementById("confirm-reset-div").style.display = "none";
+	
+	if (isSeatConfirmed) {
+		//Create a grid of table cells on the main page when the back button is
+		//pressed for displaying media to the user
+		var userRow = document.getElementById("user-row").value;
+		var userCol = document.getElementById("user-seat").value;
 
 
 		registerSeatSocket(userRow, userCol);
 
-	//Make sure the row and col values were actually set.
-	if (userRow != 0 && userCol != 0) {
-		createPixelTable(userRow, userCol);
-		clippyAgent.moveTo(25, 25);
-		clippyAgent.speak("Woo! You're good to go!");
+		//Make sure the row and col values were actually set.
+		if (userRow != 0 && userCol != 0) {
+			createPixelTable(userRow, userCol);
+			clippyAgent.moveTo(25, 25);
+			clippyAgent.speak("Woo! You're good to go!");
+		}
 	}
+	else {
+		
+	}
+
 
 }
 
@@ -652,13 +661,12 @@ function createPixelTable(seat_x, seat_y) {
 	The reset seat selection button gets displayed when the user has entered all 3
 	components of their seat information (section, row, and seat #).
 */
-function showResetButton() {
-	document.getElementById("resetDiv").style.display = "block";
-
+function showConfirmAndResetButtons() {
+	document.getElementById("confirm-reset-div").style.display = "block";
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
-	document.getElementById("resetDiv").style.display = "none";
+	document.getElementById("confirm-reset-div").style.display = "none";
 		document.getElementById("innerSectionDiv").style.display = "inline-block";
 
 	//clear html tags
@@ -677,6 +685,24 @@ document.getElementById("reset-seat-button").onclick = function() {
 
 	document.getElementById("sectionDiv").style.display = "block";
 
+};
+
+document.getElementById("confirm-seat-button").onclick = function() {
+	//if seat is set, then the back clicked method takes true as a param.
+	backClicked(true);
+};
+document.getElementById("backButton").onclick = function() {
+	var userRow = document.getElementById("user-row").value;
+	var userCol = document.getElementById("user-seat").value;
+	registerSeatSocket(userRow, userCol);
+
+	//Make sure the row and col values were actually set.
+	if (userRow != 0 && userCol != 0) {
+		backClicked(true);
+	}
+	else {
+		backClicked(false);
+	}
 };
 
 
