@@ -70,7 +70,7 @@ class PhotoApi extends BaseApi
 				 //echo '<pre>' . var_dump($seat) . '</pre>';
 			}
 		}
-			 $phql = "SELECT * FROM pixel where image='1a'";
+			 $phql = "SELECT * FROM pixel where image='$imageName'";
 			 $result = $connection->query($phql);
 			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
 			  $this->data['seat'];
