@@ -53,9 +53,9 @@ class PhotoApi extends BaseApi
 			 //Reconnect
 			 $connection->connect();
 				$pixels = array();
-		for ($x = 0; $x < 6; $x++)
+		for ($x = 0; $x < 3; $x++)
 		{
-			for ($y = 0; $y < 6; $y++)
+			for ($y = 0; $y < 3; $y++)
 			{
 				 $pixels[(string)$x."-".(string)$y] = array();
 				 $phql = "SELECT r_val, g_val, b_val FROM pixel where image='$imageName' and x_pos='$x' and y_pos='$y'";
