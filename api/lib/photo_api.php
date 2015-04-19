@@ -42,8 +42,7 @@ class PhotoApi extends BaseApi
     private function getPixels() {
 			try {
 
-				$imageName = $this->params[0];
-
+				$imageName = $this->parameters[0];
 				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 						"host" => "localhost",
 						"username" => "addhawk",
@@ -70,11 +69,11 @@ class PhotoApi extends BaseApi
 				 //echo '<pre>' . var_dump($seat) . '</pre>';
 			}
 		}
-			 $phql = "SELECT * FROM pixel where image='$imageName'";
-			 $result = $connection->query($phql);
-			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  $this->data['seat'];
-				$seat = $result->fetchArray();
+			 //$phql = "SELECT * FROM pixel where image='$imageName'";
+			 //$result = $connection->query($phql);
+			 //$result->setFetchMode(Phalcon\Db::FETCH_NUM);
+			  //$this->data['seat'];
+				//$seat = $result->fetchArray();
 			 //var_dump($seat);
 				//$this->data['x_pos'] = $seat[0];
 				//$this->data['y_pos'] = $seat[1];
@@ -83,7 +82,7 @@ class PhotoApi extends BaseApi
 				//$this->data['g_val'] = $seat[4];
 				//$this->data['b_val'] = $seat[5];
 
-				$output = array();
+				//$output = array();
 				//foreach($pixels as $v) {
 				    //$output[key($v)] = current($v);
 				//}
@@ -97,7 +96,7 @@ class PhotoApi extends BaseApi
 				$socket->send(json_encode($content));
 
 
-				$this->response->setJsonContent(array('success' => true, 'data' => $pixels));
+				$this->response->setJsonContent(array('success' => true, 'image-loaded' => $imageName, 'data' => $pixels));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
 				$this->response->setJsonContent(array('success' => false, 'data' => $pixels));
