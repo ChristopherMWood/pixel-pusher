@@ -31,6 +31,8 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
   $paramList = explode("-", $paramData);
   // print_r($paramList);
 
+
+  echo $paramData;
 	$request = new Request($model, $method, $paramList);
 
 	//Prepare response obj

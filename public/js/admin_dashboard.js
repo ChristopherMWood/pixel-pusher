@@ -3,7 +3,7 @@ document.getElementById("start-button").onclick = function() {
 	var parameters = {};
     parameters['api_name'] = 'photo';
     parameters['api_method'] = 'get_pixels';
-		parameters['params'] = "a1";
+		parameters['params'] = "1a";
 
     api_request(parameters, function(response){
 
@@ -33,7 +33,7 @@ function playSlideshow() {
 		var imageLoop = setInterval(function(){
 
 			$('#slideshow-count').text("Image: " + (intervalCount + 1));
-			pixelPushImage("a" + intervalCount);
+			pixelPushImage("" + intervalCount);
 			intervalCount++;
 
 			if(intervalCount >= 8) {
@@ -52,7 +52,7 @@ function pixelPushImage(image) {
 	var parameters = {};
 		parameters['api_name'] = 'photo';
 		parameters['api_method'] = 'get_pixels';
-		parameters['params'] = "a1";
+		parameters['params'] = image;
 
 		api_request(parameters, function(response){
 
@@ -97,7 +97,7 @@ function api_request(pars, callback) {
 
         //Build request url
         var request_url = window.location.origin + '/api/' + pars['api_name'] + '/' +
-            pars['api_method'] + '/param';
+            pars['api_method'] + '/' + pars['params'];
 
         //Turn each key into valid send value
         for (var key in pars)
