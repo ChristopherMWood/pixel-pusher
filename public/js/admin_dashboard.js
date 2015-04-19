@@ -33,7 +33,7 @@ function playSlideshow() {
 		var imageLoop = setInterval(function(){
 
 			$('#slideshow-count').text("Image: " + (intervalCount + 1));
-			pixelPushImage("a" + intervalCount);
+			pixelPushImage(intervalCount);
 			intervalCount++;
 
 			if(intervalCount >= 8) {
@@ -52,7 +52,7 @@ function pixelPushImage(image) {
 	var parameters = {};
 		parameters['api_name'] = 'photo';
 		parameters['api_method'] = 'get_pixels';
-		parameters['params'] = "a1";
+		parameters['params'] = image;
 
 		api_request(parameters, function(response){
 
