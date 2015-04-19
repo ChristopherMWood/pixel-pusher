@@ -297,7 +297,7 @@ function settingsClicked() {
 	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
 		sectionDiv.style.display = "none";
 		isSeatConfirmed = true;
-		
+
 		document.getElementById("sectionChoiceText").style.display = "block";
 		document.getElementById("rowChoiceText").style.display = "block";
 		document.getElementById("seatChoiceText").style.display = "block";
@@ -329,7 +329,7 @@ function settingsClicked() {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
 			isSeatConfirmed = false;
-			
+
 			clippyAgent.moveTo(25, 290);
 			clippyAgent.speak("Step 2: Now choose the row that your seat is in.");
 
@@ -345,7 +345,7 @@ function settingsClicked() {
 		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
 			isSeatConfirmed = false;
-			
+
 			clippyAgent.moveTo(25, 320);
 			clippyAgent.speak("Step 3: Finally, choose your seat number! Then click 'Confirm'.");
 
@@ -354,13 +354,13 @@ function settingsClicked() {
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
 			document.getElementById("user-row").value = rowVal;
-			
+
 		}
 	});
 
 	$("#seatDD").change(function () {
 		isSeatConfirmed = true;
-		
+
 		// when a choice is selected, change to a text field
 		var seatVal = $("#seatDD").val();
 		highlightSeat(rowVal, seatVal);
@@ -611,7 +611,7 @@ function api_request(pars, callback) {
 	(assuming that the media has begun being displayed in the first place).
 	This method is used for the click response of the "Confirm" button as
 	well as the click response for the back button on the settings page.
-	
+
 	isSeatConfirmed
 			if true, this means that the user has seat their seat assignment fully
 			if false, then the user hasn't set the seat
@@ -631,7 +631,7 @@ function backClicked() {
 	document.getElementById("innerSectionDiv").style.display = "none";
 	document.getElementById("tableGridDiv").style.display = "none";
 	document.getElementById("confirm-reset-div").style.display = "none";
-	
+
 	if (isSeatConfirmed) {
 		clearToBlack();
 		//Create a grid of table cells on the main page when the back button is
@@ -722,7 +722,7 @@ document.getElementById("reset-seat-button").onclick = function() {
 
 	//clear the text fields and add the dropdown menus back
 	document.getElementById("sectionDD").style.display = "block";
-	
+
 	document.getElementById("sectionDD").value = "default";
 	document.getElementById("rowDD").value = "default";
 	document.getElementById("seatDD").value = "default";
@@ -777,7 +777,7 @@ function registerSeatSocket(row, column) {
 							var gVal = parseInt(pixel['g_val']);
 							var bVal = parseInt(pixel['b_val']);
 
-							setPixelTableCellColor(x, y, rVal, gVal, bVal);
+							setPixelTableCellColor(x - 1, y - 1, rVal, gVal, bVal);
 
               console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
