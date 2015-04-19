@@ -1,5 +1,5 @@
-var X_SEATS = 6;
-var Y_SEATS = 6;
+var X_SEATS = 3;
+var Y_SEATS = 3;
 var myVar;
 var clippyAgent;
 var isSeatConfirmed = false;
@@ -633,6 +633,7 @@ function backClicked() {
 	document.getElementById("confirm-reset-div").style.display = "none";
 	
 	if (isSeatConfirmed) {
+		clearToBlack();
 		//Create a grid of table cells on the main page when the back button is
 		//pressed for displaying media to the user
 		var userRow = document.getElementById("user-row").value;
@@ -802,5 +803,6 @@ function unregisterSeatSocket() {
 
 
 function clearToBlack() {
+	document.getElementById("pixelTable").background = "black";
 	setPixelTableCellColor(x, y, 0, 0, 0);
 }
