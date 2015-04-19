@@ -21,6 +21,20 @@ window.onload = function() {
 };
 
 
+document.getElementById("backButton").onclick = function() {
+	var userRow = document.getElementById("user-row").value;
+	var userCol = document.getElementById("user-seat").value;
+	registerSeatSocket(userRow, userCol);
+
+	//Make sure the row and col values were actually set.
+	if (userRow != 0 && userCol != 0) {
+		backClicked(true);
+	}
+	else {
+		backClicked(false);
+	}
+};
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
@@ -606,9 +620,7 @@ function backClicked(isSeatConfirmed) {
 			clippyAgent.speak("Woo! You're good to go!");
 		}
 	}
-	else {
-		
-	}
+
 
 
 }
@@ -668,7 +680,7 @@ function showConfirmAndResetButtons() {
 
 document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("confirm-reset-div").style.display = "none";
-		document.getElementById("innerSectionDiv").style.display = "inline-block";
+	document.getElementById("innerSectionDiv").style.display = "inline-block";
 
 	//clear html tags
 	document.getElementById("user-section").value = 0;
@@ -692,19 +704,8 @@ document.getElementById("confirm-seat-button").onclick = function() {
 	//if seat is set, then the back clicked method takes true as a param.
 	backClicked(true);
 };
-document.getElementById("backButton").onclick = function() {
-	var userRow = document.getElementById("user-row").value;
-	var userCol = document.getElementById("user-seat").value;
-	registerSeatSocket(userRow, userCol);
 
-	//Make sure the row and col values were actually set.
-	if (userRow != 0 && userCol != 0) {
-		backClicked(true);
-	}
-	else {
-		backClicked(false);
-	}
-};
+
 
 
 
