@@ -33,7 +33,7 @@ function playSlideshow() {
 		var imageLoop = setInterval(function(){
 
 			$('#slideshow-count').text("Image: " + (intervalCount + 1));
-			pixelPushImage(intervalCount);
+			pixelPushImage("" + intervalCount);
 			intervalCount++;
 
 			if(intervalCount >= 8) {
