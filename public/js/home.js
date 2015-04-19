@@ -585,12 +585,14 @@ function backClicked() {
 	document.getElementById("resetDiv").style.display = "none";
 
 
-	registerSeatSocket(6, 6);
 
 	//Create a grid of table cells on the main page when the back button is
 	//pressed for displaying media to the user
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+
+
+		registerSeatSocket(userRow, userCol);
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
@@ -615,13 +617,15 @@ function createPixelTable(seat_x, seat_y) {
 
 	//Function that creates a grid that will display the pixels
 	//associates with your seat assignment.
+	var ratio = 1;
+
 	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
-	var cellHeight = windowHeight / 6;
-	var cellWidth = windowWidth / 6;
-	var width = 6;
-	var height = 6;
+	var cellHeight = windowHeight / ratio;
+	var cellWidth = windowWidth / ratio;
+	var width = ratio;
+	var height = ratio;
 
 	for (var i = 0; i < width; i++) {
 		// id is row_ and then the row number
@@ -683,11 +687,10 @@ document.getElementById("reset-seat-button").onclick = function() {
 */
 function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
 	var pixelTable = document.getElementById("pixelTable");
-	pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+	//pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+
+	document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 }
-
-
-
 
 //This is the single websocket for each user
 
@@ -706,9 +709,19 @@ function registerSeatSocket(row, column) {
               //push from the server for a registerd user.
 
               //Parse Pixels Into display
-							$json_data = json_decode($data.data);
+							var array = JSON.parse(data.data);
 
-              console.log('New Pixel Pushed: "' + topic + '" : ' + json_data);
+						  var pixel = array[row + "-" + column];
+
+							var x = parseInt(row);
+							var y = parseInt(column);
+							var rVal = parseInt(pixel['r_val']);
+							var gVal = parseInt(pixel['g_val']);
+							var bVal = parseInt(pixel['b_val']);
+
+							setPixelTableCellColor(x, y, rVal, gVal, bVal);
+
+              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
       function() {
