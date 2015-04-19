@@ -42,9 +42,7 @@ class PhotoApi extends BaseApi
     private function getPixels() {
 			try {
 
-				$imageName = $this->params[0];
-				echo "image name: ".$this->params[0];
-
+				$imageName = $this->parameters[0];
 				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 						"host" => "localhost",
 						"username" => "addhawk",
