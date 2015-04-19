@@ -97,7 +97,7 @@ function api_request(pars, callback) {
 
         //Build request url
         var request_url = window.location.origin + '/api/' + pars['api_name'] + '/' +
-            pars['api_method'] + '/param';
+            pars['api_method'] + '/' + pars['params'];
 
         //Turn each key into valid send value
         for (var key in pars)
