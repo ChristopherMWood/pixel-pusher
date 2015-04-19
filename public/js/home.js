@@ -16,7 +16,7 @@ window.onload = function() {
 		clippyAgent.animate();
 		clippyAgent.speak('To get started, click the PixelPusher logo!');
 	});
-	
+
 	getRanges();
 };
 
@@ -241,7 +241,7 @@ function settingsClicked() {
 	getRanges();
 	clippyAgent.moveTo(25, 220);
 	clippyAgent.speak("Step 1: Start by choosing the section that your seat is in.");
-	
+
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
 	if (document.getElementById("sectionDD") != null) {
@@ -295,7 +295,7 @@ function settingsClicked() {
 		if (rowDiv.style.display == "none") {
 			clippyAgent.moveTo(25, 290);
 			clippyAgent.speak("Step 2: Now choose the row that your seat is in.");
-			
+
 			rowDiv.style.display = "block";
 			var sectionVal = $("#sectionDD").val();
 			setDDText(sectionVal, 0);
@@ -309,7 +309,7 @@ function settingsClicked() {
 		if (seatDiv.style.display == "none") {
 			clippyAgent.moveTo(25, 320);
 			clippyAgent.speak("Step 3: Finally, choose your seat number! Then click 'Confirm'.");
-			
+
 			seatDiv.style.display = "block";
 			rowVal = $("#rowDD").val();
 			highlightRow(rowVal);
@@ -575,6 +575,7 @@ function api_request(pars, callback) {
 			if false, then the user hasn't set the seat
 */
 function backClicked(isSeatConfirmed) {
+
 	document.getElementById("bg").className = "";
 	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
@@ -767,4 +768,9 @@ function unregisterSeatSocket() {
   if(conn) {
     conn.close();
   }
+}
+
+
+function clearToBlack() {
+	setPixelTableCellColor(x, y, 0, 0, 0);
 }

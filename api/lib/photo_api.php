@@ -41,6 +41,9 @@ class PhotoApi extends BaseApi
     */
     private function getPixels() {
 			try {
+
+				$imageName = $this->params[0];
+
 				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 						"host" => "localhost",
 						"username" => "addhawk",
@@ -55,7 +58,7 @@ class PhotoApi extends BaseApi
 			for ($y = 0; $y < 6; $y++)
 			{
 				 $pixels[(string)$x."-".(string)$y] = array();
-				 $phql = "SELECT r_val, g_val, b_val FROM pixel where image='1a' and x_pos='$x' and y_pos='$y'";
+				 $phql = "SELECT r_val, g_val, b_val FROM pixel where image='$imageName' and x_pos='$x' and y_pos='$y'";
 				 $result = $connection->query($phql);
 				 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
 				  //$this->data['seat'];

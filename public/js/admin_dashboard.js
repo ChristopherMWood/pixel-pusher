@@ -3,6 +3,7 @@ document.getElementById("start-button").onclick = function() {
 	var parameters = {};
     parameters['api_name'] = 'photo';
     parameters['api_method'] = 'get_pixels';
+		parameters['params'] = "a1";
 
     api_request(parameters, function(response){
 
@@ -30,10 +31,12 @@ function playSlideshow() {
 	if(!playing) {
 		playing = true;
 		var imageLoop = setInterval(function(){
-			console.log("Test " + intervalCount);
+
+			$('#slideshow-count').text("Image: " + (intervalCount + 1));
+			pixelPushImage("a" + intervalCount);
 			intervalCount++;
 
-			if(intervalCount >= 10) {
+			if(intervalCount >= 8) {
 				clearInterval(imageLoop);
 				intervalCount = 0;
 				playing = false;
@@ -44,6 +47,23 @@ function playSlideshow() {
 
 }
 
+
+function pixelPushImage(image) {
+	var parameters = {};
+		parameters['api_name'] = 'photo';
+		parameters['api_method'] = 'get_pixels';
+		parameters['params'] = "a1";
+
+		api_request(parameters, function(response){
+
+				if(response['success'] == true) {
+					console.log("Pixel Pulled");
+				}
+				else {
+					console.log("Pixel NOT Pulled");
+				}
+		});
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /**
