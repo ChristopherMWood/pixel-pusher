@@ -98,7 +98,7 @@ class PhotoApi extends BaseApi
 				$socket->send(json_encode($content));
 
 
-				$this->response->setJsonContent(array('success' => true, 'data' => $pixels));
+				$this->response->setJsonContent(array('success' => true, 'image-loaded' => $imageName, 'data' => $pixels));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
 				$this->response->setJsonContent(array('success' => false, 'data' => $pixels));
