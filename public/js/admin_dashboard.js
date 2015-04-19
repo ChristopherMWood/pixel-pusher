@@ -3,7 +3,7 @@ document.getElementById("start-button").onclick = function() {
 	var parameters = {};
     parameters['api_name'] = 'photo';
     parameters['api_method'] = 'get_pixels';
-		parameters['params'] = "a1";
+		parameters['params'] = "1a";
 
     api_request(parameters, function(response){
 
