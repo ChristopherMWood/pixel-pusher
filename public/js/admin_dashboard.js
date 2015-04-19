@@ -13,24 +13,35 @@ document.getElementById("start-button").onclick = function() {
 			//error message here
         }
     });
-	
+
 }
 
 document.getElementById("stop-button").onclick = function() {
-	var parameters = {};
-    parameters['api_name'] = 'photo';
-    parameters['api_method'] = 'stop_pixels';
+	if(playing) {
+		intervalCount = 100;
+	}
+}
 
-    api_request(parameters, function(response){
 
-        if(response['success'] == true) {
-			//
-        }
-        else {
-			//error message here
-        }
-    });
-	
+var playing = false;
+var intervalCount = 0;
+function playSlideshow() {
+
+	if(!playing) {
+		playing = true;
+		var imageLoop = setInterval(function(){
+			console.log("Test " + intervalCount);
+			intervalCount++;
+
+			if(intervalCount >= 10) {
+				clearInterval(imageLoop);
+				intervalCount = 0;
+				playing = false;
+			}
+
+		}, 1000);
+	}
+
 }
 
 
