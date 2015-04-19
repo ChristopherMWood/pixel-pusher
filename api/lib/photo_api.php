@@ -43,6 +43,7 @@ class PhotoApi extends BaseApi
 			try {
 
 				$imageName = $this->params[0];
+				echo "image name: ".$this->params[0]
 
 				$connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
 						"host" => "localhost",
@@ -70,11 +71,11 @@ class PhotoApi extends BaseApi
 				 //echo '<pre>' . var_dump($seat) . '</pre>';
 			}
 		}
-			 $phql = "SELECT * FROM pixel where image='$imageName'";
-			 $result = $connection->query($phql);
-			 $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  $this->data['seat'];
-				$seat = $result->fetchArray();
+			 //$phql = "SELECT * FROM pixel where image='$imageName'";
+			 //$result = $connection->query($phql);
+			 //$result->setFetchMode(Phalcon\Db::FETCH_NUM);
+			  //$this->data['seat'];
+				//$seat = $result->fetchArray();
 			 //var_dump($seat);
 				//$this->data['x_pos'] = $seat[0];
 				//$this->data['y_pos'] = $seat[1];
@@ -83,7 +84,7 @@ class PhotoApi extends BaseApi
 				//$this->data['g_val'] = $seat[4];
 				//$this->data['b_val'] = $seat[5];
 
-				$output = array();
+				//$output = array();
 				//foreach($pixels as $v) {
 				    //$output[key($v)] = current($v);
 				//}
