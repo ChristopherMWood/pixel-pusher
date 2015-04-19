@@ -30,7 +30,8 @@ function playSlideshow() {
 	if(!playing) {
 		playing = true;
 		var imageLoop = setInterval(function(){
-			console.log("Test " + intervalCount);
+
+			pixelPushImage("a" + intervalCount);
 			intervalCount++;
 
 			if(intervalCount >= 10) {
@@ -44,6 +45,22 @@ function playSlideshow() {
 
 }
 
+
+function pixelPushImage(image) {
+	var parameters = {};
+		parameters['api_name'] = 'photo';
+		parameters['api_method'] = 'get_pixels';
+
+		api_request(parameters, function(response){
+
+				if(response['success'] == true) {
+					console.log("Pixel Pulled");
+				}
+				else {
+					console.log("Pixel NOT Pulled");
+				}
+		});
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /**
