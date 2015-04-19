@@ -633,7 +633,6 @@ function backClicked() {
 	document.getElementById("confirm-reset-div").style.display = "none";
 
 	if (isSeatConfirmed) {
-		clearToBlack();
 		//Create a grid of table cells on the main page when the back button is
 		//pressed for displaying media to the user
 		var userRow = document.getElementById("user-row").value;
@@ -644,6 +643,7 @@ function backClicked() {
 
 		//Make sure the row and col values were actually set.
 		if (userRow != 0 && userCol != 0) {
+
 			createPixelTable(userRow, userCol);
 			clippyAgent.moveTo(25, 25);
 			clippyAgent.speak("Woo! You're good to go!");
@@ -681,7 +681,7 @@ function createPixelTable(seat_x, seat_y) {
 	for (var i = 0; i < width; i++) {
 		// id is row_ and then the row number
 		//id : row_4 (row 4)
-		tableString += "<tr style='height:" + cellHeight + "px; width:" + windowWidth + "px;' id='row_" + i + "' name='row_" + i + "'>";
+		tableString += "<tr style='height:" + cellHeight + "px; width:" + windowWidth + "px; background:black;' id='row_" + i + "' name='row_" + i + "'>";
 		for (var j = 0; j < height; j++) {
 			// id is col_ and then the row number, another _, and then the col number
 			//id : col_4_5 (row 4, col 5)
@@ -693,6 +693,7 @@ function createPixelTable(seat_x, seat_y) {
 
 	document.getElementById("pixelTableDiv").innerHTML = tableString;
 	document.getElementById("pixelTableDiv").style.display = "block";
+	
 
 }
 
