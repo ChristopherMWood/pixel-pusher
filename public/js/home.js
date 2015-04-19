@@ -1,12 +1,22 @@
 var X_SEATS = 6;
 var Y_SEATS = 6;
 var myVar;
+var clippyAgent;
 
 window.onload = function() {
 	transitionBg();
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
 	console.log("ok");
 
+	clippy.load('Clippy', function(agent) {
+		// Do anything with the loaded agent
+		clippyAgent = agent;
+		clippyAgent.show();
+		clippyAgent.moveTo(25, 25);
+		clippyAgent.animate();
+		clippyAgent.speak('To get started, click the PixelPusher logo!');
+	});
+	
 	getRanges();
 };
 
@@ -229,7 +239,9 @@ function infoClicked() {
 */
 function settingsClicked() {
 	getRanges();
-
+	clippyAgent.moveTo(25, 220);
+	clippyAgent.speak("Step 1: Start by choosing the section that your seat is in.");
+	
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
 	if (document.getElementById("sectionDD") != null) {
@@ -281,6 +293,9 @@ function settingsClicked() {
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
+			clippyAgent.moveTo(25, 290);
+			clippyAgent.speak("Step 2: Now choose the row that your seat is in.");
+			
 			rowDiv.style.display = "block";
 			var sectionVal = $("#sectionDD").val();
 			setDDText(sectionVal, 0);
@@ -292,6 +307,9 @@ function settingsClicked() {
 	$("#rowDD").change(function () {
 		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
+			clippyAgent.moveTo(25, 320);
+			clippyAgent.speak("Step 3: Finally, choose your seat number! Then click 'Confirm'.");
+			
 			seatDiv.style.display = "block";
 			rowVal = $("#rowDD").val();
 			highlightRow(rowVal);
@@ -551,6 +569,7 @@ function api_request(pars, callback) {
 	(assuming that the media has begun being displayed in the first place)
 */
 function backClicked() {
+	
 	document.getElementById("bg").className = "";
 	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
@@ -576,7 +595,10 @@ function backClicked() {
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
 		createPixelTable(userRow, userCol);
+		clippyAgent.moveTo(25, 25);
+		clippyAgent.speak("Woo! You're good to go!");
 	}
+
 }
 
 
@@ -661,7 +683,6 @@ document.getElementById("reset-seat-button").onclick = function() {
 */
 function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
 	var pixelTable = document.getElementById("pixelTable");
-	
 	pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 }
 
