@@ -29,7 +29,7 @@ $router->map('/{model:[A-Za-z0-9_-]+}/{method:[A-Za-z0-9_-]+}/{paramData}', func
 	//Build request obj
 	include __DIR__."/lib/request.php";
   $paramList = explode("-", $paramData);
-  // print_r($paramList);
+  print_r($paramList);
 
 
   echo $paramData;
