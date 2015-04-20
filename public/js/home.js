@@ -46,6 +46,7 @@ document.getElementById("backButton").onclick = function() {
 function transitionBg() {
 
 	console.log("oh");
+	console.log("DAMN");
 	document.getElementById("bg").className = "bgYellowTransition";
 	setTimeout(secondTransition, 7500);
 	setTimeout(thirdTransition, 15000);
@@ -114,6 +115,7 @@ function buttonDropAnimation(element, isShown) {
 
 */
 function secondTransition() {
+	console.log('SECOND TRANSITION');
 	document.getElementById("bg").className = "bgBlueTransition";
 }
 
@@ -123,6 +125,7 @@ function secondTransition() {
 
 */
 function thirdTransition() {
+	console.log('THRID TRANSITION');
 	document.getElementById("bg").className = "bgRedTransition";
 }
 
@@ -787,10 +790,10 @@ function registerSeatSocket(row, column) {
               //Parse Pixels Into display
 							var array = JSON.parse(data.data);
 
-						  var pixel = array[row + "-" + column];
+						  var pixel = array[(parseInt(row) - 1) + "-" + (parseInt(column) - 1)];
 
-							var x = parseInt(row) + 1;
-							var y = parseInt(column) + 1;
+							var x = parseInt(row);
+							var y = parseInt(column);
 							var rVal = parseInt(pixel['r_val']);
 							var gVal = parseInt(pixel['g_val']);
 							var bVal = parseInt(pixel['b_val']);
