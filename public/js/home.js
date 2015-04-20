@@ -784,10 +784,10 @@ function registerSeatSocket(row, column) {
               //Parse Pixels Into display
 							var array = JSON.parse(data.data);
 
-						  var pixel = array[row + "-" + column];
+						  var pixel = array[(parseInt(row) - 1) + "-" + (parseInt(column) - 1)];
 
-							var x = parseInt(row) + 1;
-							var y = parseInt(column) + 1;
+							var x = parseInt(row);
+							var y = parseInt(column);
 							var rVal = parseInt(pixel['r_val']);
 							var gVal = parseInt(pixel['g_val']);
 							var bVal = parseInt(pixel['b_val']);
