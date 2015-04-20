@@ -25,10 +25,10 @@ $(function() {
 document.getElementById("backButton").onclick = function() {
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
-	registerSeatSocket(userRow, userCol);
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
+		registerSeatSocket(userRow, userCol);
 		isSeatConfirmed = true;
 	}
 	else {
