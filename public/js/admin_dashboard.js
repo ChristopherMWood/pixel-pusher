@@ -20,10 +20,11 @@ document.getElementById("start-button").onclick = function() {
 document.getElementById("stop-button").onclick = function() {
 	if(playing) {
 		intervalCount = 100;
+		stopLoop = true;
 	}
 }
 
-
+var stopLoop = false;
 var playing = false;
 var intervalCount = 0;
 function playSlideshow() {
@@ -37,12 +38,19 @@ function playSlideshow() {
 			intervalCount++;
 
 			if(intervalCount >= 8) {
-				clearInterval(imageLoop);
-				intervalCount = 0;
-				playing = false;
+				if(!stopLoop) {
+					intervalCount = 0;
+					playing = true;
+				}
+				else {
+					clearInterval(imageLoop);
+					intervalCount = 0;
+					playing = false;
+					stopLoop = false;
+				}
 			}
 
-		}, 1000);
+		}, );
 	}
 
 }
