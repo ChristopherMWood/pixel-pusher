@@ -412,6 +412,8 @@ function setDDText(ddString, dropDownNum) {
 		resultString = "Seat: " + ddString;
 		document.getElementById("user-seat").value = ddString;
 		ddName = "seat";
+
+		document.getElementById("innerSectionDiv").style.marginBottom = "10px";
 	}
 
 
@@ -724,6 +726,7 @@ function showConfirmAndResetButtons() {
 document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("confirm-reset-div").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
+	document.getElementById("innerSectionDiv").style.marginBottom = "80px";
 
 	//clear html tags
 	document.getElementById("user-section").value = 0;
