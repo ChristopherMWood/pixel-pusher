@@ -205,7 +205,7 @@ th {
   border-radius: 0;
   height: 100px;
   -webkit-appearance: none;
-  color: #000;
+  font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
 .styleSelect {
@@ -214,13 +214,6 @@ th {
   overflow: hidden;
   border: 2px solid #FFF;
   background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat 240px;
-}
-
-select {
-  width: 280px;
-	height: 100px;
-  font-size: 24px;
-  font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
 #sectionDD, #rowDD, #seatDD, option {
