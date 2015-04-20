@@ -140,8 +140,8 @@ body {
 
 #settingsDropDownDiv {
 	height: 100%;
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 #sectionText, #rowText, #seatText {
@@ -170,7 +170,7 @@ body {
 }
 
 #settingsTitleDiv {
-  height: 25px;
+  height: 20px;
 }
 
 #tableGridDiv {
@@ -203,6 +203,7 @@ th {
   line-height: 1;
   border: 0;
   border-radius: 0;
+  text-align: center;
   height: 100px;
   -webkit-appearance: none;
   color: #000;
@@ -217,11 +218,11 @@ th {
 }
 
 select {
-    width: 280px;
+  width: 280px;
 	height: 100px;
-    text-align: center;
-    font-size: 24px;
-    font-family: monaco,Consolas,Lucida Console,monospace;
+  text-align: center;
+  font-size: 24px;
+  font-family: monaco,Consolas,Lucida Console,monospace;
 }
 
 #sectionDD, #rowDD, #seatDD, option {

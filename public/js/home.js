@@ -5,6 +5,7 @@ var timeout1;
 var timeout2;
 var timeout3;
 var timeout4;
+var timeout5;
 var clippyAgent;
 var isSeatConfirmed = false;
 var audio = new Audio('../audio/recorderclip.mp3');
@@ -48,7 +49,7 @@ document.getElementById("backButton").onclick = function() {
 */
 function transitionBg() {
 
-	document.getElementById("bg").className = "bgYellowTransition";
+	timeout5 = setTimeout(extraTransition, 100);
 	timeout1 = setTimeout(secondTransition, 7500);
 	timeout2 = setTimeout(thirdTransition, 15000);
 
@@ -293,6 +294,7 @@ function settingsClicked() {
 	clearTimeout(timeout2);
 	clearTimeout(timeout3);
 	clearTimeout(timeout4);
+	clearTimeout(timeout5);
 
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
