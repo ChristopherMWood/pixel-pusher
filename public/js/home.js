@@ -420,18 +420,35 @@ function setDDText(ddString, dropDownNum) {
 /*
 
 */
+// These values will save the highlighted row and seat on the table
+
 function createSettingsTable(width, height) {
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
 	var cellHeight = 300 / height;
 
+	var highlightedRow = document.getElementById("highlight-row").value;
+	var highlightedSeat = document.getElementById("highlight-seat").value;
+
 	for (var i = 1; i <= width; i++) {
 
 		// id is row_ and then the row number
-		tableString += "<tr style='height:" + cellHeight + "px' id='row_" + i + "' name='row_" + i + "'>";
+		if (i == highlightedRow && highlightedSeat == -1) {
+			// the row should be highlighted because a seat is not selected
+			tableString += "<tr style='height:" + cellHeight + "px' id='row_" + i + "' name='row_" + i + "' style='background-color: red'>";
+		}
+		else {
+			tableString += "<tr style='height:" + cellHeight + "px' id='row_" + i + "' name='row_" + i + "'>";
+		}
 		for (var j = 1; j <= height; j++) {
 
-			// id is seat_ and then the row number, another _, and then the seat number
-			tableString += "<td id='seat_" + i + "_" + j + "' name='seat_" + i + "_" + j + "'></td>";
+			if (j == highlightedSeat && i == highlightedRow) {
+				// it is the highlighted seat
+				tableString += "<td id='seat_" + i + "_" + j + "' name='seat_" + i + "_" + j + "' style='background-color: red'></td>";
+			}
+			else {
+				// id is seat_ and then the row number, another _, and then the seat number
+				tableString += "<td id='seat_" + i + "_" + j + "' name='seat_" + i + "_" + j + "'></td>";
+			}
 		}
 		tableString += "</tr>";
 	}
@@ -442,12 +459,14 @@ function createSettingsTable(width, height) {
 
 function highlightRow(rowNum) {
 	var rowName = "row_" + rowNum;
+	document.getElementById("highlight-row").value = rowNum;
 	document.getElementById(rowName).style.backgroundColor = "red";
 }
 
 function highlightSeat(rowNum, seatNum) {
 	var seatName = "seat_" + rowNum + "_" + seatNum;
-	console.log(seatName);
+	document.getElementById("highlight-row").value = rowNum;
+	document.getElementById("highlight-seat").value = seatNum;
 	// get the row name to unhighlight it
 	var rowName = "row_" + rowNum;
 	document.getElementById(rowName).style.backgroundColor = "white";
@@ -718,6 +737,10 @@ document.getElementById("reset-seat-button").onclick = function() {
 
 	document.getElementById("sectionDiv").style.display = "block";
 
+	//recreate the table to get rid of the highlights
+	document.getElementById("highlight-row").value = -1;
+	document.getElementById("highlight-seat").value = -1;
+	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
 };
 
 document.getElementById("confirm-seat-button").onclick = function() {
