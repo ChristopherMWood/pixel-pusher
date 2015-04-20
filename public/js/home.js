@@ -3,6 +3,7 @@ var Y_SEATS = 3;
 var myVar;
 var clippyAgent;
 var isSeatConfirmed = false;
+var audio = new Audio('../audio/recorderclip.mp3');
 
 $(function() {
 	transitionBg();
@@ -800,6 +801,7 @@ function registerSeatSocket(row, column) {
 
 							setPixelTableCellColor(x, y, rVal, gVal, bVal);
 
+							audio.play();
               console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
