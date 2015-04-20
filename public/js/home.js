@@ -115,6 +115,7 @@ function buttonDropAnimation(element, isShown) {
 
 */
 function secondTransition() {
+	console.log('SECOND TRANSITION');
 	document.getElementById("bg").className = "bgBlueTransition";
 }
 
@@ -124,6 +125,7 @@ function secondTransition() {
 
 */
 function thirdTransition() {
+	console.log('THRID TRANSITION');
 	document.getElementById("bg").className = "bgRedTransition";
 }
 
