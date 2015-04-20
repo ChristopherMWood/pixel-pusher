@@ -18,8 +18,8 @@ $(function() {
 		clippyAgent = agent;
 		clippyAgent.show();
 		clippyAgent.moveTo(25, 25);
-		clippyAgent.animate();
 		clippyAgent.speak('To get started, click the PixelPusher logo!');
+		clippyAgent.animate();
 	});
 
 	getRanges();
