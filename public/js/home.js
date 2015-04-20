@@ -4,7 +4,7 @@ var myVar;
 var clippyAgent;
 var isSeatConfirmed = false;
 
-window.onload = function() {
+$(function() {
 	transitionBg();
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
 	console.log("ok");
@@ -19,7 +19,7 @@ window.onload = function() {
 	});
 
 	getRanges();
-};
+});
 
 
 document.getElementById("backButton").onclick = function() {
