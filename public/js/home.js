@@ -1,13 +1,15 @@
 var X_SEATS = 3;
 var Y_SEATS = 3;
-var myVar;
+var intervalVar;
+var timeout1;
+var timeout2;
+var timeout3;
+var timeout4;
 var clippyAgent;
 var isSeatConfirmed = false;
 
 $(function() {
 	transitionBg();
-	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
-	console.log("ok");
 
 	clippy.load('Clippy', function(agent) {
 		// Do anything with the loaded agent
@@ -45,17 +47,34 @@ document.getElementById("backButton").onclick = function() {
 */
 function transitionBg() {
 
-	console.log("oh");
-	console.log("DAMN");
 	document.getElementById("bg").className = "bgYellowTransition";
-	setTimeout(secondTransition, 7500);
-	setTimeout(thirdTransition, 15000);
+	timeout1 = setTimeout(secondTransition, 7500);
+	timeout2 = setTimeout(thirdTransition, 15000);
 
-	myVar = setInterval( function() {
-			console.log("oh yeah");
+	intervalVar = setInterval( function() {
 			document.getElementById("bg").className = "bgYellowTransition";
-			setTimeout(secondTransition, 7500);
-			setTimeout(thirdTransition, 15000);
+			timeout3 = setTimeout(secondTransition, 7500);
+			timeout4 = setTimeout(thirdTransition, 15000);
+	}, 22500);
+
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
+function secondTransitionBg() {
+
+	document.getElementById("bg").className = "";
+	setTimeout(extraTransition, 100);
+	timeout1 = setTimeout(secondTransition, 7500);
+	timeout2 = setTimeout(thirdTransition, 15000);
+
+	intervalVar = setInterval( function() {
+			document.getElementById("bg").className = "bgYellowTransition";
+			timeout3 = setTimeout(secondTransition, 7500);
+			timeout4 = setTimeout(thirdTransition, 15000);
 	}, 22500);
 
 }
@@ -115,7 +134,6 @@ function buttonDropAnimation(element, isShown) {
 
 */
 function secondTransition() {
-	console.log('SECOND TRANSITION');
 	document.getElementById("bg").className = "bgBlueTransition";
 }
 
@@ -125,8 +143,16 @@ function secondTransition() {
 
 */
 function thirdTransition() {
-	console.log('THRID TRANSITION');
 	document.getElementById("bg").className = "bgRedTransition";
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+
+*/
+function extraTransition() {
+	document.getElementById("bg").className = "bgYellowTransition";
 }
 
 
@@ -261,7 +287,11 @@ function settingsClicked() {
 	getRanges();
 	clippyAgent.hide();
 
-	clearInterval(myVar);
+	clearInterval(intervalVar);
+	clearTimeout(timeout1);
+	clearTimeout(timeout2);
+	clearTimeout(timeout3);
+	clearTimeout(timeout4);
 
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
@@ -652,6 +682,7 @@ function backClicked() {
 	document.getElementById("tableGridDiv").style.display = "none";
 	document.getElementById("confirm-reset-div").style.display = "none";
 
+	console.log(isSeatConfirmed);
 	if (isSeatConfirmed) {
 		//Create a grid of table cells on the main page when the back button is
 		//pressed for displaying media to the user
@@ -665,6 +696,10 @@ function backClicked() {
 		if (userRow != 0 && userCol != 0) {
 			createPixelTable(userRow, userCol);
 		}
+	}
+	else {
+		//Return to the normal transition background
+		secondTransitionBg();
 	}
 
 }
