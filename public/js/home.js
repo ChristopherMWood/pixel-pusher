@@ -52,10 +52,10 @@ function transitionBg() {
 	setTimeout(thirdTransition, 15000);
 
 	myVar = setInterval( function() {
-		console.log("oh yeah");
-		document.getElementById("bg").className = "bgYellowTransition";
-		setTimeout(secondTransition, 7500);
-		setTimeout(thirdTransition, 15000);
+			console.log("oh yeah");
+			document.getElementById("bg").className = "bgYellowTransition";
+			setTimeout(secondTransition, 7500);
+			setTimeout(thirdTransition, 15000);
 	}, 22500);
 
 }
