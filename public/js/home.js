@@ -4,7 +4,7 @@ var myVar;
 var clippyAgent;
 var isSeatConfirmed = false;
 
-window.onload = function() {
+$(function() {
 	transitionBg();
 	//THE COLOR TRANSITIONS AREN'T WORKING AT THE MOMENT
 	console.log("ok");
@@ -19,7 +19,7 @@ window.onload = function() {
 	});
 
 	getRanges();
-};
+});
 
 
 document.getElementById("backButton").onclick = function() {
@@ -257,6 +257,8 @@ function infoClicked() {
 function settingsClicked() {
 	getRanges();
 	clippyAgent.hide();
+
+	clearInterval(myVar);
 
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
@@ -700,7 +702,7 @@ function createPixelTable(seat_x, seat_y) {
 
 	document.getElementById("pixelTableDiv").innerHTML = tableString;
 	document.getElementById("pixelTableDiv").style.display = "block";
-	
+
 
 }
 
