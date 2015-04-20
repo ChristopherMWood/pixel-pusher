@@ -46,7 +46,7 @@ document.getElementById("backButton").onclick = function() {
 function transitionBg() {
 
 	console.log("oh");
-	concole.log("DAMN");
+	console.log("DAMN");
 	document.getElementById("bg").className = "bgYellowTransition";
 	setTimeout(secondTransition, 7500);
 	setTimeout(thirdTransition, 15000);
