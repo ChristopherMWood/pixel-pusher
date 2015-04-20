@@ -7,6 +7,7 @@ var timeout3;
 var timeout4;
 var clippyAgent;
 var isSeatConfirmed = false;
+var audio = new Audio('../audio/recorderclip.mp3');
 
 $(function() {
 	transitionBg();
@@ -27,10 +28,10 @@ $(function() {
 document.getElementById("backButton").onclick = function() {
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
-	registerSeatSocket(userRow, userCol);
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
+		registerSeatSocket(userRow, userCol);
 		isSeatConfirmed = true;
 	}
 	else {
@@ -835,6 +836,7 @@ function registerSeatSocket(row, column) {
 
 							setPixelTableCellColor(x, y, rVal, gVal, bVal);
 
+							audio.play();
               console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
