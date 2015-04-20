@@ -37,12 +37,12 @@ function playSlideshow() {
 			intervalCount++;
 
 			if(intervalCount >= 8) {
-				clearInterval(imageLoop);
+				//clearInterval(imageLoop);
 				intervalCount = 0;
-				playing = false;
+				playing = true;
 			}
 
-		}, 1000);
+		}, );
 	}
 
 }
