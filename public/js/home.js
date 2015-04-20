@@ -280,8 +280,9 @@ function settingsClicked() {
 	document.getElementById("infoDiv").style.display = "none";
 	document.getElementById("settingsDiv").style.display = "none";
 	document.getElementById("settingsTitleDiv").style.display = "inline";
-	document.getElementById("innerSectionDiv").style.display = "inline-block";
-	document.getElementById("tableGridDiv").style.display = "inline-block";
+	document.getElementById("innerSectionDiv").style.display = "block";
+	document.getElementById("sectionDiv").style.display = "block";
+	document.getElementById("tableGridDiv").style.display = "block";
 	document.getElementById("pixelTableDiv").style.display = "none";
 
 
