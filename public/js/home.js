@@ -256,8 +256,7 @@ function infoClicked() {
 */
 function settingsClicked() {
 	getRanges();
-	clippyAgent.moveTo(25, 220);
-	clippyAgent.speak("Step 1: Start by choosing the section that your seat is in.");
+	clippyAgent.hide();
 
 	clearInterval(myVar);
 
@@ -332,9 +331,6 @@ function settingsClicked() {
 		if (rowDiv.style.display == "none") {
 			isSeatConfirmed = false;
 
-			clippyAgent.moveTo(25, 290);
-			clippyAgent.speak("Step 2: Now choose the row that your seat is in.");
-
 			rowDiv.style.display = "block";
 			var sectionVal = $("#sectionDD").val();
 			setDDText(sectionVal, 0);
@@ -347,9 +343,6 @@ function settingsClicked() {
 		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
 			isSeatConfirmed = false;
-
-			clippyAgent.moveTo(25, 320);
-			clippyAgent.speak("Step 3: Finally, choose your seat number! Then click 'Confirm'.");
 
 			seatDiv.style.display = "block";
 			rowVal = $("#rowDD").val();
@@ -645,14 +638,9 @@ function backClicked() {
 
 		//Make sure the row and col values were actually set.
 		if (userRow != 0 && userCol != 0) {
-
 			createPixelTable(userRow, userCol);
-			clippyAgent.moveTo(25, 25);
-			clippyAgent.speak("Woo! You're good to go!");
 		}
 	}
-
-	clippyAgent.hide();
 
 }
 
