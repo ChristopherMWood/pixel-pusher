@@ -259,6 +259,8 @@ function settingsClicked() {
 	clippyAgent.moveTo(25, 220);
 	clippyAgent.speak("Step 1: Start by choosing the section that your seat is in.");
 
+	clearInterval(myVar);
+
 	//When the user sets their seat for the first time or is resetting
 	//the dropdown menu should not have an item selected
 	if (document.getElementById("sectionDD") != null) {
@@ -693,7 +695,7 @@ function createPixelTable(seat_x, seat_y) {
 
 	document.getElementById("pixelTableDiv").innerHTML = tableString;
 	document.getElementById("pixelTableDiv").style.display = "block";
-	
+
 
 }
 
