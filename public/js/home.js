@@ -738,7 +738,7 @@ function createPixelTable(seat_x, seat_y) {
 		for (var j = 0; j < height; j++) {
 			// id is col_ and then the row number, another _, and then the col number
 			//id : col_4_5 (row 4, col 5)
-			tableString += "<td id='col_" + i + "_" + j + "' name='col_" + i + "_" + j + "'></td>";
+			tableString += "<td id='col_" + i + "_" + j + " name='col_" + i + "_" + j + "'></td>";
 		}
 		tableString += "</tr>";
 	}
@@ -888,7 +888,7 @@ function cellSelected(cellName, row, seat) {
 		}
 		var cell = document.getElementById(cellName);
 		cell.style.backgroundColor = "red";
-		
+
 		//Set all of the dropdown boxes to text fields
 		setDDText("A", 0);
 		setDDText(row, 1);
