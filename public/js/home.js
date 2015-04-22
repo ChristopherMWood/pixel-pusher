@@ -463,8 +463,6 @@ function createSettingsTable(width, height) {
 
 	var highlightedRow = document.getElementById("highlight-row").value;
 	var highlightedSeat = document.getElementById("highlight-seat").value;
-	console.log(highlightedRow);
-	console.log(highlightedSeat);
 
 	for (var i = 1; i <= width; i++) {
 
@@ -481,7 +479,7 @@ function createSettingsTable(width, height) {
 
 			if (j == highlightedSeat && i == highlightedRow) {
 				// it is the highlighted seat
-				tableString += "<td id='" + name + "' name='" + name + "' style='background-color: red'></td>";
+				tableString += "<td id='" + name + "' name='" + name + "' style='background-color: red' onclick='cellSelected(\"" + name + "\", " + i + ", " + j + ")'></td>";
 			}
 			else {
 				// id is seat_ and then the row number, another _, and then the seat number
@@ -682,7 +680,6 @@ function backClicked() {
 	document.getElementById("tableGridDiv").style.display = "none";
 	document.getElementById("confirm-reset-div").style.display = "none";
 
-	console.log(isSeatConfirmed);
 	if (isSeatConfirmed) {
 		//Create a grid of table cells on the main page when the back button is
 		//pressed for displaying media to the user
@@ -870,27 +867,30 @@ function clearToBlack() {
 }
 
 function cellSelected(cellName, row, seat) {
-	if (document.getElementById("highlight-seat").value != -1) {
-		// have to unset the previous highlight
-		var oldCell = "seat_" + document.getElementById("highlight-row").value + "_" + document.getElementById("highlight-seat").value;
-		document.getElementById(oldCell).style.backgroundColor = "white";
-	}
+	if (document.getElementById(cellName).style.backgroundColor != "red") {
+		//it is not already selected
+		if (document.getElementById("highlight-seat").value != -1) {
+			// have to unset the previous highlight
+			var oldCell = "seat_" + document.getElementById("highlight-row").value + "_" + document.getElementById("highlight-seat").value;
+			document.getElementById(oldCell).style.backgroundColor = "white";
+		}
 
-	if (document.getElementById("highlight-row").value != -1) {
-		// unset highlighted row
-		var oldRow = "row_" + document.getElementById("highlight-row").value;
-		document.getElementById(oldRow).style.backgroundColor = "white";
-	}
-	var cell = document.getElementById(cellName);
-	cell.style.backgroundColor = "red";
-	
-	//Set all of the dropdown boxes to text fields
-	setDDText("A", 0);
-	setDDText(row, 1);
-	setDDText(seat, 2);
-	document.getElementById("highlight-row").value = row;
-	document.getElementById("highlight-seat").value = seat;
+		if (document.getElementById("highlight-row").value != -1) {
+			// unset highlighted row
+			var oldRow = "row_" + document.getElementById("highlight-row").value;
+			document.getElementById(oldRow).style.backgroundColor = "white";
+		}
+		var cell = document.getElementById(cellName);
+		cell.style.backgroundColor = "red";
+		
+		//Set all of the dropdown boxes to text fields
+		setDDText("A", 0);
+		setDDText(row, 1);
+		setDDText(seat, 2);
+		document.getElementById("highlight-row").value = row;
+		document.getElementById("highlight-seat").value = seat;
 
-	//add the clear and confirm buttons
-	showConfirmAndResetButtons();
+		//add the clear and confirm buttons
+		showConfirmAndResetButtons();
+	}
 }
