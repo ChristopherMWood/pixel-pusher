@@ -530,7 +530,7 @@ function getRanges() {
 
 		var x = X_SEATS;
 		var rowDDHtml = "";
-		rowDDHtml += "<option value='default' disabled selected>Select Your Row:</option>";
+		rowDDHtml += "<option value='default' disabled selected>Select Row   &#x25BC;</option>";
 		for(var i = 0; i < x; i++) {
 			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Row " + (i + 1) + "</option>";
@@ -539,7 +539,7 @@ function getRanges() {
 
 		var y = Y_SEATS;
 		var seatDDHtml = "";
-		seatDDHtml += "<option value='default' disabled selected>Select Your Seat:</option>";
+		seatDDHtml += "<option value='default' disabled selected>Select Seat   &#x25BC;</option>";
 		for(var i = 0; i < y; i++) {
 			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
 			">Seat " + (i + 1) + "</option>";
