@@ -899,3 +899,4 @@ function cellSelected(cellName, row, seat) {
 		//add the clear and confirm buttons
 		showConfirmAndResetButtons();
 	}
+}
