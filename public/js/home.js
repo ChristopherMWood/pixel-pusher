@@ -11,6 +11,12 @@ var isSeatConfirmed = false;
 var audio = new Audio('../audio/recorderclip.mp3');
 
 $(function() {
+
+	// window.onresize = function(event) {
+	// 	$('body').height(400);
+	// 	$('body').width(400);
+	// };
+
 	transitionBg();
 
 	clippy.load('Clippy', function(agent) {
