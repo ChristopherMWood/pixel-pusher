@@ -838,7 +838,7 @@ function registerSeatSocket(row, column) {
 
 							for(var i = 0; i < 7; i++) {
 								for(var j = 0; j < 7; j++) {
-									document.getElementById('col_' + i + '_' + j).style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+									document.getElementById('col_' + i + '_' + j).style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
 								}
 							}
 							// setPixelTableCellColor(x, y, rVal, gVal, bVal);
