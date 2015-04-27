@@ -10,7 +10,15 @@
 </form>
 
 Pixel Push Single Image</br>
-<button id="start-button">Push Single Image</button></br></br>
+<select id="image-select">
+<?php 
+$mysqli = new mysqli("localhost", "root", "addhawk", "addhawk");
+if ($result = $mysqli->query("SELECT DISTINCT id FROM pixel;")) {
+$row = $result->fetch_row();
+echo "<option>" . $row[0] . "</option>";
+}
+?>
+</select><button id="start-button">Push Single Image</button></br></br>
 
 Pixel Push SlideShow</br>
 <button onclick="playSlideshow();">Start Image Slideshow</button>
