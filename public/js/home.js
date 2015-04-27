@@ -379,6 +379,9 @@ function settingsClicked() {
 			setDDText(sectionVal, 0);
 			//Set the hidden values in the html for the user's seat information
 			document.getElementById("user-section").value = sectionVal;
+
+			//Here we reset the table dimensions based on the section chosen
+			document.getElementById("tableGridDiv").innerHTML = createSettingsTable(4, 4);
 		}
 	});
 
