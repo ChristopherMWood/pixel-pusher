@@ -41,6 +41,8 @@ $(function() {
 document.getElementById("backButton").onclick = function() {
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+	rowValue = userRow;
+	seatValue = userCol;
 
 	//Make sure the row and col values were actually set.
 	if (userRow != 0 && userCol != 0) {
@@ -698,7 +700,9 @@ function backClicked() {
 		var userRow = document.getElementById("user-row").value;
 		var userCol = document.getElementById("user-seat").value;
 
-
+		//console.log("user row: " + userRow);
+		//console.log("user col: " + userCol);
+		
 		registerSeatSocket(userRow, userCol);
 
 		//Make sure the row and col values were actually set.
@@ -776,6 +780,8 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("user-section").value = 0;
 	document.getElementById("user-row").value = 0;
 	document.getElementById("user-seat").value = 0;
+	rowValue = 0;
+	seatValue = 0;
 
 	document.getElementById("sectionText").style.display = "none";
 	document.getElementById("rowText").style.display = "none";
@@ -889,6 +895,11 @@ function cellSelected(cellName, row, seat) {
 		setDDText(seat, 2);
 		document.getElementById("highlight-row").value = row;
 		document.getElementById("highlight-seat").value = seat;
+		//need a section setter for when there are multiple sections besides just A
+		document.getElementById("user-row").value = row;
+		document.getElementById("user-seat").value = seat;
+		rowValue = row;
+		seatValue = seat;
 
 		//add the clear and confirm buttons
 		showConfirmAndResetButtons();
