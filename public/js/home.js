@@ -404,7 +404,6 @@ function settingsClicked() {
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
 			document.getElementById("user-row").value = rowVal - 1;
-			console.log("TEST: " + (rowVal - 1));
 
 		}
 	});
@@ -723,6 +722,8 @@ function backClicked() {
 		secondTransitionBg();
 	}
 
+	clearToBlack();
+
 }
 
 
@@ -883,8 +884,8 @@ function clearToBlack() {
 
 function cellSelected(cellName, row, seat) {
 
-	rowValue = row;
-	seatValue = seat;
+	rowValue = row - 1;
+	seatValue = seat - 1;
 
 	console.log(row + '-' + seat);
 
