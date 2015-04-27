@@ -1,3 +1,8 @@
+/*
+* Main PixelPusher JS Code. This includes all functions and
+* functionality needed for the web based PixelPusher end user.
+*/
+
 var X_SEATS = 3;
 var Y_SEATS = 3;
 var intervalVar;
@@ -16,17 +21,17 @@ var rowValue;
 var seatValue;
 var appCredits;
 
+/*
+* --------------------> ON PAGE LOAD <-----------------------
+* Loads all necessary data on page load
+*/
 $(function() {
 
-	// window.onresize = function(event) {
-	// 	$('body').height(400);
-	// 	$('body').width(400);
-	// };
-
+	//Start the transitions in the background
 	transitionBg();
 
+	//Start clippy
 	clippy.load('Clippy', function(agent) {
-		// Do anything with the loaded agent
 		clippyAgent = agent;
 		clippyAgent.show();
 		clippyAgent.moveTo(25, 25);
@@ -34,8 +39,10 @@ $(function() {
 		clippyAgent.animate();
 	});
 
+	//Pull the ranges
 	getRanges();
 });
+//------------------------------------------------------------
 
 
 document.getElementById("backButton").onclick = function() {
@@ -786,11 +793,11 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("innerSectionDiv").style.marginBottom = "60px";
 
 	//clear html tags
-	document.getElementById("user-section").value = 0;
-	document.getElementById("user-row").value = 0;
-	document.getElementById("user-seat").value = 0;
-	rowValue = 0;
-	seatValue = 0;
+	//document.getElementById("user-section").value = 0;
+	//document.getElementById("user-row").value = 0;
+	//document.getElementById("user-seat").value = 0;
+	//rowValue = 0;
+	//seatValue = 0;
 
 	document.getElementById("sectionText").style.display = "none";
 	document.getElementById("rowText").style.display = "none";
@@ -820,23 +827,10 @@ document.getElementById("confirm-seat-button").onclick = function() {
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-
-*/
-function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
-
-	document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
-}
 
 
-/*
-* Clear the background pixel(s) to black regardless of width
-* or height of the display in manufactured pixels
-*/
-function clearToBlack() {
-	document.getElementById("col_0_0").background = "black";
-	setPixelTableCellColor(x, y, 0, 0, 0);
-}
+
+
 
 function cellSelected(cellName, row, seat) {
 
@@ -880,6 +874,28 @@ function cellSelected(cellName, row, seat) {
 		showConfirmAndResetButtons();
 	}
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~PIXEL DISPLAY FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
+* Clear the background pixel(s) to black regardless of width
+* or height of the display in manufactured pixels
+*/
+function clearToBlack() {
+	document.getElementById("col_0_0").background = "black";
+	setPixelTableCellColor(x, y, 0, 0, 0);
+}
+
+/*
+* Sets the pixel color for the table
+*/
+function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
+
+	document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
+}
+
+//~~~~~~~~~~~~~~~~~~~END PIXEL DISPLAY FUNCTIONS~~~~~~~~~~~~~~~~~~~~~
 
 
 //~~~~~~~~~~~~~~~~~~~~~WEBSOCKET FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~
