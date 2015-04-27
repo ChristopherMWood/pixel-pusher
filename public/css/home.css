@@ -222,7 +222,7 @@ th {
   height: 100px;
   -webkit-appearance: none;
   font-family: monaco,Consolas,Lucida Console,monospace;
-  
+
   width: 100%;
   text-align: center;
   padding-left: 14%;
@@ -354,4 +354,8 @@ th {
 	margin-bottom:30px;
 }
 
-
+.grid-block:hover {
+  border-style: solid;
+  border-color: red;
+  border-width: 4px;
+}

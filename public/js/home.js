@@ -493,11 +493,11 @@ function createSettingsTable(width, height) {
 
 			if (j == highlightedSeat && i == highlightedRow) {
 				// it is the highlighted seat
-				tableString += "<td id='" + name + "' name='" + name + "' style='background-color: red' onclick='cellSelected(\"" + name + "\", " + i + ", " + j + ")'></td>";
+				tableString += "<td id='" + name + "' class='grid-block' name='" + name + "' style='background-color: red' onclick='cellSelected(\"" + name + "\", " + i + ", " + j + ")'></td>";
 			}
 			else {
 				// id is seat_ and then the row number, another _, and then the seat number
-				tableString += "<td id='" + name + "' name='" + name + "' onclick='cellSelected(\"" + name + "\", " + i + ", " + j + ")'></td>";
+				tableString += "<td id='" + name + "' class='grid-block' name='" + name + "' onclick='cellSelected(\"" + name + "\", " + i + ", " + j + ")'></td>";
 			}
 		}
 		tableString += "</tr>";
