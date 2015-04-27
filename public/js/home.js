@@ -283,7 +283,7 @@ function settingsClicked() {
 			isSeatConfirmed = false;
 
 			seatDiv.style.display = "block";
-			rowVal = $("#rowDD").val();
+			rowValue = $("#rowDD").val();
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
 			document.getElementById("user-row").value = rowVal - 1;
@@ -295,7 +295,7 @@ function settingsClicked() {
 		isSeatConfirmed = true;
 
 		// when a choice is selected, change to a text field
-		var seatVal = $("#seatDD").val();
+		seatValue = $("#seatDD").val();
 		highlightSeat(rowVal, seatVal);
 		setDDText(seatVal, 2);
 		document.getElementById("user-seat").value = seatVal - 1;
