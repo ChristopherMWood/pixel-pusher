@@ -41,6 +41,10 @@ $(function() {
 document.getElementById("backButton").onclick = function() {
 	var userRow = document.getElementById("user-row").value;
 	var userCol = document.getElementById("user-seat").value;
+
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
+
 	rowValue = userRow;
 	seatValue = userCol;
 
@@ -680,6 +684,9 @@ function api_request(pars, callback) {
 */
 function backClicked() {
 
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
+
 	document.getElementById("bg").className = "";
 	document.getElementById("ppIcon").className = "icon-init";
 	document.getElementById("ppDiv").style.display = "block";
@@ -877,6 +884,8 @@ function cellSelected(cellName, row, seat) {
 
 	rowValue = row;
 	seatValue = seat;
+
+	console.log(row + '-' + seat);
 
 	document.getElementById("user-row").value(row);
 	document.getElementById("user-seat").value(seat);
