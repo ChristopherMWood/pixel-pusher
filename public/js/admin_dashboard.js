@@ -27,6 +27,7 @@ document.getElementById("stop-button").onclick = function() {
 var stopLoop = false;
 var playing = false;
 var intervalCount = 0;
+var i = 0;
 function playSlideshow() {
 
 	if(!playing) {
@@ -37,19 +38,17 @@ function playSlideshow() {
 			// pixelPushImage("" + intervalCount);
 			// intervalCount++;
 
-			for(var j = 0; j < 5; j++) {
-				for(var i = 0; i < 3; i++) {
-					if(i == 0) {
-						pixelPushImage("red");
-					}
-					else if(i == 1) {
-						pixelPushImage("blue");
-					}
-					else {
-						pixelPushImage("green");
-					}
+				if(i == 0) {
+					pixelPushImage("red");
 				}
-			}
+				else if(i == 1) {
+					pixelPushImage("blue");
+				}
+				else {
+					pixelPushImage("green");
+					i = -1;
+				}
+			i++
 
 
 			if(intervalCount >= 8) {
@@ -65,7 +64,7 @@ function playSlideshow() {
 				}
 			}
 
-		}, 200);
+		}, 1000);
 	}
 
 }
