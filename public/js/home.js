@@ -702,7 +702,7 @@ function backClicked() {
 
 		//console.log("user row: " + userRow);
 		//console.log("user col: " + userCol);
-		
+
 		registerSeatSocket(userRow, userCol);
 
 		//Make sure the row and col values were actually set.
@@ -877,6 +877,9 @@ function cellSelected(cellName, row, seat) {
 
 	rowValue = row;
 	seatValue = seat;
+
+	document.getElementById("user-row").value(row);
+	document.getElementById("user-seat").value(seat);
 
 	if (document.getElementById(cellName).style.backgroundColor != "red") {
 		//it is not already selected
