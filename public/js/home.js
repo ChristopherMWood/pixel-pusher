@@ -724,7 +724,7 @@ function createPixelTable(seat_x, seat_y) {
 
 	//Function that creates a grid that will display the pixels
 	//associates with your seat assignment.
-	var ratio = 7;
+	var ratio = 1;
 
 	var tableString = "<table name='pixelTable' id='pixelTable' style='z-index:-1; position:absolute'>";
 	var windowHeight = $(window).height();
@@ -839,15 +839,9 @@ function registerSeatSocket(row, column) {
 							var gVal = parseInt(pixel['g_val']);
 							var bVal = parseInt(pixel['b_val']);
 
-							for(var i = 0; i < 7; i++) {
-								for(var j = 0; j < 7; j++) {
-									document.getElementById('col_' + i + '_' + j).style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
-								}
-							}
-							// setPixelTableCellColor(x, y, rVal, gVal, bVal);
+							setPixelTableCellColor(x, y, rVal, gVal, bVal);
 
 							audio.play();
-              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
       function() {
