@@ -403,7 +403,8 @@ function settingsClicked() {
 			rowVal = $("#rowDD").val();
 			highlightRow(rowVal);
 			setDDText(rowVal, 1);
-			document.getElementById("user-row").value = rowVal;
+			document.getElementById("user-row").value = rowVal - 1;
+			console.log("TEST: " + (rowVal - 1));
 
 		}
 	});
@@ -415,7 +416,7 @@ function settingsClicked() {
 		var seatVal = $("#seatDD").val();
 		highlightSeat(rowVal, seatVal);
 		setDDText(seatVal, 2);
-		document.getElementById("user-seat").value = seatVal;
+		document.getElementById("user-seat").value = seatVal - 1;
 
 		showConfirmAndResetButtons();
 	});
