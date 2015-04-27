@@ -714,7 +714,7 @@ function backClicked() {
 
 		//Make sure the row and col values were actually set.
 		if (userRow != 0 && userCol != 0) {
-			createPixelTable(userRow, userCol);
+			createPixelTable(1, 1);
 		}
 	}
 	else {
