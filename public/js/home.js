@@ -662,7 +662,7 @@ function backClicked() {
 		registerSeatSocket(rowValue, seatValue);
 
 		//Make sure the row and col values were actually set.
-		if (rowValue != 0 && seatValue != 0) {
+		if (rowValue >= 0 && seatValue >= 0) {
 			createPixelTable(1, 1);
 		}
 
