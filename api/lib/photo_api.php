@@ -69,31 +69,21 @@ class PhotoApi extends BaseApi
 				 //echo '<pre>' . var_dump($seat) . '</pre>';
 			}
 		}
-			 //$phql = "SELECT * FROM pixel where image='$imageName'";
-			 //$result = $connection->query($phql);
-			 //$result->setFetchMode(Phalcon\Db::FETCH_NUM);
-			  //$this->data['seat'];
-				//$seat = $result->fetchArray();
-			 //var_dump($seat);
-				//$this->data['x_pos'] = $seat[0];
-				//$this->data['y_pos'] = $seat[1];
-				//$this->data['image'] = $seat[2];
-				//$this->data['r_val'] = $seat[3];
-				//$this->data['g_val'] = $seat[4];
-				//$this->data['b_val'] = $seat[5];
 
-				//$output = array();
-				//foreach($pixels as $v) {
-				    //$output[key($v)] = current($v);
-				//}
-				//echo json_encode($output, 128);
-
-				//$content = array('category' => 'all', 'data' => json_encode($this->data));
+			foreach($pixels as $pixel) {
 				$content = array('category' => 'all', 'data' => json_encode($pixels));
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				$socket->connect("tcp://127.0.0.1:5555");
 				$socket->send(json_encode($content));
+			}
+
+				//$content = array('category' => 'all', 'data' => json_encode($this->data));
+				// $content = array('category' => 'all', 'data' => json_encode($pixels));
+				// $context = new ZMQContext();
+				// $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
+				// $socket->connect("tcp://127.0.0.1:5555");
+				// $socket->send(json_encode($content));
 
 
 				$this->response->setJsonContent(array('success' => true, 'image-loaded' => $imageName, 'data' => $pixels));
