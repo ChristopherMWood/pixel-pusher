@@ -284,9 +284,9 @@ function settingsClicked() {
 
 			seatDiv.style.display = "block";
 			rowValue = $("#rowDD").val();
-			highlightRow(rowVal);
-			setDDText(rowVal, 1);
-			document.getElementById("user-row").value = rowVal - 1;
+			highlightRow(rowValue);
+			setDDText(rowValue, 1);
+			document.getElementById("user-row").value = rowValue - 1;
 
 		}
 	});
@@ -296,9 +296,9 @@ function settingsClicked() {
 
 		// when a choice is selected, change to a text field
 		seatValue = $("#seatDD").val();
-		highlightSeat(rowVal, seatVal);
-		setDDText(seatVal, 2);
-		document.getElementById("user-seat").value = seatVal - 1;
+		highlightSeat(rowValue, seatValue);
+		setDDText(seatValue, 2);
+		document.getElementById("user-seat").value = seatValue - 1;
 
 		showConfirmAndResetButtons();
 	});
