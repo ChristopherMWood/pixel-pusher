@@ -831,9 +831,9 @@ function registerSeatSocket(row, column) {
 
 							var array = JSON.parse(data.data);
 
-							var rVal = parseInt(array[rowValue + "-" + seatValue]['r_val']);
-							var gVal = parseInt(array[rowValue + "-" + seatValue]['g_val']);
-							var bVal = parseInt(array[rowValue + "-" + seatValue]['b_val']);
+							var rVal = parseInt(array['r_val']);
+							var gVal = parseInt(array['g_val']);
+							var bVal = parseInt(array['b_val']);
 
 							//setPixelTableCellColor(x, y, rVal, gVal, bVal);
 							document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
