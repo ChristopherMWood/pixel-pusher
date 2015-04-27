@@ -887,8 +887,8 @@ function cellSelected(cellName, row, seat) {
 
 	console.log(row + '-' + seat);
 
-	document.getElementById("user-row").value(row);
-	document.getElementById("user-seat").value(seat);
+	document.getElementById("user-row").value = row;
+	document.getElementById("user-seat").value = seat;
 
 	if (document.getElementById(cellName).style.backgroundColor != "red") {
 		//it is not already selected
