@@ -833,6 +833,7 @@ function registerSeatSocket(row, column) {
   //Creates the connection to server for pixel pull ability
   conn = new ab.Session('ws://www.pixelpush.us:8080',
       function() {
+					console.log(socketName);
           conn.subscribe(socketName, function(topic, data) {
 
 							var array = JSON.parse(data.data);
