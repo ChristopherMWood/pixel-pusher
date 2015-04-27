@@ -691,6 +691,7 @@ document.getElementById("backButton").onclick = function() {
 	if (rowValue >= 0 && seatValue >= 0) {
 		registerSeatSocket(rowValue, seatValue);
 		isSeatConfirmed = true;
+		createPixelTable(1, 1);
 	}
 	else {
 		isSeatConfirmed = false;
