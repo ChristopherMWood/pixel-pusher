@@ -836,15 +836,9 @@ function registerSeatSocket(row, column) {
 							var gVal = parseInt(pixel['g_val']);
 							var bVal = parseInt(pixel['b_val']);
 
-							for(var i = 0; i < 7; i++) {
-								for(var j = 0; j < 7; j++) {
-									document.getElementById('col_' + i + '_' + j).style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
-								}
-							}
-							// setPixelTableCellColor(x, y, rVal, gVal, bVal);
+							setPixelTableCellColor(x, y, rVal, gVal, bVal);
 
 							audio.play();
-              console.log('New Pixel Pushed: "' + topic + '" : ' + data.data);
           });
       },
       function() {
