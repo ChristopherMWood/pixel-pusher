@@ -299,7 +299,7 @@ function infoClicked() {
 */
 function settingsClicked() {
 	getRanges();
-	clippyAgent.hide();
+	//clippyAgent.hide();
 
 	clearInterval(intervalVar);
 	clearTimeout(timeout1);
