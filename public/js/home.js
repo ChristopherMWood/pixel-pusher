@@ -11,7 +11,6 @@ var timeout2;
 var timeout3;
 var timeout4;
 var timeout5;
-var clippyAgent;
 var isSeatConfirmed = false;
 var audio = new Audio('../audio/recorderclip.mp3');
 
@@ -29,15 +28,6 @@ $(function() {
 
 	//Start the transitions in the background
 	transitionBg();
-
-	//Start clippy
-	clippy.load('Clippy', function(agent) {
-		clippyAgent = agent;
-		clippyAgent.show();
-		clippyAgent.moveTo(25, 25);
-		clippyAgent.speak('To get started, click the PixelPusher logo!');
-		clippyAgent.animate();
-	});
 
 	//Pull the ranges
 	getRanges();
@@ -312,7 +302,6 @@ function infoClicked() {
 */
 function settingsClicked() {
 	getRanges();
-	//clippyAgent.hide();
 
 	clearInterval(intervalVar);
 	clearTimeout(timeout1);
