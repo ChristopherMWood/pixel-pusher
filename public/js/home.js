@@ -752,7 +752,6 @@ function cellSelected(cellName, row, seat) {
 */
 function clearToBlack() {
 	document.getElementById("col_0_0").background = "black";
-	setPixelTableCellColor(x, y, 0, 0, 0);
 }
 
 /*
