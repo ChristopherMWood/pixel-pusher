@@ -587,6 +587,11 @@ function showConfirmAndResetButtons() {
 document.getElementById("reset-seat-button").onclick = function() {
 	isSeatConfirmed = false;
 
+	//Close websocket if needed before opening a new one
+	if(conn) {
+		conn.close();
+	}
+
 	document.getElementById("confirm-reset-div").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("innerSectionDiv").style.marginBottom = "60px";
