@@ -878,7 +878,7 @@ function unregisterSeatSocket() {
 
 
 function clearToBlack() {
-	document.getElementById("pixelTable").background = "black";
+	document.getElementById("col_0_0").background = "black";
 	setPixelTableCellColor(x, y, 0, 0, 0);
 }
 
