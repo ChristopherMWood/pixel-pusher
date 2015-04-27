@@ -10,6 +10,12 @@ var clippyAgent;
 var isSeatConfirmed = false;
 var audio = new Audio('../audio/recorderclip.mp3');
 
+var appInfo;
+var sectionValue;
+var rowValue;
+var seatValue;
+var appCredits;
+
 $(function() {
 
 	// window.onresize = function(event) {
@@ -216,11 +222,11 @@ function displayPPInfo() {
 */
 function infoClicked() {
 
-	var appInfo = document.getElementById("appInfo");
-	var sectionValue = document.getElementById("user-section").value;
-	var rowValue = document.getElementById("user-row").value;
-	var seatValue = document.getElementById("user-seat").value;
-	var appCredits = document.getElementById("appCredits");
+	appInfo = document.getElementById("appInfo");
+	sectionValue = document.getElementById("user-section").value;
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
+	appCredits = document.getElementById("appCredits");
 
 	var appCreditsString = "PixelPusher is a crowd-sourced media display "
 						+ "app created</br>in Spring, 2015 by the AddHawk development team."
@@ -313,9 +319,9 @@ function settingsClicked() {
 	//whether or not the settings page should prompt the user to enter
 	//a seat assignment for the first time or display their current
 	//seat assignment.
-	var sectionValue = document.getElementById("user-section").value;
-	var rowValue = document.getElementById("user-row").value;
-	var seatValue = document.getElementById("user-seat").value;
+	sectionValue = document.getElementById("user-section").value;
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
 
 
 	// change the screen to display the correct elements
@@ -379,9 +385,6 @@ function settingsClicked() {
 			setDDText(sectionVal, 0);
 			//Set the hidden values in the html for the user's seat information
 			document.getElementById("user-section").value = sectionVal;
-
-			//Here we reset the table dimensions based on the section chosen
-			document.getElementById("tableGridDiv").innerHTML = createSettingsTable(4, 4);
 		}
 	});
 
@@ -806,8 +809,6 @@ document.getElementById("confirm-seat-button").onclick = function() {
 
 */
 function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
-	var pixelTable = document.getElementById("pixelTable");
-	//pixelTable.rows[row].cells[col].style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 
 	document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 }
@@ -821,27 +822,23 @@ socket on the backend server.
 */
 function registerSeatSocket(row, column) {
 	var conn;
+	var socketName = rowValue + "-" + seatValue;
+
   //Creates the connection to server for pixel pull ability
   conn = new ab.Session('ws://www.pixelpush.us:8080',
       function() {
-          conn.subscribe("all", function(topic, data) {
-              //This is where all of the pixels are pulled into on each
-              //push from the server for a registerd user.
+          conn.subscribe(socketName, function(topic, data) {
 
-              //Parse Pixels Into display
 							var array = JSON.parse(data.data);
 
-						  var pixel = array[(parseInt(row) - 1) + "-" + (parseInt(column) - 1)];
+							var rVal = parseInt(array['r_val']);
+							var gVal = parseInt(array['g_val']);
+							var bVal = parseInt(array['b_val']);
 
-							var x = parseInt(row);
-							var y = parseInt(column);
-							var rVal = parseInt(pixel['r_val']);
-							var gVal = parseInt(pixel['g_val']);
-							var bVal = parseInt(pixel['b_val']);
+							//setPixelTableCellColor(x, y, rVal, gVal, bVal);
+							document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 
-							setPixelTableCellColor(x, y, rVal, gVal, bVal);
-
-							audio.play();
+							//audio.play();
           });
       },
       function() {
