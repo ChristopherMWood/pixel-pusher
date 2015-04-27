@@ -868,6 +868,10 @@ function clearToBlack() {
 }
 
 function cellSelected(cellName, row, seat) {
+
+	rowValue = row;
+	seatValue = seat;
+
 	if (document.getElementById(cellName).style.backgroundColor != "red") {
 		//it is not already selected
 		if (document.getElementById("highlight-seat").value != -1) {
