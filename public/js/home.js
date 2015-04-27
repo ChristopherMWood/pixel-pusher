@@ -828,55 +828,11 @@ function setPixelTableCellColor(row, col, r_val, g_val, b_val) {
 	document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + r_val + ',' + g_val + ',' + b_val + ')';
 }
 
-//This is the single websocket for each user
-
 
 /*
-This will register a seat the user chose with a
-socket on the backend server.
+* Clear the background pixel(s) to black regardless of width
+* or height of the display in manufactured pixels
 */
-function registerSeatSocket(row, column) {
-	var conn;
-	var socketName = rowValue + "-" + seatValue;
-
-  //Creates the connection to server for pixel pull ability
-  conn = new ab.Session('ws://www.pixelpush.us:8080',
-      function() {
-					console.log(socketName);
-          conn.subscribe(socketName, function(topic, data) {
-
-							var array = JSON.parse(data.data);
-
-							var rVal = parseInt(array['r_val']);
-							var gVal = parseInt(array['g_val']);
-							var bVal = parseInt(array['b_val']);
-
-							//setPixelTableCellColor(x, y, rVal, gVal, bVal);
-							document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
-
-							//audio.play();
-          });
-      },
-      function() {
-          //Display closed message here if necessary
-          //This should be a GUI change, not console change for final version
-          console.warn('WebSocket connection closed');
-      },
-      {'skipSubprotocolCheck': true}
-  );
-}
-
-/*
-This closes the seatsocket for the user to allow for
-a new socket or closing of the browser.
-*/
-function unregisterSeatSocket() {
-  if(conn) {
-    conn.close();
-  }
-}
-
-
 function clearToBlack() {
 	document.getElementById("col_0_0").background = "black";
 	setPixelTableCellColor(x, y, 0, 0, 0);
@@ -924,3 +880,46 @@ function cellSelected(cellName, row, seat) {
 		showConfirmAndResetButtons();
 	}
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~~WEBSOCKET FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+* This will register a seat the user has selected from the
+* drop downs set in the javscript variables.
+* PRE: Only runs if row and seat are >= 0
+*/
+var conn;
+var socketName
+function registerSeatSocket(row, column) {
+
+	//Close websocket if needed before opening a new one
+	if(conn) {
+		conn.close();
+	}
+
+	//Set the websocket to register with
+  socketName = rowValue + "-" + seatValue;
+	console.log("Subscribing to: " + socketName);
+
+  //Creates the connection to server for pixel pull ability
+  conn = new ab.Session('ws://www.pixelpush.us:8080',
+      function() {
+          conn.subscribe(socketName, function(topic, data) {
+
+							var array = JSON.parse(data.data);
+							var rVal = parseInt(array['r_val']);
+							var gVal = parseInt(array['g_val']);
+							var bVal = parseInt(array['b_val']);
+
+							//Set single pixel value for display
+							document.getElementById('col_0_0').style.backgroundColor = 'rgb(' + rVal + ',' + gVal + ',' + bVal + ')';
+          });
+      },
+      function() {
+          console.warn('Connection to PixelPusher closed');
+      },
+      {'skipSubprotocolCheck': true}
+  );
+}
+
+//~~~~~~~~~~~~~~~~~~~~END WEBSOCKET FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~
