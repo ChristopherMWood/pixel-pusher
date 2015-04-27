@@ -284,6 +284,7 @@ function settingsClicked() {
 
 			seatDiv.style.display = "block";
 			rowValue = $("#rowDD").val();
+			alert("ROWVALUE: " + rowValue);
 			highlightRow(rowValue);
 			setDDText(rowValue, 1);
 			document.getElementById("user-row").value = rowValue - 1;
@@ -296,6 +297,7 @@ function settingsClicked() {
 
 		// when a choice is selected, change to a text field
 		seatValue = $("#seatDD").val();
+		alert("SEATVALUE: " + seatValue);
 		highlightSeat(rowValue, seatValue);
 		setDDText(seatValue, 2);
 		document.getElementById("user-seat").value = seatValue - 1;
