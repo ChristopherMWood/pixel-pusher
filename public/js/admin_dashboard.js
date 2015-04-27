@@ -33,9 +33,24 @@ function playSlideshow() {
 		playing = true;
 		var imageLoop = setInterval(function(){
 
-			$('#slideshow-count').text("Image: " + (intervalCount + 1));
-			pixelPushImage("" + intervalCount);
-			intervalCount++;
+			// $('#slideshow-count').text("Image: " + (intervalCount + 1));
+			// pixelPushImage("" + intervalCount);
+			// intervalCount++;
+
+			for(var j = 0; j < 5; j++) {
+				for(var i = 0; i < 3; i++) {
+					if(i == 0) {
+						pixelPushImage("red");
+					}
+					else if(i == 1) {
+						pixelPushImage("blue");
+					}
+					else {
+						pixelPushImage("green");
+					}
+				}
+			}
+
 
 			if(intervalCount >= 8) {
 				if(!stopLoop) {
