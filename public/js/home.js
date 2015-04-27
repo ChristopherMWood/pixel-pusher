@@ -12,7 +12,6 @@ var timeout3;
 var timeout4;
 var timeout5;
 var isSeatConfirmed = false;
-var audio = new Audio('../audio/recorderclip.mp3');
 
 var appInfo;
 var sectionValue;
@@ -29,38 +28,18 @@ $(function() {
 	//Start the transitions in the background
 	transitionBg();
 
-	//Pull the ranges
-	getRanges();
+	//Display the user grid
+	displaySelectionGrid();
 });
-//------------------------------------------------------------
 
 
-document.getElementById("backButton").onclick = function() {
-	var userRow = document.getElementById("user-row").value;
-	var userCol = document.getElementById("user-seat").value;
-
-	rowValue = document.getElementById("user-row").value;
-	seatValue = document.getElementById("user-seat").value;
-
-	rowValue = userRow;
-	seatValue = userCol;
-
-	//Make sure the row and col values were actually set.
-	if (userRow != 0 && userCol != 0) {
-		registerSeatSocket(userRow, userCol);
-		isSeatConfirmed = true;
-	}
-	else {
-		isSeatConfirmed = false;
-	}
-	backClicked();
-
-};
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//~~~~~~~~~~~~~~~~~~~~~BACKGROUND EFFECT FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
-
+* This sets the transition for the background in motion
 */
 function transitionBg() {
 
@@ -76,11 +55,6 @@ function transitionBg() {
 
 }
 
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-
-*/
 function secondTransitionBg() {
 
 	document.getElementById("bg").className = "";
@@ -96,6 +70,17 @@ function secondTransitionBg() {
 
 }
 
+function secondTransition() {
+	document.getElementById("bg").className = "bgBlueTransition";
+}
+
+function thirdTransition() {
+	document.getElementById("bg").className = "bgRedTransition";
+}
+
+function extraTransition() {
+	document.getElementById("bg").className = "bgYellowTransition";
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
@@ -147,30 +132,7 @@ function buttonDropAnimation(element, isShown) {
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
 
-*/
-function secondTransition() {
-	document.getElementById("bg").className = "bgBlueTransition";
-}
-
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-
-*/
-function thirdTransition() {
-	document.getElementById("bg").className = "bgRedTransition";
-}
-
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-
-*/
-function extraTransition() {
-	document.getElementById("bg").className = "bgYellowTransition";
-}
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -219,81 +181,6 @@ function displayPPInfo() {
 }
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-	This method displays info. about the PixelPusher app. underneath the info. logo.
-*/
-function infoClicked() {
-
-	appInfo = document.getElementById("appInfo");
-	sectionValue = document.getElementById("user-section").value;
-	rowValue = document.getElementById("user-row").value;
-	seatValue = document.getElementById("user-seat").value;
-	appCredits = document.getElementById("appCredits");
-
-	var appCreditsString = "PixelPusher is a crowd-sourced media display "
-						+ "app created</br>in Spring, 2015 by the AddHawk development team."
-						+ "</br></br>Developers:</br>Michael Peter</br>Christopher Wood</br>"
-						+ "Dillon Gresham</br>Connor Hoene";
-	appCredits.innerHTML = "<div id='appCredits'></br>" + appCreditsString + "</div>";
-
-	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
-		//NOTE:
-		//putting the div tags in the inner html gives the double border look, which i like.
-		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
-							+ sectionValue + "</br>Row: " + rowValue + "</br>Seat Number: "
-							+ seatValue + "</div>";
-	}
-	else {
-		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
-							+ "</br>Row: " + "</br>Seat Number: "
-							+ "</div>";
-	}
-
-	if (appInfo.style.display == "none") {
-
-		var topMargin = -10;
-		var transparency = 0;
-		appInfo.style.display = "block";
-		appCredits.style.display = "block";
-
-
-		var v = setInterval( function () {
-
-			topMargin++;
-			transparency = transparency + 0.1;
-			appInfo.style.marginTop = topMargin + "px";
-			appCredits.style.marginTop = topMargin + "px";
-			appInfo.style.opacity = transparency;
-			appCredits.style.opacity = transparency;
-
-			if (topMargin == 10) {
-				clearInterval(v);
-			}
-		}, 10);
-	}
-	else {
-		var topMargin = 10;
-		var transparency = 1;
-
-		var v = setInterval( function () {
-
-			topMargin--;
-			transparency = transparency - 0.1;
-			appInfo.style.marginTop = topMargin + "px";
-			appCredits.style.marginTop = topMargin + "px";
-			appInfo.style.opacity = transparency;
-			appCredits.style.opacity = transparency;
-
-			if (topMargin == 0) {
-				clearInterval(v);
-				appInfo.style.display = "none";
-				appCredits.style.display = "none";
-			}
-		}, 10);
-	}
-
-}
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,7 +188,7 @@ function infoClicked() {
 
 */
 function settingsClicked() {
-	getRanges();
+	displaySelectionGrid();
 
 	clearInterval(intervalVar);
 	clearTimeout(timeout1);
@@ -529,7 +416,7 @@ function highlightSeat(rowNum, seatNum) {
 /*
 *This gets the ranges from the database
 */
-function getRanges() {
+function displaySelectionGrid() {
 	var parameters = {};
     parameters['api_name'] = 'admin';
     parameters['api_method'] = 'get_range';
@@ -558,27 +445,6 @@ function getRanges() {
 		$("#gridHeight").val(y);
 
 		createSettingsTable(x, y);
-
-    api_request(parameters, function(response){
-    	var x;
-    	var y;
-        if(response['success'] == true) {
-          x = 5;//response['data']['x_range'];
-          y = 8;//response['data']['y_range'];
-
-          // document.getElementById("gridHeight").value = y;
-          // document.getElementById("gridWidth").value = x;
-
-          //alert(x + " " + y);
-        }
-        else {
-            //alert('api called failed');
-          x = 5;//response['data']['x_range'];
-          y = 8;//response['data']['y_range'];
-
-          //alert(x + " " + y);
-        }
-    });
 }
 
 
@@ -664,64 +530,6 @@ function api_request(pars, callback) {
 }
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*
-	In response to clicking the 'back' button from the seat selection
-	screen. The home page is shown with only the pixelpusher icon
-	displayed. If the user input their seat correctly, the background
-	should be the pixel of the media corresponding to their seat selection.
-	(assuming that the media has begun being displayed in the first place).
-	This method is used for the click response of the "Confirm" button as
-	well as the click response for the back button on the settings page.
-
-	isSeatConfirmed
-			if true, this means that the user has seat their seat assignment fully
-			if false, then the user hasn't set the seat
-*/
-function backClicked() {
-
-	rowValue = document.getElementById("user-row").value;
-	seatValue = document.getElementById("user-seat").value;
-
-	document.getElementById("bg").className = "";
-	document.getElementById("ppIcon").className = "icon-init";
-	document.getElementById("ppDiv").style.display = "block";
-	document.getElementById("ppFontLogo").style.display = "none";
-	document.getElementById("lowerButtonsDiv").style.display = "none";
-	document.getElementById("infoDiv").style.display = "none";
-	document.getElementById("appInfo").style.display = "none";
-	document.getElementById("appCredits").style.display = "none";
-	document.getElementById("settingsDiv").style.display = "none";
-	document.getElementById("settingsTitleDiv").style.display = "none";
-	document.getElementById("innerSectionDiv").style.display = "none";
-	document.getElementById("tableGridDiv").style.display = "none";
-	document.getElementById("confirm-reset-div").style.display = "none";
-
-	if (isSeatConfirmed) {
-		//Create a grid of table cells on the main page when the back button is
-		//pressed for displaying media to the user
-		var userRow = document.getElementById("user-row").value;
-		var userCol = document.getElementById("user-seat").value;
-
-		//console.log("user row: " + userRow);
-		//console.log("user col: " + userCol);
-
-		registerSeatSocket(userRow, userCol);
-
-		//Make sure the row and col values were actually set.
-		if (userRow != 0 && userCol != 0) {
-			createPixelTable(1, 1);
-		}
-	}
-	else {
-		//Return to the normal transition background
-		secondTransitionBg();
-	}
-
-	clearToBlack();
-
-}
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
@@ -777,6 +585,8 @@ function showConfirmAndResetButtons() {
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
+	isSeatConfirmed = false;
+
 	document.getElementById("confirm-reset-div").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
 	document.getElementById("innerSectionDiv").style.marginBottom = "60px";
@@ -807,15 +617,84 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
 };
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~CONFIRMATION METHODS~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
+	In response to clicking the 'back' button from the seat selection
+	screen. The home page is shown with only the pixelpusher icon
+	displayed. If the user input their seat correctly, the background
+	should be the pixel of the media corresponding to their seat selection.
+	(assuming that the media has begun being displayed in the first place).
+	This method is used for the click response of the "Confirm" button as
+	well as the click response for the back button on the settings page.
+
+	isSeatConfirmed
+			if true, this means that the user has seat their seat assignment fully
+			if false, then the user hasn't set the seat
+*/
+function backClicked() {
+
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
+
+	document.getElementById("bg").className = "";
+	document.getElementById("ppIcon").className = "icon-init";
+	document.getElementById("ppDiv").style.display = "block";
+	document.getElementById("ppFontLogo").style.display = "none";
+	document.getElementById("lowerButtonsDiv").style.display = "none";
+	document.getElementById("infoDiv").style.display = "none";
+	document.getElementById("appInfo").style.display = "none";
+	document.getElementById("appCredits").style.display = "none";
+	document.getElementById("settingsDiv").style.display = "none";
+	document.getElementById("settingsTitleDiv").style.display = "none";
+	document.getElementById("innerSectionDiv").style.display = "none";
+	document.getElementById("tableGridDiv").style.display = "none";
+	document.getElementById("confirm-reset-div").style.display = "none";
+
+	if (isSeatConfirmed) {
+
+		registerSeatSocket(rowValue, seatValue);
+
+		//Make sure the row and col values were actually set.
+		if (userRow != 0 && userCol != 0) {
+			createPixelTable(1, 1);
+		}
+
+		clearToBlack();
+	}
+	else {
+		//Return to the normal transition background
+		secondTransitionBg();
+	}
+
+}
+
+
 document.getElementById("confirm-seat-button").onclick = function() {
+	isSeatConfirmed = true;
 	backClicked();
 };
 
 
+document.getElementById("backButton").onclick = function() {
 
+	rowValue = document.getElementById("user-row").value;
+	seatValue = document.getElementById("user-seat").value;
 
+	//Make sure the row and col values were actually set.
+	if (userRow >= 0 && userCol >= 0) {
+		registerSeatSocket(rowValue, seatValue);
+		isSeatConfirmed = true;
+	}
+	else {
+		isSeatConfirmed = false;
+	}
+	backClicked();
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+};
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~END CONFIRMATION BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
