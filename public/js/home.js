@@ -385,9 +385,6 @@ function settingsClicked() {
 			setDDText(sectionVal, 0);
 			//Set the hidden values in the html for the user's seat information
 			document.getElementById("user-section").value = sectionVal;
-
-			//Here we reset the table dimensions based on the section chosen
-			document.getElementById("tableGridDiv").innerHTML = createSettingsTable(4, 4);
 		}
 	});
 
@@ -831,10 +828,7 @@ function registerSeatSocket(row, column) {
   conn = new ab.Session('ws://www.pixelpush.us:8080',
       function() {
           conn.subscribe(socketName, function(topic, data) {
-              //This is where all of the pixels are pulled into on each
-              //push from the server for a registerd user.
 
-              //Parse Pixels Into display
 							var array = JSON.parse(data.data);
 
 							var rVal = parseInt(array['r_val']);
