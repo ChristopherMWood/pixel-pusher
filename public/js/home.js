@@ -744,7 +744,7 @@ function createPixelTable(seat_x, seat_y) {
 		for (var j = 0; j < height; j++) {
 			// id is col_ and then the row number, another _, and then the col number
 			//id : col_4_5 (row 4, col 5)
-			tableString += "<td id='col_" + i + "_" + j + "' name=col_" + i + "_" + j + "'></td>";
+			tableString += "<td id='col_" + i + "_" + j + "' name='col_" + i + "_" + j + "'></td>";
 		}
 		tableString += "</tr>";
 	}
