@@ -683,7 +683,7 @@ document.getElementById("backButton").onclick = function() {
 	seatValue = document.getElementById("user-seat").value;
 
 	//Make sure the row and col values were actually set.
-	if (userRow >= 0 && userCol >= 0) {
+	if (rowValue >= 0 && seatValue >= 0) {
 		registerSeatSocket(rowValue, seatValue);
 		isSeatConfirmed = true;
 	}
