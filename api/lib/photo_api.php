@@ -70,23 +70,19 @@ class PhotoApi extends BaseApi
 			}
 		}
 
-			foreach($pixels as $pixel) {
-				$content = array('category' => 'all', 'data' => json_encode($pixels));
+		for ($x = 0; $x < 3; $x++)
+		{
+			for($y = 0; $y < 3; $y++) {
+				$content = array('category' => $x.'-'.$y, 'data' => json_encode($pixels[$x.'-'.$y]));
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				$socket->connect("tcp://127.0.0.1:5555");
 				$socket->send(json_encode($content));
 			}
+		}
 
-				//$content = array('category' => 'all', 'data' => json_encode($this->data));
-				// $content = array('category' => 'all', 'data' => json_encode($pixels));
-				// $context = new ZMQContext();
-				// $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
-				// $socket->connect("tcp://127.0.0.1:5555");
-				// $socket->send(json_encode($content));
+			$this->response->setJsonContent(array('success' => true, 'image-loaded' => $imageName, 'data' => $pixels));
 
-
-				$this->response->setJsonContent(array('success' => true, 'image-loaded' => $imageName, 'data' => $pixels));
 			} catch (Exception $e) {
 				$this->data['error'] = $e->getMessage();
 				$this->response->setJsonContent(array('success' => false, 'data' => $pixels));
