@@ -50,7 +50,7 @@ function playSlideshow() {
 				}
 			}
 
-		}, 75);
+		}, 200);
 	}
 
 }
