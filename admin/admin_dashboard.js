@@ -55,7 +55,8 @@ function playSlideshow() {
 				i_sub = 1;
 			}
 			else if (i == 14 || i == 28 || i == 42 || i == 56 || i == 70) {
-				prefix = "wave_green_";
+				//5x5 is wave green
+				prefix = "5x5_";
 				i_sub = 1;
 			}
 			else if (i == 84) {
@@ -79,7 +80,7 @@ function playSlideshow() {
 				i_sub = 1;
 			}
 			else if (i == 113 || i == 127) {
-				prefix = "wave_green_";
+				prefix = "5x5_";
 				i_sub = 1;
 			}
 			else if (i == 141)
