@@ -82,7 +82,7 @@ function playSlideshow() {
 				}
 			}
 
-		}, 350);
+		}, 200);
 	}
 
 }
