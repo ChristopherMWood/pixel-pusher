@@ -29,7 +29,7 @@ $(function() {
 	transitionBg();
 
 	//Display the user grid
-	displaySelectionGrid();
+	//displaySelectionGrid();
 });
 
 
@@ -81,6 +81,47 @@ function thirdTransition() {
 function extraTransition() {
 	document.getElementById("bg").className = "bgYellowTransition";
 }
+
+
+function elementAppearAnimation(element, isShown) {
+	
+	if (isShown) {
+		var transparency = 1;
+		var topMargin = 100;
+		var disappear = setInterval( function () {
+
+			transparency = transparency - 0.1;
+			topMargin -= 10;
+			element.style.opacity = transparency;
+			element.style.topMargin = topMargin;
+
+			if (topMargin == 0) {
+				clearInterval(disappear);
+			}
+		}, 15);
+		
+		element.style.display = "none";
+	}
+	else {
+		var transparency = 0;
+		var topMargin = 0;
+		var appear = setInterval( function () {
+
+			transparency = transparency + 0.1;
+			topMargin += 10;
+			element.style.opacity = transparency;
+			element.style.topMargin = topMargin;
+
+			if (topMargin == 100) {
+				clearInterval(appear);
+			}
+		}, 15);
+		
+		element.style.display = "block";
+	}
+	
+}
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
@@ -188,7 +229,8 @@ function displayPPInfo() {
 
 */
 function settingsClicked() {
-	displaySelectionGrid();
+	//don't display this until the user selects their section.
+	//displaySelectionGrid();
 
 	clearInterval(intervalVar);
 	clearTimeout(timeout1);
@@ -221,7 +263,9 @@ function settingsClicked() {
 	document.getElementById("settingsTitleDiv").style.display = "inline";
 	document.getElementById("innerSectionDiv").style.display = "block";
 	document.getElementById("sectionDiv").style.display = "block";
-	document.getElementById("tableGridDiv").style.display = "block";
+	
+	//document.getElementById("tableGridDiv").style.display = "block";
+	
 	document.getElementById("pixelTableDiv").style.display = "none";
 
 
@@ -233,23 +277,23 @@ function settingsClicked() {
 	//trying to make it so that the dropdown menu doesn't appear when seat
 	//is already chosen
 	//when values == 0 this means the user has not set that value yet
-	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+	if (sectionValue != -1 && rowValue != -1 && seatValue != -1) {
 		sectionDiv.style.display = "none";
 		isSeatConfirmed = true;
 
 		document.getElementById("sectionChoiceText").style.display = "block";
 		document.getElementById("rowChoiceText").style.display = "block";
 		document.getElementById("seatChoiceText").style.display = "block";
-		showConfirmAndResetButtons();
+		document.getElementById("confirm-reset-div").style.display = "block";
 	}
-	else if (sectionValue != 0 && rowValue == 0 && seatValue == 0) {
+	else if (sectionValue != -1 && rowValue == -1 && seatValue == -1) {
 		isSeatConfirmed = false;
 		sectionDiv.style.display = "none";
 		document.getElementById("sectionDD").style.display = "none";
 
 		document.getElementById("sectionChoiceText").style.display = "block";
 	}
-	else if (sectionValue != 0 && rowValue != 0 && seatValue == 0) {
+	else if (sectionValue != -1 && rowValue != -1 && seatValue == -1) {
 		isSeatConfirmed = false;
 		sectionDiv.style.display = "none";
 		document.getElementById("sectionDD").style.display = "none";
@@ -267,22 +311,41 @@ function settingsClicked() {
 	$("#sectionDD").change(function () {
 		// when a choice is selected, display the drop down box for rows if needed
 		if (rowDiv.style.display == "none") {
+			elementAppearAnimation(rowDiv, false);
 			isSeatConfirmed = false;
 
-			rowDiv.style.display = "block";
 			var sectionVal = $("#sectionDD").val();
 			setDDText(sectionVal, 0);
 			//Set the hidden values in the html for the user's seat information
 			document.getElementById("user-section").value = sectionVal;
+			
+			if (sectionVal == "A") {
+				X_SEATS = 2;
+				Y_SEATS = 2;
+			}
+			else if (sectionVal == "B") {
+				X_SEATS = 3;
+				Y_SEATS = 3;				
+			}
+			else if (sectionVal == "C") {
+				X_SEATS = 4;
+				Y_SEATS = 4;				
+			}
+			else if (sectionVal == "D") {
+				X_SEATS = 5;
+				Y_SEATS = 5;				
+			}
+			displaySelectionGrid();
+			
 		}
 	});
 
 	$("#rowDD").change(function () {
 		// when a choice is selected, display the drop down box for seats if needed
 		if (seatDiv.style.display == "none") {
+			elementAppearAnimation(seatDiv, false);
 			isSeatConfirmed = false;
 
-			seatDiv.style.display = "block";
 			rowValue = $("#rowDD").val();
 			highlightRow(rowValue);
 			setDDText(rowValue, 1);
@@ -304,7 +367,7 @@ function settingsClicked() {
 	});
 
 	// fill the table div with the correct HTML based on table size
-	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
+	//document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
 }
 
 
@@ -359,6 +422,7 @@ function setDDText(ddString, dropDownNum) {
 // These values will save the highlighted row and seat on the table
 
 function createSettingsTable(width, height) {
+	
 	var tableString = "<table name='settingsTable' id='settingsTable'>";
 	var cellHeight = 300 / height;
 
@@ -423,28 +487,46 @@ function displaySelectionGrid() {
     parameters['type'] = 'current';
 
 
-		var x = X_SEATS;
-		var rowDDHtml = "";
-		rowDDHtml += "<option value='default' disabled selected>Select Row   &#x25BC;</option>";
-		for(var i = 0; i < x; i++) {
-			rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
-			">Row " + (i + 1) + "</option>";
+	var x = X_SEATS;
+	var rowDDHtml = "";
+	rowDDHtml += "<option value='default' disabled selected>Select Row   &#x25BC;</option>";
+	for(var i = 0; i < x; i++) {
+		rowDDHtml += "<option value=" + '"' + (i + 1) + '"' +
+		">Row " + (i + 1) + "</option>";
+	}
+	$("#rowDD").html(rowDDHtml);
+
+	var y = Y_SEATS;
+	var seatDDHtml = "";
+	seatDDHtml += "<option value='default' disabled selected>Select Seat   &#x25BC;</option>";
+	for(var i = 0; i < y; i++) {
+		seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
+		">Seat " + (i + 1) + "</option>";
+	}
+	$("#seatDD").html(seatDDHtml);
+
+	$("#gridWidth").val(x);
+	$("#gridHeight").val(y);
+
+	createSettingsTable(x, y);
+	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
+	var tableDiv = document.getElementById("tableGridDiv");
+	tableDiv.style.opacity = 0;
+	tableDiv.style.display = "block";
+	
+	var transparency = 0;
+	var topMargin = 0;
+	var table_appear = setInterval( function () {
+
+		transparency = transparency + 0.1;
+		topMargin += 10;
+		tableDiv.style.opacity = transparency;
+		tableDiv.style.topMargin = topMargin;
+
+		if (topMargin == 100) {
+			clearInterval(table_appear);
 		}
-		$("#rowDD").html(rowDDHtml);
-
-		var y = Y_SEATS;
-		var seatDDHtml = "";
-		seatDDHtml += "<option value='default' disabled selected>Select Seat   &#x25BC;</option>";
-		for(var i = 0; i < y; i++) {
-			seatDDHtml += "<option value=" + '"' + (i + 1) + '"' +
-			">Seat " + (i + 1) + "</option>";
-		}
-		$("#seatDD").html(seatDDHtml);
-
-		$("#gridWidth").val(x);
-		$("#gridHeight").val(y);
-
-		createSettingsTable(x, y);
+	}, 15);
 }
 
 
@@ -581,12 +663,12 @@ function createPixelTable(seat_x, seat_y) {
 	components of their seat information (section, row, and seat #).
 */
 function showConfirmAndResetButtons() {
-	document.getElementById("confirm-reset-div").style.display = "block";
+	elementAppearAnimation(document.getElementById("confirm-reset-div"), false);
 }
 
 document.getElementById("reset-seat-button").onclick = function() {
 	isSeatConfirmed = false;
-
+	
 	//Close websocket if needed before opening a new one
 	if(conn) {
 		conn.close();
@@ -597,9 +679,9 @@ document.getElementById("reset-seat-button").onclick = function() {
 	document.getElementById("innerSectionDiv").style.marginBottom = "60px";
 
 	//clear html tags
-	//document.getElementById("user-section").value = 0;
-	//document.getElementById("user-row").value = 0;
-	//document.getElementById("user-seat").value = 0;
+	document.getElementById("user-section").value = -1;
+	document.getElementById("user-row").value = -1;
+	document.getElementById("user-seat").value = -1;
 	//rowValue = 0;
 	//seatValue = 0;
 
@@ -619,7 +701,25 @@ document.getElementById("reset-seat-button").onclick = function() {
 	//recreate the table to get rid of the highlights
 	document.getElementById("highlight-row").value = -1;
 	document.getElementById("highlight-seat").value = -1;
-	document.getElementById("tableGridDiv").innerHTML = createSettingsTable(document.getElementById("gridWidth").value, document.getElementById("gridHeight").value);
+	
+	var tableDiv = document.getElementById("tableGridDiv");
+	
+	var transparency = 1;
+	var topMargin = 100;
+	var table_disappear = setInterval( function () {
+
+		transparency = transparency - 0.1;
+		topMargin -= 10;
+		tableDiv.style.opacity = transparency;
+		tableDiv.style.topMargin = topMargin;
+
+		if (topMargin == 0) {
+			clearInterval(table_disappear);
+		}
+	}, 15);
+	tableDiv.style.display = "none";
+	document.getElementById("tableGridDiv").innerHTML = "";
+	
 };
 
 
