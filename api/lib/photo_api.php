@@ -70,9 +70,9 @@ class PhotoApi extends BaseApi
 			}
 		}
 
-		for ($x = 0; $x < 3; $x++)
+		for ($x = 0; $x < 5; $x++)
 		{
-			for($y = 0; $y < 3; $y++) {
+			for($y = 0; $y < 5; $y++) {
 				$content = array('category' => $x.'-'.$y, 'data' => json_encode($pixels[$x.'-'.$y]));
 				$context = new ZMQContext();
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
