@@ -39,32 +39,29 @@ function playSlideshow() {
 			// intervalCount++;
 
 			if(i == 0) {
-				pixelPushImage("bl");
-			}
-			else if(i == 1) {
-				pixelPushImage("bm");
-			}
-			else if(i == 2) {
-				pixelPushImage("br");
-			}
-			else if(i == 3) {
-				pixelPushImage("ml");
-			}
-			else if(i == 4) {
-				pixelPushImage("mm");
-			}
-			else if(i == 5) {
 				pixelPushImage("mr");
 			}
-			else if(i == 6) {
-				pixelPushImage("tl");
+			else if(i == 1) {
+				pixelPushImage("br");
 			}
-			else if(i == 7) {
+			else if(i == 2) {
+				pixelPushImage("tr");
+			}
+			else if(i == 3) {
 				pixelPushImage("tm");
 			}
-			else if(i == 8) {
-				pixelPushImage("tr");
-				i = -1;
+			else if(i == 4) {
+				pixelPushImage("tb");
+			}
+			else if(i == 5) {
+				pixelPushImage("bl");
+			}
+			else if(i == 6) {
+				pixelPushImage("ml");
+			}
+			else if(i == 7) {
+				pixelPushImage("mm");
+				-1
 			}
 			i++
 
