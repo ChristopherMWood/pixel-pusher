@@ -213,10 +213,12 @@ table {
 
 td {
     border: 1px solid black;
+	border-radius:10px;
 }
 
 th {
     border: 1px solid black;
+	border-radius:10px;
 }
 
 

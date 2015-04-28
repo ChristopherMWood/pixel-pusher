@@ -349,7 +349,7 @@ function settingsClicked() {
 			rowValue = $("#rowDD").val();
 			highlightRow(rowValue);
 			setDDText(rowValue, 1);
-			document.getElementById("user-row").value = rowValue - 1;
+			document.getElementById("user-row").value = rowValue;
 
 		}
 	});
@@ -361,7 +361,7 @@ function settingsClicked() {
 		seatValue = $("#seatDD").val();
 		highlightSeat(rowValue, seatValue);
 		setDDText(seatValue, 2);
-		document.getElementById("user-seat").value = seatValue - 1;
+		document.getElementById("user-seat").value = seatValue;
 
 		showConfirmAndResetButtons();
 	});

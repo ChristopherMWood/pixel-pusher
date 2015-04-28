@@ -10,8 +10,7 @@ function infoClicked() {
 	seatValue = document.getElementById("user-seat").value;
 	appCredits = document.getElementById("appCredits");
 	
-	rowValue++;
-	seatValue++;
+
 
 	var appCreditsString = "PixelPusher is a crowd-sourced media display "
 						+ "app created</br>in Spring, 2015 by the AddHawk development team."
