@@ -61,12 +61,37 @@ function playSlideshow() {
 			}
 			else if(i == 7) {
 				pixelPushImage("3x3_ml");
+			}
+			else if(i == 8) {
+				pixelPushImage("3x3_ml");
+			}
+			else if(i == 9) {
+				pixelPushImage("3x3_tl");
+			}
+			else if(i == 10) {
+				pixelPushImage("3x3_tm");
+			}
+			else if(i == 11) {
+				pixelPushImage("3x3_tr");
+			}
+			else if(i == 12) {
+				pixelPushImage("3x3_mr");
+			}
+			else if(i == 13) {
+				pixelPushImage("3x3_br");
+			}
+			else if(i == 14) {
+				pixelPushImage("3x3_bm");
+			}
+			else if(i == 15) {
+				pixelPushImage("3x3_bl");
 				i = -1
 			}
+
 			i++
 
 
-			if(intervalCount >= 8) {
+			if(intervalCount >= 15) {
 				if(!stopLoop) {
 					intervalCount = 0;
 					playing = true;
