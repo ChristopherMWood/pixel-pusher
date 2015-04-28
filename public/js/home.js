@@ -676,14 +676,13 @@ document.getElementById("reset-seat-button").onclick = function() {
 
 	document.getElementById("confirm-reset-div").style.display = "none";
 	document.getElementById("innerSectionDiv").style.display = "inline-block";
-	document.getElementById("innerSectionDiv").style.marginBottom = "60px";
+	document.getElementById("innerSectionDiv").style.marginBottom = "100px";
 
 	//clear html tags
 	document.getElementById("user-section").value = -1;
 	document.getElementById("user-row").value = -1;
 	document.getElementById("user-seat").value = -1;
-	//rowValue = 0;
-	//seatValue = 0;
+
 
 	document.getElementById("sectionText").style.display = "none";
 	document.getElementById("rowText").style.display = "none";
