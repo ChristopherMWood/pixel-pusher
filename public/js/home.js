@@ -887,7 +887,7 @@ function registerSeatSocket(row, column) {
 	}
 
 	//Set the websocket to register with
-  socketName = rowValue + "-" + seatValue;
+  socketName = (rowValue - 1) + "-" + (seatValue - 1);
 	console.log("Subscribing to: " + socketName);
 
   //Creates the connection to server for pixel pull ability
