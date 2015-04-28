@@ -107,13 +107,15 @@ function playSlideshow() {
 				i = 0;
 			}
 			
-			if(i == 12) {
-				countdown = false;
-				i = 0;
-			}
+			
 		
 			imageID = prefix + i_sub;
 			pixelPushImage(imageID);
+			if(i == 12) {
+				countdown = false;
+				i = 0;
+				i_sub = 0;
+			}
 			i_sub++;
 			i++;
 
