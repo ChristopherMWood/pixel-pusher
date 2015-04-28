@@ -15,9 +15,9 @@
 			the info icon.-->
 	<input type="hidden" id="gridHeight" name="gridHeight" value=0>
 	<input type="hidden" id="gridWidth" name="gridWidth" value=0>
-	<input type="hidden" id="user-section" name="user-section" value=0>
-	<input type="hidden" id="user-row" name="user-row" value=0>
-	<input type="hidden" id="user-seat" name="user-seat" value=0>
+	<input type="hidden" id="user-section" name="user-section" value=-1>
+	<input type="hidden" id="user-row" name="user-row" value=-1>
+	<input type="hidden" id="user-seat" name="user-seat" value=-1>
 	<input type="hidden" id="highlight-row" name="highlight-row" value=-1>
 	<input type="hidden" id="highlight-seat" name="highlight-seat" value=-1>
 
@@ -43,13 +43,17 @@
 		<div id="settingsTitleDiv" name="settingsTitleDiv" style="display:none;">
 			<input type="image" src="public/img/back_icon.png" alt="Go Back" name="backButton" id="backButton">
 			<h1 name="settingsTitle" id="settingsTitle">Select Your Seat</h1>
+			<p name="settingsDetails" id="settingsDetails">Choose your Section, Row, and Seat Number from the drop-down menus below!</p>
 		</div>
 		<div id="innerSectionDiv" name="innerSectionDiv">
 			<div id="sectionDiv" name="sectionDiv" style="display:none;" class="innerDDDiv">
 				<div class="styleSelect">
 					<select id="sectionDD" name="sectionDD">
 						<option value="default" disabled selected>Select Section   &#x25BC;</option>
-						<option value="A">Section A</option>
+						<option value="A">Section A (2x2)</option>
+						<option value="B">Section B (3x3)</option>
+						<option value="C">Section C (4x4)</option>
+						<option value="D">Section D (5x5)</option>
 					</select>
 				</div>
 			</div>

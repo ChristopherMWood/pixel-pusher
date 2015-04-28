@@ -9,6 +9,9 @@ function infoClicked() {
 	rowValue = document.getElementById("user-row").value;
 	seatValue = document.getElementById("user-seat").value;
 	appCredits = document.getElementById("appCredits");
+	
+	rowValue++;
+	seatValue++;
 
 	var appCreditsString = "PixelPusher is a crowd-sourced media display "
 						+ "app created</br>in Spring, 2015 by the AddHawk development team."
@@ -16,7 +19,7 @@ function infoClicked() {
 						+ "Dillon Gresham</br>Connor Hoene";
 	appCredits.innerHTML = "<div id='appCredits'></br>" + appCreditsString + "</div>";
 
-	if (sectionValue != 0 && rowValue != 0 && seatValue != 0) {
+	if (sectionValue != -1 && rowValue != -1 && seatValue != -1) {
 		//NOTE:
 		//putting the div tags in the inner html gives the double border look, which i like.
 		appInfo.innerHTML = "<div id='appInfo' name='appInfo'><u>Your current seat is:</u></br>Section: "
