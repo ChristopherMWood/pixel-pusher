@@ -29,7 +29,8 @@ var playing = false;
 var intervalCount = 0;
 var i = 1;
 var i_sub = 1;
-var prefix = ""
+var prefix = "";
+var countdown = true;
 function playSlideshow() {
 
 	if(!playing) {
@@ -43,7 +44,23 @@ function playSlideshow() {
 			//pixelPushImage("5x5_" + i);
 
 			
-			if (i == 1) {
+			if(i <= 3 && countdown) {
+				prefix = "countdown_";
+				i_sub = 1;
+			}
+			else if(i <= 6 && countdown) {
+				prefix = "countdown_";
+				i_sub = 2;
+			}
+			else if(i <= 9 && countdown) {
+				prefix = "countdown_";
+				i_sub = 3;
+			}
+			else if(i <= 12 && countdown) {
+				prefix = "countdown_";
+				i_sub = 4;
+			}
+			else if (i == 1) {
 				prefix = "donut_blue_";
 			}
 			else if (i == 5) {
@@ -89,6 +106,11 @@ function playSlideshow() {
 				i_sub = 1;
 				i = 0;
 			}
+			
+			if(i == 12) {
+				countdown = false;
+				i = 0;
+			}
 		
 			imageID = prefix + i_sub;
 			pixelPushImage(imageID);
@@ -108,7 +130,7 @@ function playSlideshow() {
 				}
 			}
 
-		}, 100);
+		}, 150);
 	}
 
 }
