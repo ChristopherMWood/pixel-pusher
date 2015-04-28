@@ -92,6 +92,7 @@ function playSlideshow() {
 			imageID = prefix + i_sub;
 			pixelPushImage(imageID);
 			i_sub++;
+			i++;
 
 			if(intervalCount >= 14) {
 				if(!stopLoop) {
