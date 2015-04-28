@@ -28,6 +28,8 @@ var stopLoop = false;
 var playing = false;
 var intervalCount = 0;
 var i = 1;
+var i_sub = 1;
+var prefix = ""
 function playSlideshow() {
 
 	if(!playing) {
@@ -38,12 +40,58 @@ function playSlideshow() {
 			// pixelPushImage("" + intervalCount);
 			// intervalCount++;
 
-			pixelPushImage("5x5_" + i);
-			if(i == 14) {
+			//pixelPushImage("5x5_" + i);
+
+			
+			if (i == 1) {
+				prefix = "donut_blue_";
+			}
+			else if (i == 5) {
+				prefix = "donut_red_";
+				i_sub = 1;
+			}
+			else if (i == 9) {
+				prefix = "donut_green_";
+				i_sub = 1;
+			}
+			else if (i == 14 || i == 28 || i == 42 || i == 56 || i == 70) {
+				prefix = "wave_green_";
+				i_sub = 1;
+			}
+			else if (i == 84) {
+				prefix = "first_transition_";
+				i_sub = 1;
+			}
+			else if (i == 88 || i == 90 || i == 92 || i == 94 || i == 96) {
+				prefix = "solid_";
+				i_sub = 1;
+			}
+			else if (i == 98) {
+				prefix = "checkerboard_";
+				i_sub = 1;
+			}
+			else if (i == 101 || i == 103 || i == 105 || i == 107 || i == 109) {
+				prefix = "checkerboard_";
+				i_sub = 4;
+			}
+			else if (i == 111) {
+				prefix = "last_transition_";
+				i_sub = 1;
+			}
+			else if (i == 113 || i == 127) {
+				prefix = "wave_green_";
+				i_sub = 1;
+			}
+			else
+			{
+				prefix = "donut_blue_";
+				i_sub = 1;
 				i = 0;
 			}
-			i++
-
+		
+			imageID = prefix + i_sub;
+			pixelPushImage(imageID);
+			i_sub++;
 
 			if(intervalCount >= 14) {
 				if(!stopLoop) {
