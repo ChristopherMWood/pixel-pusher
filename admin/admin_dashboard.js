@@ -82,7 +82,7 @@ function playSlideshow() {
 				prefix = "wave_green_";
 				i_sub = 1;
 			}
-			else
+			else if (i == 141)
 			{
 				prefix = "donut_blue_";
 				i_sub = 1;
