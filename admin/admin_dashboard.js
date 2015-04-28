@@ -27,7 +27,7 @@ document.getElementById("stop-button").onclick = function() {
 var stopLoop = false;
 var playing = false;
 var intervalCount = 0;
-var i = 0;
+var i = 1;
 function playSlideshow() {
 
 	if(!playing) {
@@ -38,60 +38,14 @@ function playSlideshow() {
 			// pixelPushImage("" + intervalCount);
 			// intervalCount++;
 
-			if(i == 0) {
-				pixelPushImage("3x3_bl");
+			pixelPushImage("5x5_" + i);
+			if(i == 14) {
+				i = 0;
 			}
-			else if(i == 1) {
-				pixelPushImage("3x3_bm");
-			}
-			else if(i == 2) {
-				pixelPushImage("3x3_br");
-			}
-			else if(i == 3) {
-				pixelPushImage("3x3_mr");
-			}
-			else if(i == 4) {
-				pixelPushImage("3x3_tr");
-			}
-			else if(i == 5) {
-				pixelPushImage("3x3_tm");
-			}
-			else if(i == 6) {
-				pixelPushImage("3x3_tl");
-			}
-			else if(i == 7) {
-				pixelPushImage("3x3_ml");
-			}
-			else if(i == 8) {
-				pixelPushImage("3x3_ml");
-			}
-			else if(i == 9) {
-				pixelPushImage("3x3_tl");
-			}
-			else if(i == 10) {
-				pixelPushImage("3x3_tm");
-			}
-			else if(i == 11) {
-				pixelPushImage("3x3_tr");
-			}
-			else if(i == 12) {
-				pixelPushImage("3x3_mr");
-			}
-			else if(i == 13) {
-				pixelPushImage("3x3_br");
-			}
-			else if(i == 14) {
-				pixelPushImage("3x3_bm");
-			}
-			else if(i == 15) {
-				pixelPushImage("3x3_bl");
-				i = -1
-			}
-
 			i++
 
 
-			if(intervalCount >= 15) {
+			if(intervalCount >= 14) {
 				if(!stopLoop) {
 					intervalCount = 0;
 					playing = true;
