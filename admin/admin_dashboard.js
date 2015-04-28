@@ -79,7 +79,7 @@ function playSlideshow() {
 				}
 			}
 
-		}, 10);
+		}, 100);
 	}
 
 }
