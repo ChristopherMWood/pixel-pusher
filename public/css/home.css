@@ -208,6 +208,7 @@ table {
     width: 100%;
     border: 1px solid black;
     height: 300px;
+	border-radius:10px;
 }
 
 td {
