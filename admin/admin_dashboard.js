@@ -88,40 +88,6 @@ function playSlideshow() {
 }
 
 
-function 3x3Loop() {
-
-
-	if(i == 0) {
-		pixelPushImage("bl");
-	}
-	else if(i == 1) {
-		pixelPushImage("bm");
-	}
-	else if(i == 2) {
-		pixelPushImage("br");
-	}
-	else if(i == 3) {
-		pixelPushImage("ml");
-	}
-	else if(i == 4) {
-		pixelPushImage("mm");
-	}
-	else if(i == 5) {
-		pixelPushImage("mr");
-	}
-	else if(i == 6) {
-		pixelPushImage("tl");
-	}
-	else if(i == 7) {
-		pixelPushImage("tm");
-	}
-	else if(i == 8) {
-		pixelPushImage("tr");
-	}
-
-}
-
-
 function pixelPushImage(image) {
 	var parameters = {};
 		parameters['api_name'] = 'photo';
