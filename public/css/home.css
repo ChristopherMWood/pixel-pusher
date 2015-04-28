@@ -162,8 +162,8 @@ body {
 }
 
 .innerDDDiv {
-    height: 34px;
-    width: 50%;
+	width: 300px;
+	height: 50px;
     margin-top: 40px;
     margin-bottom: 40px;
 	margin-left:auto;
@@ -218,11 +218,7 @@ th {
     border: 1px solid black;
 }
 
-/* centering the settings dropdowns */
-#innerSectionDiv, #sectionDiv, #rowDiv, #seatDiv, .styleSelect {
-	margin-left:auto;
-	margin-right:auto;
-}
+
 
 .styleSelect select {
   background: transparent;
