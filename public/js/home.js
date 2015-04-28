@@ -832,7 +832,7 @@ function cellSelected(cellName, row, seat) {
 		cell.style.backgroundColor = "red";
 
 		//Set all of the dropdown boxes to text fields
-		setDDText("A", 0);
+		setDDText(document.getElementById("user-section").value, 0);
 		setDDText(row, 1);
 		setDDText(seat, 2);
 		document.getElementById("highlight-row").value = row;
