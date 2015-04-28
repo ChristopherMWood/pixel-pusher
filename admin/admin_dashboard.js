@@ -61,7 +61,7 @@ function playSlideshow() {
 			}
 			else if(i == 7) {
 				pixelPushImage("mm");
-				-1
+				i = -1
 			}
 			i++
 
