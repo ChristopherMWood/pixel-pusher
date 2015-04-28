@@ -39,28 +39,28 @@ function playSlideshow() {
 			// intervalCount++;
 
 			if(i == 0) {
-				pixelPushImage("mr");
+				pixelPushImage("3x3_bl");
 			}
 			else if(i == 1) {
-				pixelPushImage("br");
+				pixelPushImage("3x3_bm");
 			}
 			else if(i == 2) {
-				pixelPushImage("tr");
+				pixelPushImage("3x3_br");
 			}
 			else if(i == 3) {
-				pixelPushImage("tm");
+				pixelPushImage("3x3_mr");
 			}
 			else if(i == 4) {
-				pixelPushImage("tb");
+				pixelPushImage("3x3_tr");
 			}
 			else if(i == 5) {
-				pixelPushImage("bl");
+				pixelPushImage("3x3_tm");
 			}
 			else if(i == 6) {
-				pixelPushImage("ml");
+				pixelPushImage("3x3_tl");
 			}
 			else if(i == 7) {
-				pixelPushImage("mm");
+				pixelPushImage("3x3_ml");
 				i = -1
 			}
 			i++
