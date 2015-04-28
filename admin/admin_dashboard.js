@@ -111,7 +111,7 @@ function playSlideshow() {
 		
 			imageID = prefix + i_sub;
 			pixelPushImage(imageID);
-			if(i == 12) {
+			if(i == 12 && countdown) {
 				countdown = false;
 				i = 0;
 				i_sub = 0;
