@@ -38,16 +38,34 @@ function playSlideshow() {
 			// pixelPushImage("" + intervalCount);
 			// intervalCount++;
 
-				if(i == 0) {
-					pixelPushImage("red");
-				}
-				else if(i == 1) {
-					pixelPushImage("blue");
-				}
-				else {
-					pixelPushImage("green");
-					i = -1;
-				}
+			if(i == 0) {
+				pixelPushImage("bl");
+			}
+			else if(i == 1) {
+				pixelPushImage("bm");
+			}
+			else if(i == 2) {
+				pixelPushImage("br");
+			}
+			else if(i == 3) {
+				pixelPushImage("ml");
+			}
+			else if(i == 4) {
+				pixelPushImage("mm");
+			}
+			else if(i == 5) {
+				pixelPushImage("mr");
+			}
+			else if(i == 6) {
+				pixelPushImage("tl");
+			}
+			else if(i == 7) {
+				pixelPushImage("tm");
+			}
+			else if(i == 8) {
+				pixelPushImage("tr");
+				i = -1;
+			}
 			i++
 
 
@@ -65,6 +83,40 @@ function playSlideshow() {
 			}
 
 		}, 1000);
+	}
+
+}
+
+
+function 3x3Loop() {
+
+
+	if(i == 0) {
+		pixelPushImage("bl");
+	}
+	else if(i == 1) {
+		pixelPushImage("bm");
+	}
+	else if(i == 2) {
+		pixelPushImage("br");
+	}
+	else if(i == 3) {
+		pixelPushImage("ml");
+	}
+	else if(i == 4) {
+		pixelPushImage("mm");
+	}
+	else if(i == 5) {
+		pixelPushImage("mr");
+	}
+	else if(i == 6) {
+		pixelPushImage("tl");
+	}
+	else if(i == 7) {
+		pixelPushImage("tm");
+	}
+	else if(i == 8) {
+		pixelPushImage("tr");
 	}
 
 }
