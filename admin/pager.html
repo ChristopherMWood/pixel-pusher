@@ -1,0 +1,34 @@
+<input/><button onclick="makePagesHappen();">Make it so</button>
+
+<script>
+var i = 0;
+var j = 0;
+var xLoc = 0;
+var yLoc = 0;
+var winH = 200;
+var winW = 200;
+function makePagesHappen() {
+
+  var windows = new Array();
+  var heightNum = 5;
+  var widthNum = 5;
+  var settings = "";
+
+
+  settings += "height=" + winH + ", width=" + winW + ", scrollbars=0, status=no, titlebar=no,";
+  settings += "top=" + yLoc + ", left=" + xLoc;
+
+
+  windows[i + " " + j] = window.open("http://www.pixelpush.us", i + " " + j, settings);
+  i++;
+  xLoc += winW;
+
+  if(i == widthNum) {
+    j++;
+    i = 0;
+    yLoc += winH;
+  }
+
+}
+
+</script>
