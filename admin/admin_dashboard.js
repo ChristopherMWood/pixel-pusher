@@ -42,7 +42,7 @@ function playSlideshow() {
 			else if(i == 2) pixelPushImage("green");
 			else if(i == 3) { 
 				pixelPushImage("blue");
-				i == 0;
+				i = 0;
 			}
 			i++;
 
