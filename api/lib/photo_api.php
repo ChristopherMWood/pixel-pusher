@@ -79,7 +79,7 @@ class PhotoApi extends BaseApi
 				$socket->connect("tcp://127.0.0.1:5555");
 				$socket->send(json_encode($content));
 				
-				error_log("PixelSent: ".microtime()."\n", 3, "/../pixelpusher.log");
+				file_put_contents('/../pixelpusher.log', "PixelSent: ".microtime()."\n", 3);
 			}
 		}
 
