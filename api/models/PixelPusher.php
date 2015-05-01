@@ -25,14 +25,16 @@ class Pusher implements WampServerInterface {
 
       //If the lookup topic object isn't set there is no one to publish to
       if (!array_key_exists($entryData['category'], $this->subscribedTopics)) {
-          echo "Subscription not found: ".$entryData['category']."\n";
+//          echo "Subscription not found: ".$entryData['category']."\n";
           return;
       }
 
       $topic = $this->subscribedTopics[$entryData['category']];
 
       // re-send the data to all the clients subscribed to that category
-      echo "Broadcasted: ".$entryData['category']." pixels\n";
+//      echo "Broadcasted: ".$entryData['category']." pixels\n";
+
+			echo "Pixel (".$x.", ".$y."): ".microtime();
       $topic->broadcast($entryData);
   }
 
@@ -40,10 +42,10 @@ class Pusher implements WampServerInterface {
     public function onUnSubscribe(ConnectionInterface $conn, $topic) {
     }
     public function onOpen(ConnectionInterface $conn) {
-      echo "Connection Opened\n";
+//      echo "Connection Opened\n";
     }
     public function onClose(ConnectionInterface $conn) {
-      echo "Connection Closed\n";
+//      echo "Connection Closed\n";
     }
     public function onCall(ConnectionInterface $conn, $id, $topic, array $params) {
         // In this application if clients send data it's because the user hacked around in console
