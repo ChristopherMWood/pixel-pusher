@@ -141,7 +141,7 @@ function playSlideshow() {
 //				}
 //			}
 
-		}, 333);
+		}, 1000);
 	}
 
 }
