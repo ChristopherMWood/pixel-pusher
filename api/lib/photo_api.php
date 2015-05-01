@@ -78,6 +78,8 @@ class PhotoApi extends BaseApi
 				$socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'my pusher');
 				$socket->connect("tcp://127.0.0.1:5555");
 				$socket->send(json_encode($content));
+				
+				error_log("PixelSent: " + microtime() + "\n", 3, "pixelpusher.log");
 			}
 		}
 
