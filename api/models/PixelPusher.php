@@ -34,7 +34,7 @@ class Pusher implements WampServerInterface {
       // re-send the data to all the clients subscribed to that category
 //      echo "Broadcasted: ".$entryData['category']." pixels\n";
 
-			echo "Pixel (".$x.", ".$y."): ".microtime();
+			echo "Pixel Time: ".microtime()."\n";
       $topic->broadcast($entryData);
   }
 
