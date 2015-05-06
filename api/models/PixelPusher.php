@@ -14,7 +14,7 @@ class Pusher implements WampServerInterface {
 
   public function onSubscribe(ConnectionInterface $conn, $topic) {
       $this->subscribedTopics[$topic->getId()] = $topic;
-      echo "Subscription added for: ".$topic->getId()."\n";
+//      echo "Subscription added for: ".$topic->getId()."\n";
   }
 
   /**
@@ -34,7 +34,7 @@ class Pusher implements WampServerInterface {
       // re-send the data to all the clients subscribed to that category
 //      echo "Broadcasted: ".$entryData['category']." pixels\n";
 
-			echo "Pixel Time: ".round(microtime(true) * 1000)."\n";
+			echo round(microtime(true) * 1000)."\n";
       $topic->broadcast($entryData);
   }
 

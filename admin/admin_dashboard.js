@@ -37,109 +37,109 @@ function playSlideshow() {
 		playing = true;
 		var imageLoop = setInterval(function(){
 
+			// CODE FOR 3X3
+			// if(i == 1) pixelPushImage("red");
+			// else if(i == 2) pixelPushImage("green");
+			// else if(i == 3) {
+			// 	pixelPushImage("blue");
+			// 	i = 0;
+			// }
+			// i++;
 
-			if(i == 1) pixelPushImage("red");
-			else if(i == 2) pixelPushImage("green");
-			else if(i == 3) { 
-				pixelPushImage("blue");
+			$('#slideshow-count').text("Image: " + (intervalCount + 1));
+			pixelPushImage("" + intervalCount);
+			intervalCount++;
+
+			pixelPushImage("5x5_" + i);
+
+
+			if(i <= 3 && countdown) {
+				prefix = "countdown_";
+				i_sub = 1;
+			}
+			else if(i <= 6 && countdown) {
+				prefix = "countdown_";
+				i_sub = 2;
+			}
+			else if(i <= 9 && countdown) {
+				prefix = "countdown_";
+				i_sub = 3;
+			}
+			else if(i <= 12 && countdown) {
+				prefix = "countdown_";
+				i_sub = 4;
+			}
+			else if (i == 1) {
+				prefix = "donut_blue_";
+			}
+			else if (i == 5) {
+				prefix = "donut_red_";
+				i_sub = 1;
+			}
+			else if (i == 9) {
+				prefix = "donut_green_";
+				i_sub = 1;
+			}
+			else if (i == 14 || i == 28 || i == 42 || i == 56 || i == 70) {
+				//5x5 is wave green
+				prefix = "5x5_";
+				i_sub = 1;
+			}
+			else if (i == 84) {
+				prefix = "first_transition_";
+				i_sub = 1;
+			}
+			else if (i == 88 || i == 90 || i == 92 || i == 94 || i == 96) {
+				prefix = "solid_";
+				i_sub = 1;
+			}
+			else if (i == 98) {
+				prefix = "checkerboard_";
+				i_sub = 1;
+			}
+			else if (i == 101 || i == 103 || i == 105 || i == 107 || i == 109) {
+				prefix = "checkerboard_";
+				i_sub = 4;
+			}
+			else if (i == 111) {
+				prefix = "last_transition_";
+				i_sub = 1;
+			}
+			else if (i == 113 || i == 127) {
+				prefix = "5x5_";
+				i_sub = 1;
+			}
+			else if (i == 141)
+			{
+				prefix = "donut_blue_";
+				i_sub = 1;
 				i = 0;
 			}
+
+
+
+			imageID = prefix + i_sub;
+			pixelPushImage(imageID);
+			if(i == 12 && countdown) {
+				countdown = false;
+				i = 0;
+				i_sub = 0;
+			}
+			i_sub++;
 			i++;
 
-			// $('#slideshow-count').text("Image: " + (intervalCount + 1));
-			// pixelPushImage("" + intervalCount);
-			// intervalCount++;
-
-			//pixelPushImage("5x5_" + i);
-//
-//			
-//			if(i <= 3 && countdown) {
-//				prefix = "countdown_";
-//				i_sub = 1;
-//			}
-//			else if(i <= 6 && countdown) {
-//				prefix = "countdown_";
-//				i_sub = 2;
-//			}
-//			else if(i <= 9 && countdown) {
-//				prefix = "countdown_";
-//				i_sub = 3;
-//			}
-//			else if(i <= 12 && countdown) {
-//				prefix = "countdown_";
-//				i_sub = 4;
-//			}
-//			else if (i == 1) {
-//				prefix = "donut_blue_";
-//			}
-//			else if (i == 5) {
-//				prefix = "donut_red_";
-//				i_sub = 1;
-//			}
-//			else if (i == 9) {
-//				prefix = "donut_green_";
-//				i_sub = 1;
-//			}
-//			else if (i == 14 || i == 28 || i == 42 || i == 56 || i == 70) {
-//				//5x5 is wave green
-//				prefix = "5x5_";
-//				i_sub = 1;
-//			}
-//			else if (i == 84) {
-//				prefix = "first_transition_";
-//				i_sub = 1;
-//			}
-//			else if (i == 88 || i == 90 || i == 92 || i == 94 || i == 96) {
-//				prefix = "solid_";
-//				i_sub = 1;
-//			}
-//			else if (i == 98) {
-//				prefix = "checkerboard_";
-//				i_sub = 1;
-//			}
-//			else if (i == 101 || i == 103 || i == 105 || i == 107 || i == 109) {
-//				prefix = "checkerboard_";
-//				i_sub = 4;
-//			}
-//			else if (i == 111) {
-//				prefix = "last_transition_";
-//				i_sub = 1;
-//			}
-//			else if (i == 113 || i == 127) {
-//				prefix = "5x5_";
-//				i_sub = 1;
-//			}
-//			else if (i == 141)
-//			{
-//				prefix = "donut_blue_";
-//				i_sub = 1;
-//				i = 0;
-//			}
-//			
-//			
-//		
-//			imageID = prefix + i_sub;
-//			pixelPushImage(imageID);
-//			if(i == 12 && countdown) {
-//				countdown = false;
-//				i = 0;
-//				i_sub = 0;
-//			}
-//			i_sub++;
-//			i++;
-//
-//			if(intervalCount >= 14) {
-//				if(!stopLoop) {
-//					intervalCount = 0;
-//					playing = true;
-//				}
-//				else {
-//					clearInterval(imageLoop);
-//					intervalCount = 0;
-//					playing = false;
-//					stopLoop = false;
-//				}
-//			}
+			if(intervalCount >= 14) {
+				if(!stopLoop) {
+					intervalCount = 0;
+					playing = true;
+				}
+				else {
+					clearInterval(imageLoop);
+					intervalCount = 0;
+					playing = false;
+					stopLoop = false;
+				}
+			}
 
 		}, 1000);
 	}
