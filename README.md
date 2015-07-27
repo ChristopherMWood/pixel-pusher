@@ -12,5 +12,5 @@ Team Behind the Project
 The project uses Phalcon PHP and WebSockets to try to make the most efficient data transfer possible to achieve a smooth 
 effect across all devices.
 
-***Note:*** Due to the cost of keeping a server running, this project is currently not hosted on any server. The dedicated
-url is www.pixelpush.us, but it is not active at the moment.
+***Note:*** Due to the cost of keeping a server running, this project is currently not hosted live anywhere. The dedicated
+url is www.pixelpush.us, but it is not active at the moment, but will be used for any future continuation of the project.
